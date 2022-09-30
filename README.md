@@ -1,4 +1,4 @@
-# **Nich project** bluerov docking underwather
+# **Nich project** bluerov docking underwater
 
 My awesome project
 
