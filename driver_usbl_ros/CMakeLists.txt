@@ -7,9 +7,20 @@ project(driver_usbl_ros)
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
-find_package(catkin REQUIRED)
+find_package(catkin REQUIRED
+    seatrac_driver
+    geometry_msgs
+    message_generation
+    message_runtime
+    roscpp
+    rospy
+    std_msgs
+    tf
+    tf2
+    tf2_ros
+)
 
-find_package(seatrac_driver REQUIRED)
+# find_package(seatrac_driver REQUIRED)
 
 
 ## System dependencies are found with CMake's conventions
@@ -40,6 +51,17 @@ find_package(seatrac_driver REQUIRED)
 ##     find_package(catkin REQUIRED COMPONENTS ...)
 ##   * add "message_runtime" and every package in MSG_DEP_SET to
 ##     catkin_package(CATKIN_DEPENDS ...)
+
+generate_messages(
+    DEPENDENCIES
+	std_msgs
+)
+
+catkin_package(CATKIN_DEPENDS
+	std_msgs
+	roscpp
+)
+
 ##   * uncomment the add_*_files sections below as needed
 ##     and list every .msg/.srv/.action file to be processed
 ##   * uncomment the generate_messages entry below
@@ -132,7 +154,14 @@ include_directories(
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
+
 add_executable(${PROJECT_NAME}_node src/driver_1.cpp)
+
+
+target_link_libraries(${PROJECT_NAME}_node PRIVATE
+    seatrac_driver
+)
+
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
