@@ -1,7 +1,22 @@
 <?xml version="1.0"?>
 <launch>
 
-    <include file="$(find mavros)/mavros/launch/px4.launch">
+    <!-- Run BlueRov -->
+    <include file="$(find mavros)/launch/px4.launch">
+	<arg name="fcu_url" default="udp://192.168.2.1:14550@192.168.2.2:14550" />
+	<arg name="gcs_url" default="" />
+	<arg name="tgt_system" default="1" />
+	<arg name="tgt_component" default="1" />
+	<arg name="log_output" default="screen" />
+	<arg name="fcu_protocol" default="v2.0" />
+	<arg name="respawn_mavros" default="false" />
     </include>
+
+    <!-- Run joytick -->
+    <node name="MyProgram" pkg="bluerov" type="JoyCommand_Christophe_vs4.py" output="screen"/>
+    <node name="joy_node" pkg="joy" type="joy_node" output="screen"/>
+
+    <!-- Display video -->
+    <node name="MyProgram_camera" pkg="bluerov" type="Affichage_camera_launch_3.py" output="log"/>
 
 </launch>

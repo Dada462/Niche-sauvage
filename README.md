@@ -4,8 +4,10 @@ My awesome project
 
 ## Use BlueRov
 
-```
+Run the bluerob with camera and joystick
 
+``` bash
+roslaunch bluerov run_bluerov.launch 
 ```
 
 

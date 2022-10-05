@@ -11,6 +11,11 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   rospy
   std_msgs
+  geographic_msgs
+  sensor_msgs
+  visualization_msgs
+  geometry_msgs
+  nav_msgs
 )
 
 ## System dependencies are found with CMake's conventions
@@ -107,6 +112,13 @@ catkin_package(
 #  LIBRARIES bluerov
 #  CATKIN_DEPENDS roscpp rospu std_msgs
 #  DEPENDS system_lib
+)
+
+catkin_install_python(PROGRAMS
+  src/JoyCommand_Christophe_vs4.py
+  src/Affichage_camera_launch_3.py
+  src/class_video.py
+  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 
 ###########
