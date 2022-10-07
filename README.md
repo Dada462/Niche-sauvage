@@ -30,7 +30,7 @@ bash src/Niche-sauvage/install/install_usbl_driver.sh
 
 Run the bluerob with camera and joystick
 
-Warning : Desarmed before kill
+Warning : Desarmed and tune off the lights before kill
 
 ``` bash
 roslaunch bluerov run_bluerov.launch 

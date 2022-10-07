@@ -1,0 +1,86 @@
+
+SEMAINE 1 :
+
+Objectif principal :
+Réaliser des series de mesures avec tout les capteurs dans différentes situations.
+
+Situations :
+Détection usbl de loin
+Détection usbl de pres
+Déplacement jusqu'a la cage, cage avec lumieres allumées
+Déplacement jusqu'a la cage, cage avec lumieres éteintes
+Rentrer dans la cage, cage avec lumieres allumées, différents jeux de QRcodes
+Rentrer dans la cage, cage avec lumieres éteintes, différents jeux de QRcodes
+
+Objectifs intermédiairs :
+Installer la cage dans le lac
+Récuperer la camera sur un topic ros
+Récuperer les données usbl, distance orientation, sur un topic ros
+Enregistrer les logs de chaque capteurs dans des fichers txt
+Récuperer les commandes manettes lors des mission ros+logs
+
+Lundi : ------------------------------------------------------------------------------------
+Matin ======================================================================================
+Objectifs :
+Déchargement du camion
+Installation du camps de base
+Mise à l'eau de la cage
+Tests usbl
+
+Réussi :
+Note :
+Aprem ======================================================================================
+Objectifs :
+Tests usbl
+rossifier la camera
+Logs capteurs (liste topics sur git)
+
+Réussi :
+Note :
+Mardi : ------------------------------------------------------------------------------------
+Matin ======================================================================================
+Objectifs :
+Tests usbl
+rossifier la camera
+Logs capteurs (liste topics sur git)
+
+Réussi :
+Note :
+Aprem ======================================================================================
+Objectifs :
+Tests usbl
+rossifier la camera
+
+
+Réussi :
+Note :
+
+Mercredi : ---------------------------------------------------------------------------------
+Matin ======================================================================================
+Objectifs :
+Réussi :
+Note :
+Aprem ======================================================================================
+Objectifs :
+Réussi :
+Note :
+
+Jeudi : ------------------------------------------------------------------------------------
+Matin ======================================================================================
+Objectifs :
+Réussi :
+Note :
+Aprem ======================================================================================
+Objectifs :
+Réussi :
+Note :
+
+Vendredi : ---------------------------------------------------------------------------------
+Matin ======================================================================================
+Objectifs :
+Réussi :
+Note :
+Aprem ======================================================================================
+Objectifs :
+Réussi :
+Note :

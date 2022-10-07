@@ -19,4 +19,7 @@
     <!-- Display video -->
     <node name="MyProgram_camera" pkg="bluerov" type="Affichage_camera_launch_3.py" output="log"/>
 
+    <!-- Publish video -->
+    <!-- <node name="video_publisher" pkg="bluerov" type="video_publisher.py" output="screen"/> -->
+
 </launch>

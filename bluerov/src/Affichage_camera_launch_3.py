@@ -246,7 +246,7 @@ if __name__ == '__main__':
     # Add port= if is necessary to use a different one
     print('connexion camera...')
     video = Video(port_udp)
-    test = 0;
+    test = 0
     
     test_enregistrement = 0
     
@@ -343,7 +343,7 @@ if __name__ == '__main__':
                     current_date_and_time_string = str(current_date_and_time)[0:19]  #[0:19] : on ne garde que jusqu'aux seconds
                     
                     # creation d un dossier ou tout stocker
-                    path =  "/home/vielch/catkin_ws/video/" + ROV_name + '_'+ current_date_and_time_string
+                    path = "~/catkin_ws/src/Niche-sauvage/videos/" + ROV_name + '_'+ current_date_and_time_string
                     os.mkdir(path)
                     
                     extension = ".avi"
