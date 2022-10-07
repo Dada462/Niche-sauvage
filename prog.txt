@@ -5,14 +5,42 @@ Objectif principal :
 Réaliser des series de mesures avec tout les capteurs dans différentes situations.
 
 Situations :
-Détection usbl de loin
-Détection usbl de pres
-Déplacement jusqu'a la cage, cage avec lumieres allumées
-Déplacement jusqu'a la cage, cage avec lumieres éteintes
-Rentrer dans la cage, cage avec lumieres allumées, différents jeux de QRcodes
-Rentrer dans la cage, cage avec lumieres éteintes, différents jeux de QRcodes
 
-Objectifs intermédiaires :
+
+Test USBL
+un  USBL est fixé au ponton et l'autre se balade sur un bateau, on peut ainsi tester avec un GPS l'erreur de distance
+
+Test Distance visibilité qrcode
+Mise à l'eau du robot ainsi que d'un qrcode fixé sur un profilé que l'on déplace manuellement. Mesure de la distance limite à laquelle le qrcode est perçu. A tester avec les différents qrcodes avec plusieurs orientations (et à différentes profondeurs ?)
+
+Détection usbl de loin
+Mise à l'eau de la cage et envoi du robot à une distance moyenne (à environ une dizaine de mètres). Objectif: évaluer la valeur renvoyée et l'erreur perçue
+
+Détection usbl de pres
+Même test que le précédent mais à proximité de la cage (environ 2 mètres)
+
+Déplacement jusqu'a la cage, cage avec lumieres allumées
+mise à l'eau du robot et de la cage. Déplacement du robot via contrôle manuel jusqu'à la cage avec départ à courte distance. Objectif tester la méthode de docking via des lumières à l'entrée de la cage pour se repérer
+
+Déplacement jusqu'a la cage, cage avec lumieres éteintes
+Même situation que la précédente mais avec les lumières éteintes afin de voir s'il est possible d'arriver jusqu'à la cage sans lumière.
+
+Rentrer dans la cage, cage avec lumieres allumées, différents jeux de QRcodes
+le robot fait un déplacement simple, il doit juste rentrer afin de voir s'il arrive à détecter les qrcodes (à tester avec les différents qrcodes)
+
+Rentrer dans la cage, cage avec lumieres éteintes, différents jeux de QRcodes
+Même tests que le précédent mais sans lumière
+
+Test final avec lumières
+Le robot part d'une distance relativement importante et se dirige vers la cage puis entre dans celle-ci
+
+Test final sans lumière
+Même test que le précédent mais sans lumière
+
+
+
+
+Objectifs intermédiairs :
 Installer la cage dans le lac
 Récuperer la camera sur un topic ros
 Récuperer les données usbl, distance orientation, sur un topic ros
@@ -24,7 +52,8 @@ Matin ==========================================================================
 Objectifs :
 Déchargement du camion
 Installation du camps de base
-Mise à l'eau de la cage
+Finalisation de la cage
+Mise à l'eau de la cage ?
 Tests usbl
 
 Réussi :
