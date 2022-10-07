@@ -12,7 +12,7 @@ Déplacement jusqu'a la cage, cage avec lumieres éteintes
 Rentrer dans la cage, cage avec lumieres allumées, différents jeux de QRcodes
 Rentrer dans la cage, cage avec lumieres éteintes, différents jeux de QRcodes
 
-Objectifs intermédiairs :
+Objectifs intermédiaires :
 Installer la cage dans le lac
 Récuperer la camera sur un topic ros
 Récuperer les données usbl, distance orientation, sur un topic ros
