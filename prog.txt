@@ -16,7 +16,7 @@ Mise à l'eau du robot ainsi que d'un qrcode fixé sur un profilé que l'on dép
 Détection usbl de loin
 Mise à l'eau de la cage et envoi du robot à une distance moyenne (à environ une dizaine de mètres). Objectif: évaluer la valeur renvoyée et l'erreur perçue
 
-Détection usbl de pres
+Détection usbl de prèss
 Même test que le précédent mais à proximité de la cage (environ 2 mètres)
 
 Déplacement jusqu'a la cage, cage avec lumieres allumées
@@ -78,6 +78,7 @@ Note :
 Aprem ======================================================================================
 Objectifs :
 Tests usbl
+Test Distance visibilité qrcode
 rossifier la camera
 
 
@@ -86,30 +87,32 @@ Note :
 
 Mercredi : ---------------------------------------------------------------------------------
 Matin ======================================================================================
-Objectifs :
+Objectifs :Détection usbl de loin
+Détection usbl de près
 Réussi :
 Note :
+
+
 Aprem ======================================================================================
-Objectifs :
+Objectifs : 
+Déplacement jusqu'a la cage, cage avec lumieres allumées
 Réussi :
 Note :
 
 Jeudi : ------------------------------------------------------------------------------------
 Matin ======================================================================================
-Objectifs :
+Objectifs : Rentrer dans la cage, cage avec lumieres allumées, différents jeux de QRcodes
 Réussi :
 Note :
 Aprem ======================================================================================
-Objectifs :
+Objectifs : Rentrer dans la cage, cage avec lumieres éteintes, différents jeux de QRcodes
 Réussi :
 Note :
 
 Vendredi : ---------------------------------------------------------------------------------
 Matin ======================================================================================
-Objectifs :
+Objectifs : Test final avec lumières
+Test final sans lumière
 Réussi :
 Note :
-Aprem ======================================================================================
-Objectifs :
-Réussi :
-Note :
+
