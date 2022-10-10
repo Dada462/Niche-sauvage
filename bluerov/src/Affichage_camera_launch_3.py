@@ -23,6 +23,8 @@ import gi
 import numpy as np
 import math
 
+import sensor_msgs.msg
+
 gi.require_version('Gst', '1.0')
 from gi.repository import Gst
 

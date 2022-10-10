@@ -1,17 +1,33 @@
 #!/usr/bin/env python3
 
+import os
+from PIL import Image, ImageFont, ImageDraw
+
+
+import rospy
+from std_msgs.msg import Float32
+from std_msgs.msg import Float64
+
+from sensor_msgs.msg import BatteryState
+from std_msgs.msg import Float32MultiArray
+
+from mavros_msgs.msg import State
+
+import datetime
+
 import cv2
 import gi
 import numpy as np
+import math
 
 gi.require_version('Gst', '1.0')
 from gi.repository import Gst
 
 import time
-import rospy
-import numpy as np
+
 import sensor_msgs.msg
-# from class_video import Video
+
+ROV_name = ""
 
 class Video():
     """BlueRov video capture class constructor
@@ -158,25 +174,72 @@ class Video():
         return Gst.FlowReturn.OK
 
 
-class Node:
-    def __init__(self):
-        self.pub = rospy.Publisher('/bluerov_video', sensor_msgs.msg.Image, queue_size=1)
-        self.msg = sensor_msgs.msg.Image
-        port_udp = rospy.get_param('~camera_port_udp',5600)
-        self.video = Video(port_udp)
+# class Node:
+#     def __init__(self,port_udp):
+#         self.pub = rospy.Publisher('/bluerov_video', sensor_msgs.msg.Image, queue_size=1)
+#         self.msg = sensor_msgs.msg.Image
+#         self.video = Video(port_udp) # connection établie
+#         frame_width = int(self.video.resolution[0])
+#         frame_height = int(self.video.resolution[1])
+#         self.msg.width = frame_width
+#         self.msg.height = frame_height
 
-    def publish(self):
-        # self.msg = self.video.video_codec
-        self.pub.publish(self.msg)
+#     def callback(self, msg):
+#         self.msg = msg
+#         self.publish()
+
+#     def publish(self):
+#         frame = self.video.frame()
+#         self.msg.encoding = frame
+#         self.pub.publish(self.msg)
         
-    def run(self):
-        rate = rospy.Rate(50)
-        while not rospy.is_shutdown():
-            rate.sleep()
+#     def run(self):
+#         rate = rospy.Rate(50)
+#         while not rospy.is_shutdown():
+#             rate.sleep()
         
     
+# if __name__ == '__main__':
+#     print("Start publish bluerov video")
+#     np.set_printoptions(precision=6)
+#     port_udp = rospy.get_param('~camera_port_udp',5600)
+#     ROV_name = rospy.get_param('~ROV_name',"")
+#     ID = rospy.get_param('~ID',"1")
+#     ID0 = int(ID)
+#     rospy.init_node('video_publisher')
+#     Node(port_udp).run()
+
+def talker():
+    pub = rospy.Publisher('/bluerov_video', sensor_msgs.msg.Image, queue_size=1)
+    rospy.init_node('video_publisher', anonymous=True)
+    rate = rospy.Rate(10) # 10hz
+    msg = sensor_msgs.msg.Image()
+
+    port_udp = rospy.get_param('~camera_port_udp',5600)
+    video = Video(port_udp)
+    while not rospy.is_shutdown():
+        frame = video.frame()
+        if np.any(frame != None) :
+            # ['header', 'height', 'width', 'encoding', 'is_bigendian', 'step', 'data']
+            frame_width = int(video.resolution[0])
+            frame_height = int(video.resolution[1])
+            # print(type(frame))
+            msg.width = frame_width
+            msg.height = frame_height
+            # now = rospy.Time.now()
+            # msg.header.stamp = now
+            # print("Image = ",frame)
+            # print(type(frame))
+            # print(tuple(frame))
+            msg.data = tuple(map(tuple, frame))
+            pub.publish(msg)
+            rate.sleep()
+        else :
+            print("no camera")
+            rate.sleep()
+
 if __name__ == '__main__':
-    print("Start publish bluerov video")
-    np.set_printoptions(precision=6)
-    rospy.init_node('video_publisher')
-    Node().run()
+    try:
+        talker()
+    except rospy.ROSInterruptException:
+        pass
