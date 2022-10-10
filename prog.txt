@@ -57,7 +57,11 @@ Mise à l'eau de la cage ?
 Tests usbl
 
 Réussi :
-Note :
+Déchargement du camion
+Installation du camps de base
+Finalisation de la cage
+Tests usbl
+
 Aprem ======================================================================================
 Objectifs :
 Tests usbl
@@ -65,22 +69,27 @@ rossifier la camera
 Logs capteurs (liste topics sur git)
 
 Réussi :
+Tests usbl
+
 Note :
+on a pas mis la cage à l'eau car pas besoin pour l'instant. Manque les lampes et les QRcodes.
+usbl tester à l'eau sur le bluerov, les deux comuniques. Les unités sont pas bonnes (peut etre en byte ?) mais les echelles sont bonnes.
+logs juste de usbl
+camera pas encore rossifiée, pas vraiement eu le temps de s'y consacrer. Peut etre existe t'il des solutions toutes faites sur internet.
+
 Mardi : ------------------------------------------------------------------------------------
 Matin ======================================================================================
 Objectifs :
-Tests usbl
+Tests usbl -> vrais valeurs
 rossifier la camera
 Logs capteurs (liste topics sur git)
 
 Réussi :
-Note :
 Aprem ======================================================================================
 Objectifs :
-Tests usbl
+Tests usbl -> vrais valeurs
 Test Distance visibilité qrcode
 rossifier la camera
-
 
 Réussi :
 Note :
@@ -90,8 +99,6 @@ Matin ==========================================================================
 Objectifs :Détection usbl de loin
 Détection usbl de près
 Réussi :
-Note :
-
 
 Aprem ======================================================================================
 Objectifs : 
@@ -103,7 +110,6 @@ Jeudi : ------------------------------------------------------------------------
 Matin ======================================================================================
 Objectifs : Rentrer dans la cage, cage avec lumieres allumées, différents jeux de QRcodes
 Réussi :
-Note :
 Aprem ======================================================================================
 Objectifs : Rentrer dans la cage, cage avec lumieres éteintes, différents jeux de QRcodes
 Réussi :
