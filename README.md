@@ -43,6 +43,12 @@ For run rosbags
 roslaunch bluerov play_topics.launch 
 ```
 
+Save topics :
+
+``` bash
+rosbag record --split --duration 5m  --chunksize=1024 --output-prefix=$HOME/catkin_ws/ --all
+```
+
 ## Use USBL
 
 ``` bash

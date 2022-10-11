@@ -90,6 +90,14 @@ rossifier la camera
 Logs capteurs (liste topics sur git)
 
 Réussi :
+Tests usbl
+    -Obtenir les vraies valeurs
+    -Faire des tests à l'eau pour vérifier que les valuers affichées sont bonnes:
+        -Test d'azimuth: essayer une ouverture de 305° à 45°
+        -Test d'élévation: essayer une ouverture de -45° à 0°
+        -Test de range: aller à 20m et revenir doucemenet en ligne droite. La position du ROV serait pas mal.
+rossifier la camera
+Logs capteurs (liste topics sur git)
 Aprem ======================================================================================
 Objectifs :
 Tests usbl -> vrais valeurs
@@ -97,17 +105,33 @@ Test Distance visibilité qrcode
 rossifier la camera
 
 Réussi :
+Tests usbl -> vrais valeurs
+rossifier la camera
+
 Note :
+Camera rossifiée et logs enregistrés, on a pas le topic camera quand le displayer est connecter sur la camera
+Tests usbl avec les vrais valeurs. Mission suivi de kayak et mesure de distance avec un metre dérouleur.
+usbl vers le bas sur le rov.
+Test distance et azimuth dans les differents axes.
+pb du usbl: crash parfois, perd la connection, difficile d'estimer la precision, rate faible.
 
 Mercredi : ---------------------------------------------------------------------------------
 Matin ======================================================================================
-Objectifs :Détection usbl de loin
-Détection usbl de près
+Objectifs :
+mise à l'eau de la cage
+Test distance visibilité qrcode
+Tests USBL
+Test video ros en commande
+
 Réussi :
 
 Aprem ======================================================================================
 Objectifs : 
 Déplacement jusqu'a la cage, cage avec lumieres allumées
+Test distance visibilité qrcode
+Tests USBL
+Test video ros en commande
+
 Réussi :
 Note :
 

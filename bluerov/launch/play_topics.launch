@@ -3,7 +3,7 @@
 
     <arg name="repeat" default="True"/>
     <arg name="delay" default="0"/>
-    <arg name="path" default="$HOME/catkin_ws/src/bags/_*"/>
+    <arg name="path" default="$HOME/catkin_ws/src/bags/mission_test_usbl_mardi_aprem/*"/>
 
 
     <node name="play_node" pkg="bluerov" type="launch_play_bash_file.py" output="log">

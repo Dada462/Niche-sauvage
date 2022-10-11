@@ -123,6 +123,7 @@ int main(int argc, char** argv)
         if (seatrac.data_available)
         {
             log_write(log,seatrac.lastResponse_);
+            write_message(USBL_info_message,seatrac.lastResponse_);
             chatter_pub.publish(USBL_info_message);
             seatrac.data_available =false;
             ros::spinOnce();
