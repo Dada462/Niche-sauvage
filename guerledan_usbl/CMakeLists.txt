@@ -20,7 +20,11 @@ find_package(catkin REQUIRED COMPONENTS
 )
 
 find_package(seatrac_driver REQUIRED)
-
+find_package(IBEX REQUIRED)
+ibex_init_common() # IBEX should have installed this function
+message(STATUS "Found IBEX version ${IBEX_VERSION}")
+find_package(CODAC REQUIRED)
+message(STATUS "Found Codac version ${CODAC_VERSION}")
 # add_executable(driver driver.cpp)
 # add_executable(helloworld helloworld.cpp)
 
@@ -147,8 +151,9 @@ ${catkin_INCLUDE_DIRS}
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
-add_executable(USBL_pub src/ROS_USBL_Message_pub.cpp)
 
+add_executable(USBL_pub src/ROS_USBL_Message_pub.cpp src/vibes.cpp)
+add_executable(helloworld src/examples/helloworld.cpp)
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
 ## target back to the shorter version for ease of user use
@@ -160,6 +165,7 @@ add_executable(USBL_pub src/ROS_USBL_Message_pub.cpp)
 # add_dependencies(${PROJECT_NAME}_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
+# target_link_libraries(main PUBLIC ${CODAC_LIBRARIES} Ibex::ibex ${CODAC_LIBRARIES} Ibex::ibex)
 target_link_libraries(USBL_pub PRIVATE
     seatrac_driver
     ${catkin_LIBRARIES}
