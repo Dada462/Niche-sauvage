@@ -80,7 +80,16 @@ camera pas encore rossifiée, pas vraiement eu le temps de s'y consacrer. Peut e
 Mardi : ------------------------------------------------------------------------------------
 Matin ======================================================================================
 Objectifs :
-Tests usbl -> vrais valeurs
+Tests usbl
+    -Obtenir les vraies valeurs
+    -Faire des tests à l'eau pour vérifier que les valuers affichées sont bonnes:
+        -Test d'azimuth: essayer une ouverture de 305° à 45°
+        -Test d'élévation: essayer une ouverture de -45° à 0°
+        -Test de range: aller à 20m et revenir doucemenet en ligne droite. La position du ROV serait pas mal.
+    
+
+
+
 rossifier la camera
 Logs capteurs (liste topics sur git)
 
