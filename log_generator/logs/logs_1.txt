@@ -1,20 +1,1276 @@
 compass: 0 
 altitude: 0 
-battery: 0 
 joy_control: 0 
  
 compass: 0 
 altitude: 0 
-battery: 0 
 joy_control: 0 
  
 compass: 0 
 altitude: 0 
-battery: 0 
 joy_control: 0 
  
 compass: 0 
 altitude: 0 
-battery: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
+joy_control: 0 
+ 
+compass: 0 
+altitude: 0 
 joy_control: 0 
  
