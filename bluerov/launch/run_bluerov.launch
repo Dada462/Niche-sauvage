@@ -25,4 +25,12 @@
     <!-- Save logs -->
     <node name="recup_log" pkg="log_generator" type="recup_log.py" output="log"/>
 
+    <!-- Camera ROS -->
+    <include file="$(find bluerov_ros_camera)/launch/video.launch"/>
+
+    <!-- Save rosbag -->
+    <include file="$(find bluerov)/launch/save_topics.launch">
+        <arg name="path" default="$HOME/catkin_ws/"/>
+    </include>
+
 </launch>

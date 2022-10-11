@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<launch>
+
+    <arg name="repeat" default="True"/>
+    <arg name="delay" default="0"/>
+    <arg name="path" default="$HOME/catkin_ws/src/bags/_*"/>
+
+
+    <node name="play_node" pkg="bluerov" type="launch_play_bash_file.py" output="log">
+        <param name="repeat" value="$(arg repeat)"/>
+        <param name="path" value="$(arg path)"/>
+        <param name="delay" value="$(arg delay)"/>
+        <param name="clock" value="true"/>
+    </node>
+
+</launch>
