@@ -20,11 +20,7 @@ find_package(catkin REQUIRED COMPONENTS
 )
 
 find_package(seatrac_driver REQUIRED)
-find_package(IBEX REQUIRED)
-ibex_init_common() # IBEX should have installed this function
-message(STATUS "Found IBEX version ${IBEX_VERSION}")
-find_package(CODAC REQUIRED)
-message(STATUS "Found Codac version ${CODAC_VERSION}")
+
 # add_executable(driver driver.cpp)
 # add_executable(helloworld helloworld.cpp)
 
@@ -89,6 +85,7 @@ add_message_files(
 generate_messages(
   DEPENDENCIES
   std_msgs  # Or other packages containing msgs
+  geometry_msgs
 )
 
 ################################################
@@ -152,7 +149,7 @@ ${catkin_INCLUDE_DIRS}
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
 
-add_executable(USBL_pub src/ROS_USBL_Message_pub.cpp src/vibes.cpp)
+add_executable(USBL_pub src/ROS_USBL_Message_pub.cpp)
 add_executable(helloworld src/examples/helloworld.cpp)
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the

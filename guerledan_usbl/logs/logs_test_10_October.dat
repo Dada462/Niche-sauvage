@@ -1,0 +1,2307 @@
+donuts@donuts-Predator-G3-571:~/Desktop/Niche-sauvage$ rostopic echo Informations
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 52.0
+elevation: -137.0
+azimuth: 3539.0
+---
+
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 48.0
+elevation: -147.0
+azimuth: 3519.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 49.0
+elevation: -150.0
+azimuth: 3536.0
+---
+
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 50.0
+elevation: -135.0
+azimuth: 3540.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 47.0
+elevation: -154.0
+azimuth: 3547.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 47.0
+elevation: -156.0
+azimuth: 3532.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 46.0
+elevation: -147.0
+azimuth: 3534.0
+---
+^C^C^Cdonuts@donuts-Predator-G3-571:~/Desktop/Niche-sauvage$ rostopic echo Informations
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 4.0
+elevation: -14.0
+azimuth: 354.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 4.0
+elevation: -15.0
+azimuth: 353.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 3.0
+elevation: -15.0
+azimuth: 354.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 5.0
+elevation: -15.0
+azimuth: 353.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 6.0
+elevation: -15.0
+azimuth: 354.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 7.0
+elevation: -11.0
+azimuth: 354.0
+---
+
+
+
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 14.0
+elevation: -10.0
+azimuth: 43.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 14.0
+elevation: -11.0
+azimuth: 43.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 14.0
+elevation: -9.0
+azimuth: 43.0
+---
+
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 13.0
+elevation: -9.0
+azimuth: 43.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 13.0
+elevation: -10.0
+azimuth: 40.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 13.0
+elevation: -10.0
+azimuth: 43.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 13.0
+elevation: -10.0
+azimuth: 42.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 12.0
+elevation: -11.0
+azimuth: 43.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 12.0
+elevation: -11.0
+azimuth: 44.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 12.0
+elevation: -11.0
+azimuth: 42.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 12.0
+elevation: -12.0
+azimuth: 44.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 11.0
+elevation: -14.0
+azimuth: 46.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 12.0
+elevation: -11.0
+azimuth: 46.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 14.0
+elevation: -12.0
+azimuth: 47.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 14.0
+elevation: -10.0
+azimuth: 48.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 14.0
+elevation: -10.0
+azimuth: 49.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 14.0
+elevation: -10.0
+azimuth: 49.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 14.0
+elevation: -11.0
+azimuth: 48.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 14.0
+elevation: -10.0
+azimuth: 48.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 13.0
+elevation: -7.0
+azimuth: 50.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 13.0
+elevation: -6.0
+azimuth: 49.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 13.0
+elevation: -6.0
+azimuth: 47.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 12.0
+elevation: -8.0
+azimuth: 49.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 12.0
+elevation: -7.0
+azimuth: 48.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 12.0
+elevation: -7.0
+azimuth: 48.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 12.0
+elevation: -8.0
+azimuth: 48.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 12.0
+elevation: -9.0
+azimuth: 47.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 11.0
+elevation: -7.0
+azimuth: 47.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 11.0
+elevation: -7.0
+azimuth: 50.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 11.0
+elevation: -8.0
+azimuth: 48.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 11.0
+elevation: -7.0
+azimuth: 50.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 10.0
+elevation: -10.0
+azimuth: 48.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 10.0
+elevation: -14.0
+azimuth: 49.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 13.0
+elevation: -11.0
+azimuth: 52.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 13.0
+elevation: -9.0
+azimuth: 51.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 23.0
+elevation: -7.0
+azimuth: 53.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 23.0
+elevation: -9.0
+azimuth: 53.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 23.0
+elevation: -10.0
+azimuth: 52.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 23.0
+elevation: -11.0
+azimuth: 51.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 23.0
+elevation: -10.0
+azimuth: 54.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 24.0
+elevation: -10.0
+azimuth: 57.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 24.0
+elevation: -9.0
+azimuth: 60.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 25.0
+elevation: -9.0
+azimuth: 65.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 25.0
+elevation: -9.0
+azimuth: 73.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 25.0
+elevation: -13.0
+azimuth: 76.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 25.0
+elevation: -7.0
+azimuth: 75.0
+---
+
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 17.0
+elevation: -4.0
+azimuth: 28.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 16.0
+elevation: -3.0
+azimuth: 30.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 16.0
+elevation: -3.0
+azimuth: 32.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 16.0
+elevation: -2.0
+azimuth: 29.0
+---
+
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 16.0
+elevation: 0.0
+azimuth: 27.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 15.0
+elevation: -2.0
+azimuth: 29.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 15.0
+elevation: 0.0
+azimuth: 25.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 15.0
+elevation: -4.0
+azimuth: 28.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 15.0
+elevation: -10.0
+azimuth: 28.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 15.0
+elevation: -6.0
+azimuth: 22.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 14.0
+elevation: -11.0
+azimuth: 25.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 15.0
+elevation: -6.0
+azimuth: 21.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 16.0
+elevation: -10.0
+azimuth: 37.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 17.0
+elevation: -6.0
+azimuth: 44.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 17.0
+elevation: -10.0
+azimuth: 50.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 17.0
+elevation: -10.0
+azimuth: 51.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 17.0
+elevation: -7.0
+azimuth: 52.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 17.0
+elevation: -8.0
+azimuth: 51.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 16.0
+elevation: -9.0
+azimuth: 50.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 16.0
+elevation: -8.0
+azimuth: 49.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 17.0
+elevation: -10.0
+azimuth: 42.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 18.0
+elevation: -10.0
+azimuth: 39.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 18.0
+elevation: -8.0
+azimuth: 33.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 18.0
+elevation: -9.0
+azimuth: 27.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 16.0
+elevation: -8.0
+azimuth: 18.0
+---
+
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 16.0
+elevation: -7.0
+azimuth: 16.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 15.0
+elevation: -8.0
+azimuth: 18.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 15.0
+elevation: -9.0
+azimuth: 15.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 15.0
+elevation: -9.0
+azimuth: 11.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 14.0
+elevation: -9.0
+azimuth: 6.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 14.0
+elevation: -11.0
+azimuth: 7.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 14.0
+elevation: -12.0
+azimuth: 4.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 13.0
+elevation: -10.0
+azimuth: 354.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 12.0
+elevation: -12.0
+azimuth: 345.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 13.0
+elevation: -12.0
+azimuth: 345.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 12.0
+elevation: -11.0
+azimuth: 339.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 13.0
+elevation: -9.0
+azimuth: 336.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 13.0
+elevation: -9.0
+azimuth: 337.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 14.0
+elevation: -10.0
+azimuth: 339.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 16.0
+elevation: -9.0
+azimuth: 339.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 17.0
+elevation: -10.0
+azimuth: 340.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 17.0
+elevation: -10.0
+azimuth: 340.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 20.0
+elevation: -7.0
+azimuth: 340.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 24.0
+elevation: -7.0
+azimuth: 340.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 24.0
+elevation: -6.0
+azimuth: 338.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 24.0
+elevation: -10.0
+azimuth: 339.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 25.0
+elevation: -11.0
+azimuth: 340.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 25.0
+elevation: -4.0
+azimuth: 342.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 26.0
+elevation: -9.0
+azimuth: 343.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 26.0
+elevation: -9.0
+azimuth: 344.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 26.0
+elevation: -6.0
+azimuth: 342.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 25.0
+elevation: -9.0
+azimuth: 344.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 25.0
+elevation: -9.0
+azimuth: 344.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 26.0
+elevation: -9.0
+azimuth: 349.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 26.0
+elevation: -9.0
+azimuth: 353.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 26.0
+elevation: -10.0
+azimuth: 355.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 26.0
+elevation: -6.0
+azimuth: 356.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 26.0
+elevation: -9.0
+azimuth: 0.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 26.0
+elevation: -9.0
+azimuth: 4.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 26.0
+elevation: -9.0
+azimuth: 7.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 26.0
+elevation: -9.0
+azimuth: 10.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 26.0
+elevation: -8.0
+azimuth: 14.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 27.0
+elevation: -8.0
+azimuth: 15.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 27.0
+elevation: -6.0
+azimuth: 18.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 26.0
+elevation: -6.0
+azimuth: 19.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 27.0
+elevation: -2.0
+azimuth: 20.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 26.0
+elevation: -5.0
+azimuth: 22.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 26.0
+elevation: -2.0
+azimuth: 26.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 26.0
+elevation: -10.0
+azimuth: 25.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 25.0
+elevation: -1.0
+azimuth: 22.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 25.0
+elevation: -7.0
+azimuth: 22.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 24.0
+elevation: -7.0
+azimuth: 22.0
+---
+
+
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 21.0
+elevation: -7.0
+azimuth: 53.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 22.0
+elevation: -8.0
+azimuth: 57.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 22.0
+elevation: -6.0
+azimuth: 56.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 21.0
+elevation: -7.0
+azimuth: 55.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 21.0
+elevation: -7.0
+azimuth: 54.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 20.0
+elevation: -9.0
+azimuth: 56.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 20.0
+elevation: -9.0
+azimuth: 56.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 19.0
+elevation: -9.0
+azimuth: 56.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 20.0
+elevation: -9.0
+azimuth: 61.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 21.0
+elevation: -8.0
+azimuth: 62.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 23.0
+elevation: -5.0
+azimuth: 49.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 23.0
+elevation: -7.0
+azimuth: 45.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 22.0
+elevation: -9.0
+azimuth: 39.0
+---
+
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 21.0
+elevation: -9.0
+azimuth: 31.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 20.0
+elevation: -7.0
+azimuth: 23.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 20.0
+elevation: -5.0
+azimuth: 22.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 22.0
+elevation: -5.0
+azimuth: 27.0
+---
+
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 32.0
+elevation: -6.0
+azimuth: 22.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 32.0
+elevation: -8.0
+azimuth: 18.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 31.0
+elevation: -8.0
+azimuth: 18.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 31.0
+elevation: -7.0
+azimuth: 17.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 30.0
+elevation: -7.0
+azimuth: 16.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 30.0
+elevation: -8.0
+azimuth: 13.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 32.0
+elevation: -8.0
+azimuth: 10.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 31.0
+elevation: -8.0
+azimuth: 10.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 31.0
+elevation: -5.0
+azimuth: 10.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 30.0
+elevation: -8.0
+azimuth: 10.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 30.0
+elevation: -8.0
+azimuth: 10.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 30.0
+elevation: -3.0
+azimuth: 9.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 30.0
+elevation: -5.0
+azimuth: 10.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 28.0
+elevation: -7.0
+azimuth: 8.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 26.0
+elevation: -7.0
+azimuth: 6.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 20.0
+elevation: -10.0
+azimuth: 358.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 21.0
+elevation: -10.0
+azimuth: 357.0
+---
+
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 24.0
+elevation: -10.0
+azimuth: 357.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 28.0
+elevation: -10.0
+azimuth: 357.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 28.0
+elevation: -7.0
+azimuth: 357.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 29.0
+elevation: -9.0
+azimuth: 358.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 29.0
+elevation: -9.0
+azimuth: 359.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 29.0
+elevation: -9.0
+azimuth: 1.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 28.0
+elevation: -9.0
+azimuth: 1.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 28.0
+elevation: -11.0
+azimuth: 1.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 26.0
+elevation: -11.0
+azimuth: 0.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 26.0
+elevation: -9.0
+azimuth: 350.0
+---
+
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 27.0
+elevation: -10.0
+azimuth: 333.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 27.0
+elevation: -7.0
+azimuth: 328.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 26.0
+elevation: -7.0
+azimuth: 329.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 24.0
+elevation: -9.0
+azimuth: 321.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 23.0
+elevation: -9.0
+azimuth: 323.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 23.0
+elevation: -8.0
+azimuth: 323.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 23.0
+elevation: -9.0
+azimuth: 323.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 23.0
+elevation: -8.0
+azimuth: 324.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 23.0
+elevation: -8.0
+azimuth: 324.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 23.0
+elevation: -3.0
+azimuth: 326.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 22.0
+elevation: -10.0
+azimuth: 325.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 22.0
+elevation: -10.0
+azimuth: 324.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 21.0
+elevation: -10.0
+azimuth: 323.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 20.0
+elevation: -11.0
+azimuth: 322.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 19.0
+elevation: -11.0
+azimuth: 322.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 19.0
+elevation: -9.0
+azimuth: 323.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 18.0
+elevation: -8.0
+azimuth: 322.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 17.0
+elevation: -7.0
+azimuth: 322.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 16.0
+elevation: -7.0
+azimuth: 322.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 15.0
+elevation: -10.0
+azimuth: 320.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 15.0
+elevation: -11.0
+azimuth: 318.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 14.0
+elevation: -9.0
+azimuth: 321.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 14.0
+elevation: -9.0
+azimuth: 322.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 13.0
+elevation: -8.0
+azimuth: 322.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 12.0
+elevation: -11.0
+azimuth: 321.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 12.0
+elevation: -11.0
+azimuth: 319.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 11.0
+elevation: -13.0
+azimuth: 318.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 10.0
+elevation: -14.0
+azimuth: 317.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 9.0
+elevation: -13.0
+azimuth: 315.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 9.0
+elevation: -12.0
+azimuth: 314.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 8.0
+elevation: -11.0
+azimuth: 315.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 7.0
+elevation: -12.0
+azimuth: 313.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 7.0
+elevation: -18.0
+azimuth: 314.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 6.0
+elevation: -15.0
+azimuth: 314.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 5.0
+elevation: -22.0
+azimuth: 320.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 4.0
+elevation: -24.0
+azimuth: 321.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 4.0
+elevation: -21.0
+azimuth: 325.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 3.0
+elevation: -21.0
+azimuth: 333.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 3.0
+elevation: -19.0
+azimuth: 344.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 3.0
+elevation: -15.0
+azimuth: 350.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 3.0
+elevation: -15.0
+azimuth: 350.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 3.0
+elevation: -15.0
+azimuth: 349.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 3.0
+elevation: -16.0
+azimuth: 349.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 3.0
+elevation: -18.0
+azimuth: 341.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 3.0
+elevation: -16.0
+azimuth: 343.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 3.0
+elevation: -17.0
+azimuth: 339.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 3.0
+elevation: -16.0
+azimuth: 349.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 3.0
+elevation: -15.0
+azimuth: 342.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 3.0
+elevation: -16.0
+azimuth: 347.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 3.0
+elevation: -15.0
+azimuth: 352.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 3.0
+elevation: -15.0
+azimuth: 354.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 3.0
+elevation: -15.0
+azimuth: 352.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 3.0
+elevation: -15.0
+azimuth: 353.0
+---
+USBL: 
+  seq: 0
+  stamp: 
+    secs: 0
+    nsecs:         0
+  frame_id: ''
+range: 3.0
+elevation: -15.0
+azimuth: 351.0
+---

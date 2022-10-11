@@ -13,5 +13,5 @@ for d in data:
         l.append(float(k))
     Y.append(l)
 Y=np.array(Y)
-plt.plot(X,Y[:,1]/10)
+plt.plot(X,Y[:,2]/10)
 plt.show()
