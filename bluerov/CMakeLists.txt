@@ -118,7 +118,6 @@ catkin_install_python(PROGRAMS
   src/JoyCommand_Christophe_vs4.py
   src/Affichage_camera_launch_3.py
   src/class_video.py
-  src/video_publisher.py
   src/launch_save_bash_file.py
   src/launch_play_bash_file.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}

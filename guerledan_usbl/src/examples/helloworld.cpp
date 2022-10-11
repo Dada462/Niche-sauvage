@@ -26,7 +26,7 @@ std::string current_time()
 
 int main() {
    ofstream log;
-   log.open("src/guerledan_usbl/logs/October_test_"+current_time()+".dat");
+   log.open("src/Niche-sauvage/guerledan_usbl/logs/October_test_"+current_time()+".dat");
    log<<"LOG: northing, easting, depth, azimith, elevation, range, Local depth"<<endl;
    log<<"BLABLA"<<endl;
    log.close();

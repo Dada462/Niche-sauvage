@@ -28,9 +28,11 @@
     <!-- Camera ROS -->
     <include file="$(find bluerov_ros_camera)/launch/video.launch"/>
 
+    <!-- USBL publisher -->
+    <!-- <node pkg="guerledan_usbl" type="USBL_pub" name="USBL_pub" output="screen"/> -->
+
     <!-- Save rosbag -->
     <include file="$(find bluerov)/launch/save_topics.launch">
         <arg name="path" default="$HOME/catkin_ws/"/>
     </include>
-
 </launch>

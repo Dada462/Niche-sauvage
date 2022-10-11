@@ -21,5 +21,4 @@ if clock:
 else :
     time = ""
 
-os.system("cd "+path)
 os.system("rosbag play "+rep+" -s "+delay+" "+time+" "+path)

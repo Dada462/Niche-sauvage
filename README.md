@@ -29,6 +29,7 @@ bash src/Niche-sauvage/install/install_usbl_driver.sh
 ## Use BlueRov
 
 Run the bluerob with camera and joystick
+Sensors data are saved on a rosbag
 
 Warning : Desarmed and tune off the lights before kill
 
@@ -36,6 +37,18 @@ Warning : Desarmed and tune off the lights before kill
 roslaunch bluerov run_bluerov.launch 
 ```
 ![](/images/manette_notice.png)
+
+For run rosbags
+``` bash
+roslaunch bluerov play_topics.launch 
+```
+
+## Use USBL
+
+``` bash
+rosrun guerledan_usbl USBL_pub
+```
+
 
 ## Contributors
 - **Danut Pop**

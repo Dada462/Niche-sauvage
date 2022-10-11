@@ -111,12 +111,12 @@ int main(int argc, char** argv)
     seatrac.enable_io_dump();
 
     service.start();
-    ros::init(argc, argv, "USBL");
+    ros::init(argc, argv, "USBL_pub");
     ros::NodeHandle n;
-    ros::Publisher chatter_pub = n.advertise<guerledan_usbl::USBL>("Informations", 1000);
+    ros::Publisher chatter_pub = n.advertise<guerledan_usbl::USBL>("usbl/data", 1000);
     guerledan_usbl::USBL USBL_info_message;
     ofstream log;
-    log.open("src/guerledan_usbl/logs/October_11_"+current_time()+".dat");
+    log.open("src/Niche-sauvage/guerledan_usbl/logs/October_11_"+current_time()+".dat");
     log<<"LOG: northing, easting, depth, azimith, elevation, range, Local depth"<<endl;
     while (ros::ok()){
         command::ping_send(seatrac, BEACON_ID_1, MSG_REQU);
