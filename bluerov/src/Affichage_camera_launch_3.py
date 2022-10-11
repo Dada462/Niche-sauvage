@@ -216,7 +216,8 @@ def callback_battery(data):
                	
 def listener():
 
-    ns = "/"+ ROV_name
+    ns = ""
+    # ns = "/"+ ROV_name
     rospy.Subscriber(ns+"/enregistrement_camera", Float32MultiArray, callback_enregistrement) 
     rospy.Subscriber(ns+"/mavros/global_position/compass_hdg", Float64, callback_compass)  
     rospy.Subscriber(ns+"/mavros/global_position/rel_alt", Float64, callback_alt)
@@ -258,7 +259,7 @@ if __name__ == '__main__':
             continue
 
         frame = video.frame() #pour mettre à jour les parametres comme la résolution
-        test = 1;
+        test = 1
         print('connexion etablie')
     # print(video.resolution)
         
@@ -361,9 +362,9 @@ if __name__ == '__main__':
                     name_file_alt = path + "/altitude_" + ROV_name + '_'+ current_date_and_time_string + ".txt"                
                     name_file_time = path + "/time_" + ROV_name + '_'+ current_date_and_time_string + ".txt" 
                     
-                    file_cap = open(name_file_cap,'w');
-                    file_alt = open(name_file_alt,'w');
-                    file_time = open(name_file_time,'w');
+                    file_cap = open(name_file_cap,'w')
+                    file_alt = open(name_file_alt,'w')
+                    file_time = open(name_file_time,'w')
                     
                     
                     print('resolution video : ', size)

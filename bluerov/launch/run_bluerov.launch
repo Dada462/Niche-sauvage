@@ -22,4 +22,7 @@
     <!-- Publish video -->
     <!-- <node name="video_publisher" pkg="bluerov" type="video_publisher.py" output="screen"/> -->
 
+    <!-- Save logs -->
+    <node name="recup_log" pkg="log_generator" type="recup_log.py" output="log"/>
+
 </launch>
