@@ -1,1276 +1,648 @@
+time: 0 
 compass: 0 
 altitude: 0 
 joy_control: 0 
+light: 0 
+accel: 0 0 0 
+gyro: 0 0 0 
  
+time: 0 
 compass: 0 
 altitude: 0 
 joy_control: 0 
+light: 0 
+accel: 0 0 0 
+gyro: 0 0 0 
  
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
-joy_control: 0 
- 
-compass: 0 
-altitude: 0 
+time: 1665494335 
+compass: 150.8 
+altitude: -0.059 
 joy_control: 0 
+light: 0 
+accel: 0.0 0.0 0.0 
+gyro: 0.0008458364754915237 -0.0002913586795330046 0.0015027672052383423 
  
-compass: 0 
-altitude: 0 
+time: 1665494335 
+compass: 150.8 
+altitude: -0.059 
 joy_control: 0 
+light: 0 
+accel: 0.0 0.0 0.0 
+gyro: 0.0008458364754915237 -0.0002913586795330046 0.0015027672052383423 
  
-compass: 0 
-altitude: 0 
+time: 1665494335 
+compass: 150.79 
+altitude: -0.061 
 joy_control: 0 
+light: 0 
+accel: 0.0 0.0 0.0 
+gyro: 0.0012167654931545258 -0.0010552662424743171 0.0029585715383291245 
  
-compass: 0 
-altitude: 0 
+time: 1665494335 
+compass: 150.79 
+altitude: -0.061 
 joy_control: 0 
+light: 0 
+accel: 0.0 0.0 0.0 
+gyro: 0.0012167654931545258 -0.0010552662424743171 0.0029585715383291245 
  
-compass: 0 
-altitude: 0 
+time: 1665494335 
+compass: 150.79 
+altitude: -0.058 
 joy_control: 0 
+light: 0.0 
+accel: -0.34323275 0.33342610000000117 9.75761675 
+gyro: 0.0008895802311599255 0.00012131361290812514 0.001762937754392624 
  
-compass: 0 
-altitude: 0 
+time: 1665494335 
+compass: 150.79 
+altitude: -0.058 
 joy_control: 0 
+light: 0.0 
+accel: -0.34323275 0.33342610000000117 9.75761675 
+gyro: 0.0008895802311599255 0.00012131361290812514 0.001762937754392624 
  
-compass: 0 
-altitude: 0 
+time: 1665494335 
+compass: 150.79 
+altitude: -0.061 
 joy_control: 0 
+light: 0.0 
+accel: -0.34323275 0.33342610000000117 9.75761675 
+gyro: 0.00039088004268705845 -0.0006087231449782846 0.0015106704086065292 
  
-compass: 0 
-altitude: 0 
+time: 1665494335 
+compass: 150.79 
+altitude: -0.061 
 joy_control: 0 
+light: 0.0 
+accel: -0.34323275 0.33342610000000117 9.75761675 
+gyro: 0.00039088004268705845 -0.0006087231449782846 0.0015106704086065292 
  
-compass: 0 
-altitude: 0 
+time: 1665494336 
+compass: 150.79 
+altitude: -0.062 
 joy_control: 0 
+light: 0.0 
+accel: -0.34323275 0.3040061500000012 9.7478101 
+gyro: 0.0005589446518570185 -0.00048653921112418153 0.0016819071024656296 
  
-compass: 0 
-altitude: 0 
+time: 1665494336 
+compass: 150.79 
+altitude: -0.062 
 joy_control: 0 
+light: 0.0 
+accel: -0.34323275 0.3040061500000012 9.7478101 
+gyro: 0.0005589446518570185 -0.00048653921112418153 0.0016819071024656296 
  
-compass: 0 
-altitude: 0 
+time: 1665494336 
+compass: 150.8 
+altitude: -0.061 
 joy_control: 0 
+light: 0.0 
+accel: -0.3334261 0.3040061500000012 9.75761675 
+gyro: 1.0088784620165825e-05 -8.509401232004143e-05 0.0018675755709409714 
+ 
+time: 1665494336 
+compass: 150.8 
+altitude: -0.061 
+joy_control: 0 
+light: 0.0 
+accel: -0.3334261 0.3040061500000012 9.75761675 
+gyro: 1.0088784620165825e-05 -8.509401232004143e-05 0.0018675755709409714 
+ 
+time: 1665494336 
+compass: 150.79 
+altitude: -0.061 
+joy_control: 0 
+light: 0.0 
+accel: -0.3334261 0.3040061500000012 9.75761675 
+gyro: 0.00015033793170005083 -0.0001441836357116697 0.001765051856637001 
+ 
+time: 1665494336 
+compass: 150.79 
+altitude: -0.061 
+joy_control: 0 
+light: 0.0 
+accel: -0.3334261 0.3040061500000012 9.75761675 
+gyro: 0.00015033793170005083 -0.0001441836357116697 0.001765051856637001 
+ 
+time: 1665494336 
+compass: 150.79 
+altitude: -0.057 
+joy_control: 0 
+light: 0.0 
+accel: -0.3334261 0.3040061500000012 9.75761675 
+gyro: 0.0015417118556797504 -7.60089606046674e-05 0.0021501146256923676 
+ 
+time: 1665494336 
+compass: 150.79 
+altitude: -0.057 
+joy_control: 0 
+light: 0.0 
+accel: -0.3334261 0.3040061500000012 9.75761675 
+gyro: 0.0015417118556797504 -7.60089606046674e-05 0.0021501146256923676 
+ 
+time: 1665494336 
+compass: 150.79 
+altitude: -0.054 
+joy_control: 0 
+light: 0.0 
+accel: -0.34323275 0.3040061500000012 9.75761675 
+gyro: 0.0008066684240475297 -0.0003062835894525049 0.001585405319929123 
+ 
+time: 1665494336 
+compass: 150.79 
+altitude: -0.054 
+joy_control: 0 
+light: 0.0 
+accel: -0.34323275 0.3040061500000012 9.75761675 
+gyro: 0.0008066684240475297 -0.0003062835894525049 0.001585405319929123 
+ 
+time: 1665494336 
+compass: 150.79 
+altitude: -0.064 
+joy_control: 0 
+light: 0.0 
+accel: -0.34323275 0.3040061500000012 9.75761675 
+gyro: 0.0006409663474187255 -0.0010305242612957952 0.0018265172839164736 
+ 
+time: 1665494336 
+compass: 150.79 
+altitude: -0.064 
+joy_control: 0 
+light: 0.0 
+accel: -0.34323275 0.3040061500000012 9.75761675 
+gyro: 0.0006409663474187255 -0.0010305242612957952 0.0018265172839164736 
+ 
+time: 1665494336 
+compass: 150.79 
+altitude: -0.061 
+joy_control: 0 
+light: 0.0 
+accel: -0.34323275 0.3040061500000012 9.75761675 
+gyro: 0.0005125078605487943 0.0002677477896213535 0.00248810276389122 
+ 
+time: 1665494336 
+compass: 150.79 
+altitude: -0.061 
+joy_control: 0 
+light: 0.0 
+accel: -0.34323275 0.3040061500000012 9.75761675 
+gyro: 0.0005125078605487943 0.0002677477896213535 0.00248810276389122 
+ 
+time: 1665494336 
+compass: 150.79 
+altitude: -0.054 
+joy_control: 0 
+light: 0.0 
+accel: -0.32361945000000003 0.33342610000000117 9.75761675 
+gyro: -6.395881064236164e-05 -1.2234319001436034e-05 0.0016358885914087296 
+ 
+time: 1665494336 
+compass: 150.79 
+altitude: -0.054 
+joy_control: 0 
+light: 0.0 
+accel: -0.32361945000000003 0.33342610000000117 9.75761675 
+gyro: -6.395881064236164e-05 -1.2234319001436034e-05 0.0016358885914087296 
+ 
+time: 1665494336 
+compass: 150.79 
+altitude: -0.056 
+joy_control: 0 
+light: 0.0 
+accel: -0.34323275 0.31381280000000117 9.73800345 
+gyro: 0.001019659568555653 -0.0004706266336143015 0.0015328992158174515 
+ 
+time: 1665494336 
+compass: 150.79 
+altitude: -0.056 
+joy_control: 0 
+light: 0.0 
+accel: -0.34323275 0.31381280000000117 9.73800345 
+gyro: 0.001019659568555653 -0.0004706266336143015 0.0015328992158174515 
+ 
+time: 1665494336 
+compass: 150.79 
+altitude: -0.056 
+joy_control: 0 
+light: 0.0 
+accel: -0.34323275 0.31381280000000117 9.73800345 
+gyro: 0.001019659568555653 -0.0004706266336143015 0.0015328992158174515 
+ 
+time: 1665494336 
+compass: 150.79 
+altitude: -0.062 
+joy_control: 0 
+light: 0.0 
+accel: -0.34323275 0.31381280000000117 9.73800345 
+gyro: 0.00034508074168115854 -3.2912939786908868e-06 0.0017484501004219055 
+ 
+time: 1665494337 
+compass: 150.79 
+altitude: -0.058 
+joy_control: 0 
+light: 0.0 
+accel: -0.34323275 0.31381280000000117 9.73800345 
+gyro: 0.0006348101887851954 4.437379539012937e-05 0.0022937841713428497 
+ 
+time: 1665494337 
+compass: 150.79 
+altitude: -0.058 
+joy_control: 0 
+light: 0.0 
+accel: -0.34323275 0.31381280000000117 9.73800345 
+gyro: 0.0006348101887851954 4.437379539012937e-05 0.0022937841713428497 
+ 
+time: 1665494337 
+compass: 150.79 
+altitude: -0.06 
+joy_control: 0 
+light: 0.0 
+accel: -0.34323275 0.3236194500000012 9.7674234 
+gyro: -0.00010810536332428455 -0.0008986555039882657 0.0022269356995821 
+ 
+time: 1665494337 
+compass: 150.79 
+altitude: -0.06 
+joy_control: 0 
+light: 0.0 
+accel: -0.34323275 0.3236194500000012 9.7674234 
+gyro: -0.00010810536332428455 -0.0008986555039882657 0.0022269356995821 
+ 
+time: 1665494337 
+compass: 150.79 
+altitude: -0.061 
+joy_control: 0 
+light: 0.0 
+accel: -0.3530394 0.29419950000000117 9.7281968 
+gyro: 0.000737495138309896 -0.0011209785006940363 0.002597849816083908 
+ 
+time: 1665494337 
+compass: 150.79 
+altitude: -0.061 
+joy_control: 0 
+light: 0.0 
+accel: -0.3530394 0.29419950000000117 9.7281968 
+gyro: 0.000737495138309896 -0.0011209785006940363 0.002597849816083908 
+ 
+time: 1665494337 
+compass: 150.79 
+altitude: -0.058 
+joy_control: 0 
+light: 0.0 
+accel: -0.3530394 0.29419950000000117 9.7281968 
+gyro: 0.0008217708673328161 0.00025461427867412583 0.0012806802988052368 
+ 
+time: 1665494337 
+compass: 150.79 
+altitude: -0.058 
+joy_control: 0 
+light: 0.0 
+accel: -0.3530394 0.29419950000000117 9.7281968 
+gyro: 0.0008217708673328161 0.00025461427867412583 0.0012806802988052368 
+ 
+time: 1665494337 
+compass: 150.79 
+altitude: -0.059 
+joy_control: 0 
+light: 0.0 
+accel: -0.3530394 0.29419950000000117 9.7281968 
+gyro: 0.0006615170277655125 -0.0003307717852294443 0.0017771385610103607 
+ 
+time: 1665494337 
+compass: 150.79 
+altitude: -0.059 
+joy_control: 0 
+light: 0.0 
+accel: -0.3530394 0.29419950000000117 9.7281968 
+gyro: 0.0006615170277655125 -0.0003307717852294443 0.0017771385610103607 
+ 
+time: 1665494337 
+compass: 150.79 
+altitude: -0.058 
+joy_control: 0 
+light: 0.0 
+accel: -0.34323275 0.3040061500000012 9.7478101 
+gyro: 0.0011999002890661359 4.329718649387379e-05 0.0016253665089607239 
+ 
+time: 1665494337 
+compass: 150.79 
+altitude: -0.058 
+joy_control: 0 
+light: 0.0 
+accel: -0.34323275 0.3040061500000012 9.7478101 
+gyro: 0.0011999002890661359 4.329718649387379e-05 0.0016253665089607239 
+ 
+time: 1665494337 
+compass: 150.79 
+altitude: -0.058 
+joy_control: 0 
+light: 0.0 
+accel: -0.34323275 0.3040061500000012 9.7478101 
+gyro: 4.2866915464401245e-05 -0.000262919347733259 0.0018446650356054306 
+ 
+time: 1665494337 
+compass: 150.79 
+altitude: -0.058 
+joy_control: 0 
+light: 0.0 
+accel: -0.34323275 0.3040061500000012 9.7478101 
+gyro: 4.2866915464401245e-05 -0.000262919347733259 0.0018446650356054306 
+ 
+time: 1665494337 
+compass: 150.79 
+altitude: -0.058 
+joy_control: 0 
+light: 0.0 
+accel: -0.34323275 0.3040061500000012 9.7478101 
+gyro: 0.00037930929102003574 -0.0006208177655935285 0.0017007309943437576 
+ 
+time: 1665494337 
+compass: 150.79 
+altitude: -0.058 
+joy_control: 0 
+light: 0.0 
+accel: -0.34323275 0.3040061500000012 9.7478101 
+gyro: 0.00037930929102003574 -0.0006208177655935285 0.0017007309943437576 
+ 
+time: 1665494337 
+compass: 150.78 
+altitude: -0.056 
+joy_control: 0 
+light: 0.0 
+accel: -0.34323275 0.3040061500000012 9.7478101 
+gyro: -0.00017746561206877232 0.0009472877718508246 0.0017365328967571256 
+ 
+time: 1665494337 
+compass: 150.78 
+altitude: -0.056 
+joy_control: 0 
+light: 0.0 
+accel: -0.34323275 0.3040061500000012 9.7478101 
+gyro: -0.00017746561206877232 0.0009472877718508246 0.0017365328967571256 
+ 
+time: 1665494337 
+compass: 150.78 
+altitude: -0.059 
+joy_control: 0 
+light: 0.0 
+accel: -0.34323275 0.3432327500000012 9.75761675 
+gyro: -7.221847772598267e-05 -0.00044629257172346093 0.0018980111926794052 
+ 
+time: 1665494337 
+compass: 150.78 
+altitude: -0.059 
+joy_control: 0 
+light: 0.0 
+accel: -0.34323275 0.3432327500000012 9.75761675 
+gyro: -7.221847772598267e-05 -0.00044629257172346093 0.0018980111926794052 
+ 
+time: 1665494338 
+compass: 150.78 
+altitude: -0.061 
+joy_control: 0 
+light: 0.0 
+accel: -0.34323275 0.3432327500000012 9.75761675 
+gyro: -0.00023469910956919193 -0.000558516941964626 0.0022385884076356888 
+ 
+time: 1665494338 
+compass: 150.78 
+altitude: -0.061 
+joy_control: 0 
+light: 0.0 
+accel: -0.34323275 0.3432327500000012 9.75761675 
+gyro: -0.00023469910956919193 -0.000558516941964626 0.0022385884076356888 
+ 
+time: 1665494338 
+compass: 150.78 
+altitude: -0.056 
+joy_control: 0 
+light: 0.0 
+accel: -0.34323275 0.3432327500000012 9.75761675 
+gyro: 0.00012300931848585606 0.00016114441677927995 0.002051759511232376 
+ 
+time: 1665494338 
+compass: 150.78 
+altitude: -0.056 
+joy_control: 0 
+light: 0.0 
+accel: -0.34323275 0.3432327500000012 9.75761675 
+gyro: 0.00012300931848585606 0.00016114441677927995 0.002051759511232376 
+ 
+time: 1665494338 
+compass: 150.78 
+altitude: -0.055 
+joy_control: 0 
+light: 0.0 
+accel: -0.3530394 0.3236194500000012 9.73800345 
+gyro: 0.0008587401825934649 0.00016332883387804058 0.0021133776754140854 
+ 
+time: 1665494338 
+compass: 150.78 
+altitude: -0.055 
+joy_control: 0 
+light: 0.0 
+accel: -0.3530394 0.3236194500000012 9.73800345 
+gyro: 0.0008587401825934649 0.00016332883387804058 0.0021133776754140854 
+ 
+time: 1665494338 
+compass: 150.78 
+altitude: -0.062 
+joy_control: 0 
+light: 0.0 
+accel: -0.34323275 0.33342610000000117 9.7674234 
+gyro: -6.0342950746417046e-05 -0.0007299296557903287 0.0029114224016666412 
+ 
+time: 1665494338 
+compass: 150.78 
+altitude: -0.062 
+joy_control: 0 
+light: 0.0 
+accel: -0.34323275 0.33342610000000117 9.7674234 
+gyro: -6.0342950746417046e-05 -0.0007299296557903287 0.0029114224016666412 
+ 
+time: 1665494338 
+compass: 150.78 
+altitude: -0.059 
+joy_control: 0 
+light: 0.0 
+accel: -0.34323275 0.33342610000000117 9.7674234 
+gyro: 4.53670509159565e-06 0.0001323991455137732 0.0020459722727537155 
+ 
+time: 1665494338 
+compass: 150.78 
+altitude: -0.059 
+joy_control: 0 
+light: 0.0 
+accel: -0.34323275 0.33342610000000117 9.7674234 
+gyro: 4.53670509159565e-06 0.0001323991455137732 0.0020459722727537155 
+ 
+time: 1665494338 
+compass: 150.78 
+altitude: -0.062 
+joy_control: 0 
+light: 0.0 
+accel: -0.34323275 0.33342610000000117 9.7674234 
+gyro: -0.0004209603648632765 -0.0007043327204883095 0.0024642683565616608 
+ 
+time: 1665494338 
+compass: 150.78 
+altitude: -0.062 
+joy_control: 0 
+light: 0.0 
+accel: -0.34323275 0.33342610000000117 9.7674234 
+gyro: -0.0004209603648632765 -0.0007043327204883095 0.0024642683565616608 
+ 
+time: 1665494338 
+compass: 150.77 
+altitude: -0.056 
+joy_control: 0 
+light: 0.0 
+accel: -0.34323275 0.3432327500000012 9.75761675 
+gyro: 0.001015695626847446 -3.84161248803136e-05 0.002230364829301834 
+ 
+time: 1665494338 
+compass: 150.77 
+altitude: -0.056 
+joy_control: 0 
+light: 0.0 
+accel: -0.34323275 0.3432327500000012 9.75761675 
+gyro: 0.001015695626847446 -3.84161248803136e-05 0.002230364829301834 
+ 
+time: 1665494338 
+compass: 150.77 
+altitude: -0.062 
+joy_control: 0 
+light: 0.0 
+accel: -0.3530394 0.3040061500000012 9.7478101 
+gyro: 0.0004037743201479316 -0.0004846197552978989 0.0028561968356370926 
+ 
+time: 1665494338 
+compass: 150.77 
+altitude: -0.062 
+joy_control: 0 
+light: 0.0 
+accel: -0.3530394 0.3040061500000012 9.7478101 
+gyro: 0.0004037743201479316 -0.0004846197552978989 0.0028561968356370926 
+ 
+time: 1665494338 
+compass: 150.77 
+altitude: -0.059 
+joy_control: 0 
+light: 0.0 
+accel: -0.3530394 0.31381280000000117 9.73800345 
+gyro: 1.7997343093156815e-05 -0.0006600995548069475 0.0019347704946994781 
+ 
+time: 1665494338 
+compass: 150.77 
+altitude: -0.059 
+joy_control: 0 
+light: 0.0 
+accel: -0.3530394 0.31381280000000117 9.73800345 
+gyro: 1.7997343093156815e-05 -0.0006600995548069475 0.0019347704946994781 
+ 
+time: 1665494338 
+compass: 150.77 
+altitude: -0.056 
+joy_control: 0 
+light: 0.0 
+accel: -0.3530394 0.31381280000000117 9.73800345 
+gyro: 0.000760361785069108 0.0002124132588505747 0.0016918648034334183 
+ 
+time: 1665494338 
+compass: 150.77 
+altitude: -0.056 
+joy_control: 0 
+light: 0.0 
+accel: -0.3530394 0.31381280000000117 9.73800345 
+gyro: 0.000760361785069108 0.0002124132588505747 0.0016918648034334183 
+ 
+time: 1665494339 
+compass: 150.77 
+altitude: -0.057 
+joy_control: 0 
+light: 0.0 
+accel: -0.3530394 0.33342610000000117 9.73800345 
+gyro: 0.0007773663382977247 5.0949864089489186e-05 0.0016398243606090546 
+ 
+time: 1665494339 
+compass: 150.77 
+altitude: -0.057 
+joy_control: 0 
+light: 0.0 
+accel: -0.3530394 0.33342610000000117 9.73800345 
+gyro: 0.0007773663382977247 5.0949864089489186e-05 0.0016398243606090546 
+ 
+time: 1665494339 
+compass: 150.77 
+altitude: -0.057 
+joy_control: 0 
+light: 0.0 
+accel: -0.3530394 0.33342610000000117 9.73800345 
+gyro: 0.0007773663382977247 5.0949864089489186e-05 0.0016398243606090546 
+ 
+time: 1665494339 
+compass: 150.77 
+altitude: -0.057 
+joy_control: 0 
+light: 0.0 
+accel: -0.3530394 0.33342610000000117 9.73800345 
+gyro: 0.0007773663382977247 5.0949864089489186e-05 0.0016398243606090546 
+ 
+time: 1665494339 
+compass: 150.77 
+altitude: -0.061 
+joy_control: 0 
+light: 0.0 
+accel: -0.36284605000000003 0.3236194500000012 9.7478101 
+gyro: 0.0012611380079761147 -0.0005564303137362002 0.000964447855949402 
+ 
+time: 1665494339 
+compass: 150.77 
+altitude: -0.061 
+joy_control: 0 
+light: 0.0 
+accel: -0.36284605000000003 0.3236194500000012 9.7478101 
+gyro: 0.0012611380079761147 -0.0005564303137362002 0.000964447855949402 
+ 
+time: 1665494339 
+compass: 150.77 
+altitude: -0.061 
+joy_control: 0 
+light: 0.0 
+accel: -0.3334261 0.31381280000000117 9.7478101 
+gyro: 0.0006607930408790708 0.0003257188946008684 0.001516016200184822 
+ 
+time: 1665494339 
+compass: 150.77 
+altitude: -0.061 
+joy_control: 0 
+light: 0.0 
+accel: -0.3334261 0.31381280000000117 9.7478101 
+gyro: 0.0006607930408790708 0.0003257188946008684 0.001516016200184822 
+ 
+time: 1665494339 
+compass: 150.77 
+altitude: -0.059 
+joy_control: 0 
+light: 0.0 
+accel: -0.34323275 0.3432327500000012 9.7674234 
+gyro: 0.0016298420960083604 0.0006022658199071886 0.0019768085330724716 
+ 
+time: 1665494339 
+compass: 150.77 
+altitude: -0.059 
+joy_control: 0 
+light: 0.0 
+accel: -0.34323275 0.3432327500000012 9.7674234 
+gyro: 0.0016298420960083604 0.0006022658199071886 0.0019768085330724716 
+ 
+time: 1665494339 
+compass: 150.77 
+altitude: -0.061 
+joy_control: 0 
+light: 0.0 
+accel: -0.34323275 0.3432327500000012 9.7674234 
+gyro: 0.0010784361511468887 0.0004861215129494669 0.0019427388906478882 
  
