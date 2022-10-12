@@ -17,7 +17,7 @@
     <node name="joy_node" pkg="joy" type="joy_node" output="screen"/>
 
     <!-- Display video -->
-    <node name="MyProgram_camera" pkg="bluerov" type="Affichage_camera_launch_3.py" output="log"/>
+    <!-- <node name="MyProgram_camera" pkg="bluerov" type="Affichage_camera_launch_3.py" output="log"/> -->
 
     <!-- Save logs -->
     <!-- <node name="recup_log" pkg="log_generator" type="recup_log.py" output="log"/> -->
@@ -32,4 +32,11 @@
     <!-- <include file="$(find bluerov)/launch/save_topics.launch">
         <arg name="path" default="$HOME/catkin_ws/"/>
     </include> -->
+
+    <!-- RQT -->
+    <node name="rqt_gui" pkg="rqt_gui" type="rqt_gui"/>
+
+    <!-- Display nav data -->
+    <node name="display_data_for_navigation" pkg="bluerov" type="display_data_for_navigation.py" output="screen"/>
+
 </launch>

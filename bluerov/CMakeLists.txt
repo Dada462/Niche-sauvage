@@ -120,6 +120,7 @@ catkin_install_python(PROGRAMS
   src/class_video.py
   src/launch_save_bash_file.py
   src/launch_play_bash_file.py
+  src/display_data_for_navigation.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 
