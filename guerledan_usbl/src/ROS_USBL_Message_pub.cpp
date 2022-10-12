@@ -60,7 +60,8 @@ narval::seatrac::messages::Status get_next_status(SeatracDriver& seatrac)
     narval::seatrac::messages::Status status;
 
     if(!seatrac.wait_for_message(CID_STATUS, &status, 1000)) {
-        throw TimeoutReached();
+        std::cout << "TIMEOUT" << std::endl << std::flush;
+        // throw TimeoutReached();
     }
 
     return status;

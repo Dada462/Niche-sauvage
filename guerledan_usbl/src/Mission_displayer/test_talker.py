@@ -1,5 +1,7 @@
 import rospy
 from geometry_msgs.msg import Point
+
+
 import numpy as np
 
 def talker():
@@ -10,7 +12,7 @@ def talker():
     t=0
     dt=0.05
     while not rospy.is_shutdown():
-        x,y=np.cos(t),np.sin(t)
+        x,y=5*np.cos(t),5*np.sin(2*t)
         t+=dt
         p.x=x
         p.y=y
