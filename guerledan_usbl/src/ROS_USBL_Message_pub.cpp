@@ -14,13 +14,13 @@ using namespace narval::seatrac;
 
 void log_write(ofstream &log, const narval::seatrac::messages::PingResp &lastResponse_ )
 {
-    log<<lastResponse_.acoFix.position.northing<<", ";
-    log<<lastResponse_.acoFix.position.easting<<", ";
-    log<<lastResponse_.acoFix.position.depth<<", ";
-    log<<lastResponse_.acoFix.usbl.azimuth/10<<", ";
-    log<<lastResponse_.acoFix.usbl.elevation/10<<",";
-    log<<lastResponse_.acoFix.range.dist/10<<",";
-    log<<lastResponse_.acoFix.depthLocal<<endl;
+    log<<lastResponse_.acoFix.position.northing/10.0<<", ";
+    log<<lastResponse_.acoFix.position.easting/10.0<<", ";
+    log<<lastResponse_.acoFix.position.depth/10.0<<", ";
+    log<<lastResponse_.acoFix.usbl.azimuth/10.0<<", ";
+    log<<lastResponse_.acoFix.usbl.elevation/10.0<<",";
+    log<<lastResponse_.acoFix.range.dist/10.0<<",";
+    log<<lastResponse_.acoFix.depthLocal/10.0<<endl;
     
 }
 std::string current_time()
@@ -113,17 +113,17 @@ int main(int argc, char** argv)
     service.start();
     ros::init(argc, argv, "USBL_pub_node");
     ros::NodeHandle n;
-    ros::Publisher chatter_pub = n.advertise<guerledan_usbl::USBL>("usbl/data", 1000);
+    ros::Publisher chatter_pub = n.advertise<guerledan_usbl::USBL>("Informations", 1000);
     guerledan_usbl::USBL USBL_info_message;
     ofstream log;
-    log.open("src/Niche-sauvage/guerledan_usbl/logs/October_11_"+current_time()+".dat");
+    log.open("src/guerledan_usbl/logs/October_11_"+current_time()+".dat");
     log<<"LOG: northing, easting, depth, azimith, elevation, range, Local depth"<<endl;
     while (ros::ok()){
         command::ping_send(seatrac, BEACON_ID_1, MSG_REQU);
         if (seatrac.data_available)
         {
             log_write(log,seatrac.lastResponse_);
-            write_message(USBL_info_message,seatrac.lastResponse_);
+            write_message(USBL_info_message, seatrac.lastResponse_);
             chatter_pub.publish(USBL_info_message);
             seatrac.data_available =false;
             ros::spinOnce();
@@ -131,7 +131,6 @@ int main(int argc, char** argv)
     }
     log.close();
     service.stop();
-
     return 0;
 }
 

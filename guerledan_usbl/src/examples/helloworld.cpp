@@ -1,6 +1,9 @@
 #include <iostream>
 #include <ctime>
 #include <fstream>
+#include <chrono>
+#include <thread>
+
 
 using namespace std;
 std::string current_time()
@@ -26,8 +29,12 @@ std::string current_time()
 
 int main() {
    ofstream log;
-   log.open("src/Niche-sauvage/guerledan_usbl/logs/October_test_"+current_time()+".dat");
+   log.open("src/guerledan_usbl/logs/Test_"+current_time()+".dat");
    log<<"LOG: northing, easting, depth, azimith, elevation, range, Local depth"<<endl;
-   log<<"BLABLA"<<endl;
+   for (int i=0;i<10;i++)
+   {
+      log<<"BLABLA"<<endl;
+      std::this_thread::sleep_for(std::chrono::milliseconds(500));
+   }
    log.close();
 }
