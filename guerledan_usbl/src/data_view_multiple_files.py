@@ -38,3 +38,9 @@ for i in range(len(logs['northing'])):
         ax.plot(logs['northing'][:i],logs['easting'][:i],color='#f11a1a')
         plt.pause(1e-6)
 plt.show()
+
+'''
+USBL: affichage vecteur entre usbl
+cap robot
+profondeur
+'''
