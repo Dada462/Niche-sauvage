@@ -124,6 +124,9 @@ Tests USBL
 Test video ros en commande
 
 Réussi :
+mise à l'eau de la cage
+Tests USBL
+Test video ros en commande
 
 Aprem ======================================================================================
 Objectifs : 
@@ -133,7 +136,15 @@ Tests USBL
 Test video ros en commande
 
 Réussi :
+Déplacement jusqu'a la cage, cage avec lumieres allumées
+Test distance visibilité qrcode
+Tests USBL
+Test video ros en commande
+
 Note :
+Rosbag avec un QRcode à différentes distances: 160, 100 et 50cm
+En fin de journée on a réussi à tout récuperer sur ros !
+Danut a fait en plus des objectifs un affichage en temps reel de la trajectoire usbl du bluerov 
 
 Jeudi : ------------------------------------------------------------------------------------
 Matin ======================================================================================

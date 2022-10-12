@@ -38,15 +38,16 @@ roslaunch bluerov run_bluerov.launch
 ```
 ![](/images/manette_notice.png)
 
-For run rosbags
-``` bash
-roslaunch bluerov play_topics.launch 
-```
-
 Save topics :
 
 ``` bash
 rosbag record --split --duration 5m  --chunksize=1024 --output-prefix=$HOME/catkin_ws/ --all
+```
+
+Display rosbag topics :
+
+``` bash
+roslaunch bluerov play_topics.launch 
 ```
 
 ## Use USBL
