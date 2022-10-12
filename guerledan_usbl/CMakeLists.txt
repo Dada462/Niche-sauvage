@@ -149,7 +149,7 @@ ${catkin_INCLUDE_DIRS}
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
 
-add_executable(USBL_pub src/ROS_USBL_Message_pub.cpp)
+add_executable(USBL_pub_exe src/ROS_USBL_Message_pub.cpp)
 add_executable(helloworld src/examples/helloworld.cpp)
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -163,7 +163,7 @@ add_executable(helloworld src/examples/helloworld.cpp)
 
 ## Specify libraries to link a library or executable target against
 # target_link_libraries(main PUBLIC ${CODAC_LIBRARIES} Ibex::ibex ${CODAC_LIBRARIES} Ibex::ibex)
-target_link_libraries(USBL_pub PRIVATE
+target_link_libraries(USBL_pub_exe PRIVATE
     seatrac_driver
     ${catkin_LIBRARIES}
 )
