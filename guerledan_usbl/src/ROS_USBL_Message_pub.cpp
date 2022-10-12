@@ -104,6 +104,11 @@ class MyDriver : public narval::seatrac::SeatracDriver
 
 int main(int argc, char** argv)
 {
+    cout << "Test 1 " << endl << flush;
+    ros::init(argc, argv, "USBL_pub_node");
+    ros::NodeHandle n;
+    ROS_INFO("Test");
+
     const char* device = "/dev/ttyUSB0";
     if(argc > 1) device = argv[1];
 
@@ -112,8 +117,7 @@ int main(int argc, char** argv)
     seatrac.enable_io_dump();
 
     service.start();
-    ros::init(argc, argv, "USBL_pub_node");
-    ros::NodeHandle n;
+    
     ros::Publisher chatter_pub = n.advertise<guerledan_usbl::USBL>("Informations", 1000);
     guerledan_usbl::USBL USBL_info_message;
     ofstream log;
