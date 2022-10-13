@@ -1,12 +1,40 @@
-#include <fstream>
 #include <iostream>
+#include <ctime>
+#include <fstream>
+#include <chrono>
+#include <thread>
+
+
 using namespace std;
- 
-int main () {
-   char data[100];
+std::string current_time()
+{
+    time_t now = time(0);
+   
+   // convert now to string form
+   char* dt = ctime(&now);
 
-   // open a file in write mode.
+   cout << "The local date and time is: " << dt << endl;
 
+   // convert now to tm struct for UTC
+//    tm *gmtm = gmtime(&now);
+//    dt = asctime(gmtm);
+   char* test= new char[8];
+   for (int i=0;i<8;i++)
+   {
+      test[i]=dt[i+11];
+   }
+   std::string s(test,8);
+   return s;
+}
 
-   return 0;
+int main() {
+   ofstream log;
+   log.open("src/guerledan_usbl/logs/Test_"+current_time()+".dat");
+   log<<"LOG: northing, easting, depth, azimith, elevation, range, Local depth"<<endl;
+   for (int i=0;i<10;i++)
+   {
+      log<<"BLABLA"<<endl;
+      std::this_thread::sleep_for(std::chrono::milliseconds(500));
+   }
+   log.close();
 }

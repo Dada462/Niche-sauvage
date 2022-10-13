@@ -26,6 +26,23 @@
     </node>
 
     <!-- Save logs -->
-    <node name="recup_log" pkg="log_generator" type="recup_log.py" output="log"/>
+    <!-- <node name="recup_log" pkg="log_generator" type="recup_log.py" output="log"/> -->
+
+    <!-- Camera ROS -->
+    <include file="$(find bluerov_ros_camera)/launch/video.launch"/>
+
+    <!-- USBL publisher -->
+    <node pkg="guerledan_usbl" type="USBL_pub" name="USBL_pub_node" output="screen"/>
+
+    <!-- Save rosbag -->
+    <include file="$(find bluerov)/launch/save_topics.launch">
+        <arg name="path" default="$HOME/catkin_ws/"/>
+    </include>
+
+    <!-- RQT -->
+    <node name="rqt_gui" pkg="rqt_gui" type="rqt_gui"/>
+
+    <!-- Display nav data -->
+    <!-- <node name="display_data_for_navigation" pkg="bluerov" type="display_data_for_navigation.py" output="log"/> -->
 
 </launch>

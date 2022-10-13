@@ -428,12 +428,13 @@ if __name__ == '__main__':
         
             # pour le bluerov 1
             pwm_light = pwm_light+100
-            msg1[1] = 0 
-            if (pwm_light > 1800):
-            	msg1[1] = 2  # communication a l'affichage
+            msg1[1] += 1
+            # if (pwm_light > 1800):
+            	# msg1[1] = 2  # communication a l'affichage
             if (pwm_light > 1900):
                 pwm_light = 1000
                 msg1[1] = 0
+                # msg1[1] = 0
 
             # on ecrit la valeur que l'on veut dans le fihcier test.txt      
             msg_lum = str(pwm_light) # 'test'

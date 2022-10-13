@@ -200,12 +200,12 @@ def callback_alt(data):
     altitude = -data.data
     
 enregistrement = 0
-max_lumiere = 0
+lvl_lumiere = 0
 def callback_enregistrement(data):
     global enregistrement
-    global max_lumiere 
+    global lvl_lumiere 
     enregistrement = data.data[0]
-    max_lumiere = data.data[1]
+    lvl_lumiere = data.data[1]
     
 voltage = 0
 
@@ -289,16 +289,18 @@ if __name__ == '__main__':
             text1 = "cap = " + str(cap) + " deg"
             text2 = "depth = " + str(altitude) + " m"
             text3 = "battery = " + str(voltage) + " V"
+            text4 = "lumiere = " + str(lvl_lumiere)
             taille_font = 0.5
             current_date_and_time = datetime.datetime.now()
-            text_date = str(current_date_and_time)[0:19]            
+            text_date = str(current_date_and_time)[0:19]         
             cv2.putText(frame, text1, (10,20), font, taille_font, (0, 255, 0), 1, cv2.LINE_AA)  
             cv2.putText(frame, text2, (10,40), font, taille_font, (0, 255, 0), 1, cv2.LINE_AA) 
             cv2.putText(frame, text3, (10,60), font, taille_font, (0, 255, 0), 1, cv2.LINE_AA)  
+            cv2.putText(frame, text4, (10,80), font, taille_font, (0, 255, 0), 1, cv2.LINE_AA)  
             cv2.putText(frame, text_date, (400,20), font, taille_font, (0, 255, 0), 1, cv2.LINE_AA)
             
             # eclairage
-            if (max_lumiere == 2):
+            if (lvl_lumiere == 9):
                 text4 = "MAX LUMINOSITY"
                 cv2.putText(frame, text4, (610,20), font, taille_font, (0, 0, 255), 1, cv2.LINE_AA)
                 

@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<launch>
+
+    <arg name="path" default="$HOME"/>
+
+    <node name="save_node" pkg="bluerov" type="launch_save_bash_file.py" output="screen">
+        <param name="compress_mode" value=""/> <!-- " ", "lz4" or "bz2" -->
+        <param name="path" value="$(arg path)"/>
+    </node>
+
+</launch>
