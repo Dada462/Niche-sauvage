@@ -10,6 +10,7 @@
 	<arg name="log_output" default="screen" />
 	<arg name="fcu_protocol" default="v2.0" />
 	<arg name="respawn_mavros" default="false" />
+	<arg name="video_udp_port" default="5600"/>
     </include>
 
     <!-- Run joytick -->
@@ -20,7 +21,9 @@
     <node name="MyProgram_camera" pkg="bluerov" type="Affichage_camera_launch_3.py" output="log"/>
 
     <!-- Publish video -->
-    <!-- <node name="video_publisher" pkg="bluerov" type="video_publisher.py" output="screen"/> -->
+    <node pkg="bluerov_ros_camera" type="video" name="bluerov_video" output="$(arg log_output)">
+      <param name="udp_port" value="$(arg video_udp_port)"/>
+    </node>
 
     <!-- Save logs -->
     <node name="recup_log" pkg="log_generator" type="recup_log.py" output="log"/>

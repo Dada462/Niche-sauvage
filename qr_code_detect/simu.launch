@@ -1,0 +1,5 @@
+<launch>
+	<node name="tracker" pkg="qr_code_detect" type="traitement_image.py" output="screen"/>
+	
+	
+</launch>

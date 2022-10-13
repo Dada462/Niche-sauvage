@@ -19,7 +19,7 @@ def main():
     video = Video.Video(udp_port)
 
     pub = rospy.Publisher('bluerov_camera', Image, queue_size=10)
-    rate = rospy.Rate(20) # 10hz
+    rate = rospy.Rate(20) 
 
     while not rospy.is_shutdown():
 
@@ -27,7 +27,7 @@ def main():
             continue
 
         frame = video.frame()
-        image_msg = Image()
+        
         bridge = CvBridge()
 
        
