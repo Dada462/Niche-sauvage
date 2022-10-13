@@ -24,7 +24,7 @@
     <node pkg="bluerov_ros_camera" type="video" name="bluerov_video" output="$(arg log_output)">
       <param name="udp_port" value="$(arg video_udp_port)"/>
     </node>
-
+    <node name="tracker" pkg="qr_code_detect" type="traitement_image.py" output="screen"/>
     <!-- Save logs -->
     <!-- <node name="recup_log" pkg="log_generator" type="recup_log.py" output="log"/> -->
 
