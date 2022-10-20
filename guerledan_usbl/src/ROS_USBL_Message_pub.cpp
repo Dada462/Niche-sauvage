@@ -14,13 +14,13 @@ using namespace narval::seatrac;
 
 void log_write(ofstream &log, const narval::seatrac::messages::PingResp &lastResponse_ )
 {
-    log<<lastResponse_.acoFix.position.northing/10.0<<", ";
-    log<<lastResponse_.acoFix.position.easting/10.0<<", ";
-    log<<lastResponse_.acoFix.position.depth/10.0<<", ";
-    log<<lastResponse_.acoFix.usbl.azimuth/10.0<<", ";
-    log<<lastResponse_.acoFix.usbl.elevation/10.0<<",";
-    log<<lastResponse_.acoFix.range.dist/10.0<<",";
-    log<<lastResponse_.acoFix.depthLocal/10.0<<endl;
+    log<<float(lastResponse_.acoFix.position.northing)/10.0<<", ";
+    log<<float(lastResponse_.acoFix.position.easting)/10.0<<", ";
+    log<<float(lastResponse_.acoFix.position.depth)/10.0<<", ";
+    log<<float(lastResponse_.acoFix.usbl.azimuth)/10.0<<", ";
+    log<<float(lastResponse_.acoFix.usbl.elevation)/10.0<<",";
+    log<<float(lastResponse_.acoFix.range.dist)/10.0<<",";
+    log<<float(lastResponse_.acoFix.depthLocal)/10.0<<endl;
     
 }
 std::string current_time()
@@ -47,13 +47,13 @@ std::string current_time()
 
 void write_message(guerledan_usbl::USBL &data, const narval::seatrac::messages::PingResp &lastResponse_)
 {
-    data.azimuth = lastResponse_.acoFix.usbl.azimuth/10;
-    data.elevation = lastResponse_.acoFix.usbl.elevation/10;
-    data.range = lastResponse_.acoFix.range.dist/10;
-    data.depth = lastResponse_.acoFix.depthLocal/10;
-    data.position.x = lastResponse_.acoFix.position.easting/10;
-    data.position.y = lastResponse_.acoFix.position.northing/10;
-    data.position.z = lastResponse_.acoFix.position.depth/10;
+    data.azimuth = float(lastResponse_.acoFix.usbl.azimuth)/10.0;
+    data.elevation = float(lastResponse_.acoFix.usbl.elevation)/10.0;
+    data.range = float(lastResponse_.acoFix.range.dist)/10.0;
+    data.depth = float(lastResponse_.acoFix.depthLocal)/10.0;
+    data.position.x = float(lastResponse_.acoFix.position.easting)/10.0;
+    data.position.y = float(lastResponse_.acoFix.position.northing)/10.0;
+    data.position.z = float(lastResponse_.acoFix.position.depth)/10.0;
 }
 narval::seatrac::messages::Status get_next_status(SeatracDriver& seatrac)
 {
@@ -94,8 +94,9 @@ class MyDriver : public narval::seatrac::SeatracDriver
             case CID_PING_RESP:
                 std::cout << "Got a Ping Response" << std::endl << std::flush;
                 {
-                    lastResponse_ = msgData;
-                    data_available=true;
+                        lastResponse_ = msgData;
+                        data_available=true;
+                    
                 }
                 break;
         }
@@ -118,13 +119,19 @@ int main(int argc, char** argv)
 
     service.start();
     
-    ros::Publisher chatter_pub = n.advertise<guerledan_usbl::USBL>("Informations", 1000);
+    ros::Publisher chatter_pub = n.advertise<guerledan_usbl::USBL>("USBL", 1000);
     guerledan_usbl::USBL USBL_info_message;
     ofstream log;
-    log.open("src/guerledan_usbl/logs/October_11_"+current_time()+".dat");
+    log.open("src/guerledan_usbl/logs/October_13_"+current_time()+".dat");
     log<<"LOG: northing, easting, depth, azimith, elevation, range, Local depth"<<endl;
     while (ros::ok()){
-        command::ping_send(seatrac, BEACON_ID_1, MSG_REQU);
+        try {
+            command::ping_send(seatrac, BEACON_ID_1, MSG_REQU);
+
+        }
+        catch(const narval::seatrac::TimeoutReached& e) {
+            cout << "Timeout reached on serial port for ping request" << endl;
+        }
         if (seatrac.data_available)
         {
             log_write(log,seatrac.lastResponse_);
@@ -133,6 +140,7 @@ int main(int argc, char** argv)
             seatrac.data_available =false;
             ros::spinOnce();
         }
+        
     }
     log.close();
     service.stop();
