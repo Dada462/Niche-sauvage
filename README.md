@@ -26,6 +26,18 @@ bash src/Niche-sauvage/install/install_usbl_driver.sh
 
 ```
 
+Install gazebo plugin
+
+``` bash
+bash src/Niche-sauvage/install/install_bluerov_gazebo.sh 
+```
+
+In `slider_publisher/slider_publisher` line 379 add the rate :
+
+``` python
+sp = SliderPublisher(content,50)
+```
+
 ## Use BlueRov
 
 Run the bluerob with camera and joystick
@@ -55,7 +67,13 @@ roslaunch bluerov play_topics.launch
 ``` bash
 rosrun guerledan_usbl USBL_pub
 ```
+## Simulation
 
+Launch gazebo simulation :
+
+``` bash
+roslaunch simulation gazebo.launch
+```
 
 ## Contributors
 - **Danut Pop**
