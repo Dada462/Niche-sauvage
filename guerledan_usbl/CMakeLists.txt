@@ -19,7 +19,18 @@ find_package(catkin REQUIRED COMPONENTS
     tf2_ros
 )
 
-find_package(seatrac_driver REQUIRED)
+
+if(NOT TARGET seatrac_driver)
+    find_package(seatrac_driver QUIET)
+    if(NOT TARGET seatrac_driver)
+        include(FetchContent)
+        FetchContent_Declare(seatrac_driver
+            GIT_REPOSITORY https://gitlab.ensta-bretagne.fr/narvorpi/seatrac_driver.git
+            GIT_TAG        master
+        )
+        FetchContent_MakeAvailable(seatrac_driver)
+    endif()
+endif()
 
 # add_executable(driver driver.cpp)
 # add_executable(helloworld helloworld.cpp)
@@ -149,8 +160,11 @@ ${catkin_INCLUDE_DIRS}
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
 
-add_executable(USBL_pub src/ROS_USBL_Message_pub.cpp)
+#add_executable(USBL_pub src/ROS_USBL_Message_pub.cpp)
+# add_executable(USBL_pub_improved src/ROS_USBL_Message_pub_improved.cpp)
+add_executable(USBL_pub_2 src/ROS_USBL_Message_pub.cpp)
 add_executable(helloworld src/examples/helloworld.cpp)
+add_executable(simple_pinger src/examples/simple_pinger.cpp)
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
 ## target back to the shorter version for ease of user use
@@ -163,10 +177,22 @@ add_executable(helloworld src/examples/helloworld.cpp)
 
 ## Specify libraries to link a library or executable target against
 # target_link_libraries(main PUBLIC ${CODAC_LIBRARIES} Ibex::ibex ${CODAC_LIBRARIES} Ibex::ibex)
-target_link_libraries(USBL_pub PRIVATE
+#target_link_libraries(USBL_pub PRIVATE
+#    seatrac_driver
+#    ${catkin_LIBRARIES}
+#)
+target_link_libraries(USBL_pub_2 PRIVATE
     seatrac_driver
     ${catkin_LIBRARIES}
 )
+
+# target_link_libraries(USBL_pub_improved PRIVATE
+#     seatrac_driver
+#     ${catkin_LIBRARIES}
+# )
+
+target_link_libraries(simple_pinger PRIVATE seatrac_driver)
+
 
 # add_executable(driver driver.cpp)
 # add_executable(helloworld helloworld.cpp)
