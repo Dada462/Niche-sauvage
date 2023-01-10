@@ -40,15 +40,21 @@ sp = SliderPublisher(content,50)
 
 ## Use BlueRov
 
-Run the bluerob with camera and joystick
+- Run the bluerob with camera and joystick
 Sensors data are saved on a rosbag
 
 Warning : Desarmed and tune off the lights before kill
 
 ``` bash
-roslaunch bluerov run_bluerov.launch 
+roslaunch bluerov run_joy_bluerov.launch 
 ```
 ![](/images/manette_notice.png)
+
+- Run the bluerov with a node command replacing the joystick
+
+``` bash
+roslaunch bluerov run_command_bluerov.launch 
+```
 
 Save topics :
 
