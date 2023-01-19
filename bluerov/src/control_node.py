@@ -29,6 +29,9 @@ import struct
 from sensor_msgs.msg import Joy
 from sensor_msgs.msg import FluidPressure
 
+from geometry_msgs.msg import Pose
+from bluerov_msgs.msg import CommandBluerov
+
 import mavros
 from mavros import command
 
@@ -60,6 +63,7 @@ button = [0,0,0,0,0,0,0,0,0,0,0]  # A, B,Y,Z, LH , RH , back, start, ?, L3, R3
 Jaxes = [0,0,0,0,0,0,0,0]   # (gauche gauche(1)/droite(-1), gauche haut(1)/bas(-1), ? , droite gauche(1)/droite(-1), droite haut(1)/bas(-1), ?, flèches gauche(1)/droite(-1), flèches haut(1)/bas(-1))
 #channel = [1500, 1500, 1500, 1500, 1500, 1500, 1500, 1500]
 frame_id = 0
+command = CommandBluerov()
 
 
             #msg[0] = depUp  # pitch (eleve l'avant du rov)
@@ -86,13 +90,13 @@ def callback_compass(data):
     cap = data.data
 
     
-def callback_joy(data):  
-    global button
-    global Jaxes
-    global frame_id
-    button = data.buttons
-    Jaxes = data.axes
-    frame_id = data.header.seq
+# def callback_joy(data):  
+#     global button
+#     global Jaxes
+#     global frame_id
+#     button = data.buttons
+#     Jaxes = data.axes
+#     frame_id = data.header.seq
   
     
 def callback_press(data):
@@ -109,24 +113,29 @@ altitudeprec=altitude
   
   
 def callback_IMU(data):
-        global Phi  # Roll
-        global Theta # pitch
-        global Psy   # yaw
-        global dPhi
-        global dTheta
-        global dPsy
-        W = data.orientation.w
-        X = data.orientation.x
-        Y = data.orientation.y
-        Z = data.orientation.z
-        orientq=(W, X, Y, Z)
-        ### Conversion de quaternions en matrice de rotation
-        Phi, Theta, Psy = Rotation.from_quat([orientq[1], orientq[2], orientq[3],   orientq[0]]).as_euler("xyz") #Roulis, Tangage, Lacet 
-        dPhi=data.angular_velocity.x
-        dTheta=data.angular_velocity.y
-        dPsy=data.angular_velocity.z
+    global Phi  # Roll
+    global Theta # pitch
+    global Psy   # yaw
+    global dPhi
+    global dTheta
+    global dPsy
+    W = data.orientation.w
+    X = data.orientation.x
+    Y = data.orientation.y
+    Z = data.orientation.z
+    orientq=(W, X, Y, Z)
+    ### Conversion de quaternions en matrice de rotation
+    Phi, Theta, Psy = Rotation.from_quat([orientq[1], orientq[2], orientq[3],   orientq[0]]).as_euler("xyz") #Roulis, Tangage, Lacet 
+    dPhi=data.angular_velocity.x
+    dTheta=data.angular_velocity.y
+    dPsy=data.angular_velocity.z
        
-  
+def callback_commande(data):
+    global command
+    command = data
+    # button = [0,0,0,0,0,0,0,0,0,0,0]  # A, B,Y,Z, LH , RH , back, start, ?, L3, R3
+    # Jaxes = [0,0,0,0,0,0,0,0]   # (gauche gauche(1)/droite(-1), gauche haut(1)/bas(-1), ? , droite gauche(1)/droite(-1), droite haut(1)/bas(-1), ?, flèches gauche(1)/droite(-1), flèches haut(1)/bas(-1))
+
        	
 def listener():
 
@@ -140,7 +149,7 @@ def listener():
  
     rospy.Subscriber("/mavros/global_position/compass_hdg", Float64, callback_compass)
     
-    rospy.Subscriber("joy", Joy, callback_joy)
+    # rospy.Subscriber("joy", Joy, callback_joy)
     
     # rospy.Subscriber("/mavros/imu/static_pressure", FluidPressure, callback_press)
 
@@ -150,6 +159,8 @@ def listener():
     
     # spin() simply keeps python from exiting until this node is stopped
     # rospy.spin()
+
+    rospy.Subscriber("/commande", CommandBluerov, callback_commande)
      
  
 def ROV_movement(msg0):
@@ -168,7 +179,7 @@ def ROV_movement(msg0):
             channel[i] = 2000*numpy.sign(channel[i]) 
 
     msg = OverrideRCIn()
-    msg.channels = channel
+    msg.channels = channel 
     #print(channel)
     
 
@@ -186,9 +197,35 @@ def publisher_enregistrement(msg1):
     pub.publish(msg11)
 
 
+def set_commande(data):
+    global button
+    global Jaxes
+
+    ############# deplacement et cap
+    
+    if data.pose.position.z > 0 :
+        button[4] = data.pose.position.z # LH # monter lentement
+        print("commande monte")
+    elif data.pose.position.z < 0 :
+        button[5] = data.pose.position.z # RH # descend lentement
+        print("commande descend")
+
+    Jaxes[6] = data.pose.position.y # flèches gauche(1)/droite(-1)
+
+    Jaxes[7] = data.pose.position.x # flèches haut(1)/bas(-1)
+
+    Jaxes[0] = data.pose.orientation.z # gauche gauche(1)/droite(-1)
+
+    ############# other
+
+    button[7] = data.arming # arming
+
+    val_pwm,pwm_light = data.power, data.light # engine power and light
+
+    # print (button, Jaxes)
+    return val_pwm,pwm_light
 
 
-  
 if __name__ == '__main__':
 
 
@@ -197,7 +234,7 @@ if __name__ == '__main__':
 
     
   ##  rospy.init_node('MyProgram', anonymous=True)
-    rospy.init_node('MyProgram', anonymous=True, disable_signals=True)
+    rospy.init_node('control_node', anonymous=True, disable_signals=True)
     
     print('Control ROV par Joystick. Pensez à armer.')
     
@@ -220,6 +257,7 @@ if __name__ == '__main__':
     
     while not rospy.is_shutdown():
         
+        val_pwm,pwm_light = set_commande(command)
 
 #    #### Afficher la camera
 #            # Wait for the next frame
@@ -252,18 +290,19 @@ if __name__ == '__main__':
 #        print('profondeur = ', altitude)
                                       
         
-        if frame_id_old != frame_id:
+        # if frame_id_old != frame_id:
+        if True:
         
             frame_id_old = frame_id
-            
+
             if (button[7] == 1)&(test_arm == 0):
-            #    command.arming(True) 
+            #    command.arming(True)
                 
                 armService = rospy.ServiceProxy('/mavros/cmd/arming', mavros_msgs.srv.CommandBool)
                 armService(True)
                 print('armed...') 
                 test_arm = 1
-            elif (button[7] == 1)&(test_arm == 1):
+            elif (button[7] == 0)&(test_arm == 1):
                 test_arm = 0
             #    command.arming(False) 
                 armService = rospy.ServiceProxy('/mavros/cmd/arming', mavros_msgs.srv.CommandBool)
@@ -275,9 +314,6 @@ if __name__ == '__main__':
     #################################
     #button = [0,0,0,0,0,0,0,0,0,0,0]   A, B,X,Y, LB , RB , back, start, ?, L3, R3
     #Jaxes = [0,0,0,0,0,0,0,0]   # (gauche gauche(1)/droite(-1), gauche haut(1)/bas(-1), ? , droite gauche(1)/droite(-1), droite haut(1)/bas(-1), ?, flèches gauche(1)/droite(-1), flèches haut(1)/bas(-1))
-
-
-
 
 
             # inclinaison de la camera
@@ -293,19 +329,20 @@ if __name__ == '__main__':
                                 
             
             # accelerer/revenir au minimum
-            if button[3]!= 0:  # bouton Y : accelerer   
-               val_pwm = val_pwm + 100
-               print('pwm = ', val_pwm)
+            # if button[3]!= 0:  # bouton Y : accelerer   
+            #    val_pwm = val_pwm + 100
+            #    print('pwm = ', val_pwm)
 
-            if button[0]!= 0:  # bouton A : revenir au minimum   
-               val_pwm = 100
-               print('pwm = ', val_pwm)
+            # if button[0]!= 0:  # bouton A : revenir au minimum   
+            #    val_pwm = 100
+            #    print('pwm = ', val_pwm)
                
                    
             # tourne gauche/droite
             if Jaxes[6] != 0:    # fleche droite/gauche
                 rot=int(-val_pwm*Jaxes[6]+1500 )
                 msg[5] = rot 
+                # print("Test X: ",Jaxes[6])
        #         if rot > 1500:
        #             print('-->')
        #         elif rot<1500:
@@ -336,6 +373,7 @@ if __name__ == '__main__':
             if Jaxes[7] != 0:  # fleche haut/bas
                 vit = int(val_pwm*Jaxes[7]+1500 )
                 msg[4] = vit 
+                # print("Test Y: ",Jaxes[7])
     #            if vit>1500:
     #                print('^')
     #                print('|') 
@@ -422,28 +460,28 @@ if __name__ == '__main__':
 
 
 
-        if (button[1]!=0):
+#         if (button[1]!=0):
                 
-            file2 = '/home/pi/lights/test.txt'
+#             file2 = '/home/pi/lights/test.txt'
         
-            # pour le bluerov 1
-            pwm_light = pwm_light+100
-            msg1[1] += 1
-            # if (pwm_light > 1800):
-            	# msg1[1] = 2  # communication a l'affichage
-            if (pwm_light > 1900):
-                pwm_light = 1000
-                msg1[1] = 0
-                # msg1[1] = 0
+            # # pour le bluerov 1
+            # pwm_light = pwm_light+100
+            # msg1[1] += 1
+            # # if (pwm_light > 1800):
+            # 	# msg1[1] = 2  # communication a l'affichage
+            # if (pwm_light > 1900):
+            #     pwm_light = 1000
+            #     msg1[1] = 0
+            #     # msg1[1] = 0
 
-            # on ecrit la valeur que l'on veut dans le fihcier test.txt      
-            msg_lum = str(pwm_light) # 'test'
-            file2 = '/home/pi/lights/pwm_light.txt'
-            file3 = '/home/pi/pwm_light.txt'
-#            cmd = 'sshpass -p '+password+' ssh '+ adresse_ip +' "echo '+ msg_lum +' > '+file2+'"'
-#            os.system(cmd)
-            cmd = 'sshpass -p '+password+' ssh '+ adresse_ip +' "echo '+ msg_lum +' > '+file3+'"'
-            os.system(cmd)    
+#             # on ecrit la valeur que l'on veut dans le fihcier test.txt      
+#             msg_lum = str(pwm_light) # 'test'
+#             file2 = '/home/pi/lights/pwm_light.txt'
+#             file3 = '/home/pi/pwm_light.txt'
+# #            cmd = 'sshpass -p '+password+' ssh '+ adresse_ip +' "echo '+ msg_lum +' > '+file2+'"'
+# #            os.system(cmd)
+#             cmd = 'sshpass -p '+password+' ssh '+ adresse_ip +' "echo '+ msg_lum +' > '+file3+'"'
+#             os.system(cmd)    
 
         
         # enregistrement
@@ -459,7 +497,6 @@ if __name__ == '__main__':
             
             
         msg[8] = pwm_light
-        
 
 
         
@@ -467,6 +504,7 @@ if __name__ == '__main__':
         
                 
         # remettre à zero les inputs des boutons
+        # print(button, Jaxes)
         button = [0,0,0,0,0,0,0,0,0,0,0]
         Jaxes = [0,0,0,0,0,0,0,0]
         t.sleep(0.1)

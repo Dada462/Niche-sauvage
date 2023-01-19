@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<launch>
+
+    <!-- Run BlueRov -->
+    <include file="$(find mavros)/launch/px4.launch">
+        <arg name="fcu_url" default="udp://192.168.2.1:14550@192.168.2.2:14550" />
+        <arg name="gcs_url" default="" />
+        <arg name="tgt_system" default="1" />
+        <arg name="tgt_component" default="1" />
+        <arg name="log_output" default="screen" />
+        <arg name="fcu_protocol" default="v2.0" />
+        <arg name="respawn_mavros" default="false" />
+        <!-- <arg name="video_udp_port" default="5600"/> -->
+    </include>
+
+    <!-- Run command node -->
+    <node name="control_node" pkg="bluerov" type="control_node.py" output="screen"/>
+
+    <!-- Display video -->
+    <!-- <node name="MyProgram_camera" pkg="bluerov" type="Affichage_camera_launch_3.py" output="log"/> -->
+
+    <!-- Publish video -->
+    <node pkg="bluerov_ros_camera" type="video" name="bluerov_video_" output="log">
+      <param name="udp_port" value="5600"/>
+    </node>
+    <!-- <node name="tracker" pkg="qr_code_detect" type="traitement_image.py" output="screen"/> -->
+
+    <!-- Save logs -->
+    <!-- <node name="recup_log" pkg="log_generator" type="recup_log.py" output="log"/> -->
+
+    <!-- Camera ROS -->
+    <include file="$(find bluerov_ros_camera)/launch/video.launch"/>
+
+    <!-- USBL publisher -->
+    <node pkg="guerledan_usbl" type="USBL_pub" name="USBL_pub_node" output="screen"/>
+
+    <!-- Save rosbag -->
+    <include file="$(find bluerov)/launch/save_topics.launch">
+        <arg name="path" default="$HOME/catkin_ws/"/>
+    </include>
+
+    <!-- RQT -->
+    <node name="rqt_gui" pkg="rqt_gui" type="rqt_gui"/>
+
+    <!-- Display nav data -->
+    <!-- <node name="display_data_for_navigation" pkg="bluerov" type="display_data_for_navigation.py" output="log"/> -->
+
+</launch>

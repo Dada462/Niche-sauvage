@@ -1,0 +1,17 @@
+
+5/12 -> rapport biblio + expérimentation + présentation de l'architecture (shéma + explication + plan 3d de la cage) (trame pour rapport final)
+
+Guidage : 
+mettre en place un alogo pour le positionnement
+angle d'arrivé par rapport à la cage
+machine à état : graph set ou guidage continue avec estimateur de position global
+
+Simulateur ?
+
+Trouver un lieu ou faire des expérimentations (lac, port ?)
+
+pyqtgraph pour la visualisation des données -> important pour utiliser les données sans rejouer les bags
+multiplot graph pour ros
+
+ffmpeg pour le montage de la video avec les données
+

@@ -3,12 +3,12 @@
 #include <fstream>
 #include <chrono>
 #include <thread>
-
+#include <string>
 
 using namespace std;
 std::string current_time()
 {
-    time_t now = time(0);
+   time_t now = time(0);
    
    // convert now to string form
    char* dt = ctime(&now);
@@ -26,15 +26,14 @@ std::string current_time()
    std::string s(test,8);
    return s;
 }
+#include <time.h>
+int main() 
+{
+std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
+std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
+begin = std::chrono::steady_clock::now();
 
-int main() {
-   ofstream log;
-   log.open("src/guerledan_usbl/logs/Test_"+current_time()+".dat");
-   log<<"LOG: northing, easting, depth, azimith, elevation, range, Local depth"<<endl;
-   for (int i=0;i<10;i++)
-   {
-      log<<"BLABLA"<<endl;
-      std::this_thread::sleep_for(std::chrono::milliseconds(500));
-   }
-   log.close();
+std::cout << "Time difference = " << std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count() << "[µs]" << std::endl;
+std::cout << "Time difference = " << std::chrono::duration_cast<std::chrono::nanoseconds> (end - begin).count() << "[ns]" << std::endl;
+   return 0;
 }

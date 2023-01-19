@@ -1,102 +1,121 @@
 #include <iostream>
 #include <ctime>
 #include <fstream>
-#include <seatrac_driver/AsyncService.h>
+#include <chrono>
+
 #include <seatrac_driver/SeatracDriver.h>
+#include <seatrac_driver/messages/Messages.h>
 #include <seatrac_driver/commands.h>
+
 #include "ros/ros.h"
 #include "std_msgs/String.h"
 #include "std_msgs/Float64.h"
 #include "guerledan_usbl/USBL.h"
 
-using namespace std;
 using namespace narval::seatrac;
 
-void log_write(ofstream &log, const narval::seatrac::messages::PingResp &lastResponse_ )
+
+void log_write(std::ofstream &log, messages::PingResp &data_response )
 {
-    log<<lastResponse_.acoFix.position.northing/10.0<<", ";
-    log<<lastResponse_.acoFix.position.easting/10.0<<", ";
-    log<<lastResponse_.acoFix.position.depth/10.0<<", ";
-    log<<lastResponse_.acoFix.usbl.azimuth/10.0<<", ";
-    log<<lastResponse_.acoFix.usbl.elevation/10.0<<",";
-    log<<lastResponse_.acoFix.range.dist/10.0<<",";
-    log<<lastResponse_.acoFix.depthLocal/10.0<<endl;
+    log<<float(data_response.acoFix.position.northing)/10.0<<", ";
+    log<<float(data_response.acoFix.position.easting)/10.0<<", ";
+    log<<float(data_response.acoFix.position.depth)/10.0<<", ";
+    log<<float(data_response.acoFix.usbl.azimuth)/10.0<<", ";
+    log<<float(data_response.acoFix.usbl.elevation)/10.0<<",";
+    log<<float(data_response.acoFix.range.dist)/10.0<<",";
+    log<<float(data_response.acoFix.depthLocal)/10.0<<std::endl;
     
 }
+
 std::string current_time()
 {
     time_t now = time(0);
-   
-   // convert now to string form
-   char* dt = ctime(&now);
 
-   cout << "The local date and time is: " << dt << endl;
+    // convert now to string form
+    char* dt = ctime(&now);
 
-   // convert now to tm struct for UTC
-//    tm *gmtm = gmtime(&now);
-//    dt = asctime(gmtm);
-   char* test= new char[8];
-   for (int i=0;i<8;i++)
-   {
-      test[i]=dt[i+11];
-   }
-   std::string s(test,8);
+    std::cout << "The local date and time is: " << dt << std::endl;
+
+    // convert now to tm struct for UTC
+    // tm *gmtm = gmtime(&now);
+    // dt = asctime(gmtm);
+    char* test= new char[8];
+    for (int i=0;i<8;i++)
+    {
+        test[i]=dt[i+11];
+    }
+    std::string s(test,8);
    return s;
 }
-   
 
-void write_message(guerledan_usbl::USBL &data, const narval::seatrac::messages::PingResp &lastResponse_)
+void write_message(guerledan_usbl::USBL &data, const narval::seatrac::messages::PingResp &data_response)
 {
-    data.azimuth = lastResponse_.acoFix.usbl.azimuth/10;
-    data.elevation = lastResponse_.acoFix.usbl.elevation/10;
-    data.range = lastResponse_.acoFix.range.dist/10;
-    data.depth = lastResponse_.acoFix.depthLocal/10;
-    data.position.x = lastResponse_.acoFix.position.easting/10;
-    data.position.y = lastResponse_.acoFix.position.northing/10;
-    data.position.z = lastResponse_.acoFix.position.depth/10;
-}
-narval::seatrac::messages::Status get_next_status(SeatracDriver& seatrac)
-{
-    narval::seatrac::messages::Status status;
-
-    if(!seatrac.wait_for_message(CID_STATUS, &status, 1000)) {
-        std::cout << "TIMEOUT" << std::endl << std::flush;
-        // throw TimeoutReached();
-    }
-
-    return status;
+    data.azimuth = float(data_response.acoFix.usbl.azimuth)/10;
+    data.elevation = float(data_response.acoFix.usbl.elevation)/10;
+    data.range = float(data_response.acoFix.range.dist)/10;
+    data.depth = float(data_response.acoFix.depthLocal)/10;
+    data.position.x = float(data_response.acoFix.position.easting)/10;
+    data.position.y = float(data_response.acoFix.position.northing)/10;
+    data.position.z = float(data_response.acoFix.position.depth)/10;
 }
 
-class MyDriver : public narval::seatrac::SeatracDriver
+
+
+
+
+
+class MyDriver : public SeatracDriver
 {
     public:
 
-
-    narval::seatrac::messages::PingResp lastResponse_;
-    bool data_available=false;
-    MyDriver(const IoServicePtr& ioService,
-             const std::string& port = "/dev/narval_usbl") :
-        narval::seatrac::SeatracDriver(ioService, port)
+    MyDriver(const std::string& serialPort = "/dev/ttyUSB0") :
+        SeatracDriver(serialPort)
     {}
 
-    void on_message(CID_E msgId, const std::vector<uint8_t>& msgData)
-    {
+    void ping_beacon(BID_E target, AMSGTYPE_E pingType = MSG_REQU) {
+        messages::PingSend::Request req;
+        req.target   = target;
+        req.pingType = pingType;
+        this->send(sizeof(req), (const uint8_t*)&req);
+    }
+    guerledan_usbl::USBL USBL_info_message;
+    messages::PingResp response_data;
+    std::ofstream log;
+    ros::Publisher pub;
+
+    bool data_available=false;
+
+    
+    // this method is called on any message returned by the beacon.
+    void on_message(CID_E msgId, const std::vector<uint8_t>& data) {
+        //replace code in this method by your own
         switch(msgId) {
             default:
+                std::cout << "Got message : " << msgId << std::endl << std::flush;
                 break;
             case CID_PING_ERROR:
                 {
-                    narval::seatrac::messages::PingError response;
-                    response = msgData;
+                    messages::PingError response;
+                    response = data;
                     std::cout << response << std::endl;
+                    this->ping_beacon(response.beaconId,MSG_REQU);
                 }
                 break;
             case CID_PING_RESP:
-                std::cout << "Got a Ping Response" << std::endl << std::flush;
+                // std::cout << "Got a Ping Response" << std::endl << std::flush;
                 {
-                    lastResponse_ = msgData;
-                    data_available=true;
+                    response_data = data;
+                    std::cout << response_data << std::endl;
+                    log_write(log, response_data);
+                    write_message(USBL_info_message, response_data);
+                    this->ping_beacon(response_data.acoFix.srcId, MSG_REQU);
+                    pub.publish(USBL_info_message);
+                    ros::spinOnce();
+
                 }
+                break;
+            case CID_STATUS:
+                // too many STATUS messages so bypassing display.
                 break;
         }
     }
@@ -104,38 +123,17 @@ class MyDriver : public narval::seatrac::SeatracDriver
 
 int main(int argc, char** argv)
 {
-    cout << "Test 1 " << endl << flush;
+    MyDriver seatrac("/dev/ttyUSB0");
     ros::init(argc, argv, "USBL_pub_node");
     ros::NodeHandle n;
-    ROS_INFO("Test");
+    ros::Publisher usbl_info_pub = n.advertise<guerledan_usbl::USBL>("Informations", 1000);
+    seatrac.pub = usbl_info_pub;
+    seatrac.log.open("src/guerledan_usbl/logs/October_27_"+current_time()+".dat");
+    seatrac.log<<"LOG: northing, easting, depth, azimith, elevation, range, Local depth"<<std::endl;
 
-    const char* device = "/dev/ttyUSB0";
-    if(argc > 1) device = argv[1];
+    command::ping_send(seatrac, BEACON_ID_15,MSG_REQU);
+    getchar();
+    seatrac.log.close();
 
-    AsyncService service;
-    MyDriver seatrac(service.io_service(), device);
-    seatrac.enable_io_dump();
-
-    service.start();
-    
-    ros::Publisher chatter_pub = n.advertise<guerledan_usbl::USBL>("Informations", 1000);
-    guerledan_usbl::USBL USBL_info_message;
-    ofstream log;
-    log.open("src/guerledan_usbl/logs/October_11_"+current_time()+".dat");
-    log<<"LOG: northing, easting, depth, azimith, elevation, range, Local depth"<<endl;
-    while (ros::ok()){
-        command::ping_send(seatrac, BEACON_ID_1, MSG_REQU);
-        if (seatrac.data_available)
-        {
-            log_write(log,seatrac.lastResponse_);
-            write_message(USBL_info_message, seatrac.lastResponse_);
-            chatter_pub.publish(USBL_info_message);
-            seatrac.data_available =false;
-            ros::spinOnce();
-        }
-    }
-    log.close();
-    service.stop();
     return 0;
 }
-

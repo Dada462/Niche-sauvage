@@ -1,5 +1,5 @@
-cmake_minimum_required(VERSION 3.16.2)
-project(guerledan_usbl)
+cmake_minimum_required(VERSION 3.0.2)
+project(simulation)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 # add_compile_options(-std=c++11)
@@ -8,36 +8,15 @@ project(guerledan_usbl)
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
-    geometry_msgs
-    message_generation
-    message_runtime
-    roscpp
-    rospy
-    std_msgs
-    tf
-    tf2
-    tf2_ros
+  roscpp
+  rospy
+  std_msgs
+  geographic_msgs
+  sensor_msgs
+  visualization_msgs
+  geometry_msgs
+  nav_msgs
 )
-
-
-if(NOT TARGET seatrac_driver)
-    find_package(seatrac_driver QUIET)
-    if(NOT TARGET seatrac_driver)
-        include(FetchContent)
-        FetchContent_Declare(seatrac_driver
-            GIT_REPOSITORY https://gitlab.ensta-bretagne.fr/narvorpi/seatrac_driver.git
-            GIT_TAG        master
-        )
-        FetchContent_MakeAvailable(seatrac_driver)
-    endif()
-endif()
-
-# add_executable(driver driver.cpp)
-# add_executable(helloworld helloworld.cpp)
-
-# target_link_libraries(driver PRIVATE
-#     seatrac_driver
-# )
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
@@ -73,10 +52,11 @@ endif()
 ##   * add every package in MSG_DEP_SET to generate_messages(DEPENDENCIES ...)
 
 ## Generate messages in the 'msg' folder
-add_message_files(
-    FILES 
-    USBL.msg
-)
+# add_message_files(
+#   FILES
+#   Message1.msg
+#   Message2.msg
+# )
 
 ## Generate services in the 'srv' folder
 # add_service_files(
@@ -93,11 +73,10 @@ add_message_files(
 # )
 
 ## Generate added messages and services with any dependencies listed here
-generate_messages(
-  DEPENDENCIES
-  std_msgs  # Or other packages containing msgs
-  geometry_msgs
-)
+# generate_messages(
+#   DEPENDENCIES
+#   std_msgs  # Or other packages containing msgs
+# )
 
 ################################################
 ## Declare ROS dynamic reconfigure parameters ##
@@ -130,7 +109,7 @@ generate_messages(
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
 #  INCLUDE_DIRS include
-#  LIBRARIES guerledan_usbl
+#  LIBRARIES simulation
 #  CATKIN_DEPENDS other_catkin_pkg
 #  DEPENDS system_lib
 )
@@ -143,12 +122,12 @@ catkin_package(
 ## Your package locations should be listed before other locations
 include_directories(
 # include
-${catkin_INCLUDE_DIRS}
+# ${catkin_INCLUDE_DIRS}
 )
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
-#   src/${PROJECT_NAME}/guerledan_usbl.cpp
+#   src/${PROJECT_NAME}/simulation.cpp
 # )
 
 ## Add cmake target dependencies of the library
@@ -159,12 +138,8 @@ ${catkin_INCLUDE_DIRS}
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
+# add_executable(${PROJECT_NAME}_node src/simulation_node.cpp)
 
-#add_executable(USBL_pub src/ROS_USBL_Message_pub.cpp)
-# add_executable(USBL_pub_improved src/ROS_USBL_Message_pub_improved.cpp)
-add_executable(USBL_pub_2 src/ROS_USBL_Message_pub.cpp)
-add_executable(helloworld src/examples/helloworld.cpp)
-add_executable(simple_pinger src/examples/simple_pinger.cpp)
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
 ## target back to the shorter version for ease of user use
@@ -176,29 +151,8 @@ add_executable(simple_pinger src/examples/simple_pinger.cpp)
 # add_dependencies(${PROJECT_NAME}_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
-# target_link_libraries(main PUBLIC ${CODAC_LIBRARIES} Ibex::ibex ${CODAC_LIBRARIES} Ibex::ibex)
-#target_link_libraries(USBL_pub PRIVATE
-#    seatrac_driver
-#    ${catkin_LIBRARIES}
-#)
-target_link_libraries(USBL_pub_2 PRIVATE
-    seatrac_driver
-    ${catkin_LIBRARIES}
-)
-
-# target_link_libraries(USBL_pub_improved PRIVATE
-#     seatrac_driver
-#     ${catkin_LIBRARIES}
-# )
-
-target_link_libraries(simple_pinger PRIVATE seatrac_driver)
-
-
-# add_executable(driver driver.cpp)
-# add_executable(helloworld helloworld.cpp)
-
-# target_link_libraries(driver PRIVATE
-#     seatrac_driver
+# target_link_libraries(${PROJECT_NAME}_node
+#   ${catkin_LIBRARIES}
 # )
 
 #############
@@ -248,7 +202,7 @@ target_link_libraries(simple_pinger PRIVATE seatrac_driver)
 #############
 
 ## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_guerledan_usbl.cpp)
+# catkin_add_gtest(${PROJECT_NAME}-test test/test_simulation.cpp)
 # if(TARGET ${PROJECT_NAME}-test)
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 # endif()
