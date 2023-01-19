@@ -1,11 +1,11 @@
 
 sudo apt install -y ros-noetic-mavlink \
+ros-noetic-geographic-msgs \
  geographiclib-tools \
  python3-catkin-tools \
  python3-rosinstall-generator \
  python3-osrf-pycommon \
  sshpass
-
 
 cd $HOME/catkin_ws/src
 git clone https://github.com/mavlink/mavros.git
