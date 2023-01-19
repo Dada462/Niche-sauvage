@@ -168,7 +168,7 @@ def ROV_movement(msg0):
             channel[i] = 2000*numpy.sign(channel[i]) 
 
     msg = OverrideRCIn()
-    msg.channels = channel 
+    msg.channels = channel
     #print(channel)
     
 
@@ -459,6 +459,7 @@ if __name__ == '__main__':
             
             
         msg[8] = pwm_light
+        
 
 
         
