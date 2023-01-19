@@ -1,5 +1,5 @@
 <launch>
-	<node name="tracker" pkg="qr_code_detect" type="traitement_image.py" output="screen"/>
+	<node name="aruco_detection" pkg="qr_code_detect" type="aruco_test.py" output="screen"/>
 	
 	
 </launch>

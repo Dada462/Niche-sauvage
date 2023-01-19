@@ -16,7 +16,7 @@ def main():
     udp_port = rospy.get_param("/bluerov_video/udp_port", 5600)
     
 
-    video = Video.Video(udp_port)
+    video = Video.Video(5600)
 
     pub = rospy.Publisher('bluerov_camera', Image, queue_size=10)
     rate = rospy.Rate(20) 
