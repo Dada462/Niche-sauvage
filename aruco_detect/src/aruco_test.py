@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import sys
 import rospy
+import rospkg
 from std_msgs.msg import Float64
 from std_msgs.msg import String
 from sensor_msgs.msg import Image
@@ -116,8 +117,12 @@ def listener_and_talker():
         rate.sleep()
 
 if __name__ == '__main__':
-    mtx = np.load("/home/hugo/projet_niche/src/Niche-sauvage/qr_code_detect/src/calibration_cam_bluerov/camera_matrix.npy")           ##indiquer les valeurs de la calibration de la camera
-    dist = np.load("/home/hugo/projet_niche/src/Niche-sauvage/qr_code_detect/src/calibration_cam_bluerov/distortion_coeffs.npy")
+    rospack = rospkg.RosPack()
+    rospack.list() 
+    pack_path = rospack.get_path('qr_code_detect')
+
+    mtx = np.load(pack_path+"/src/calibration_camera/camera_matrix.npy")          ##indiquer les valeurs de la calibration de la camera
+    dist = np.load(pack_path+"/src/calibration_camera/distortion_coeffs.npy")
     rvecs = [[[0,0,0]]]
     tvecs = [[[0,0,0]]]
     ids  = -1

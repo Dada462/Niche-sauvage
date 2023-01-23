@@ -1,4 +1,5 @@
 <launch>
+	<node name="aruco_detection" pkg="aruco_detect" type="aruco_test.py" output="screen"/>
 	<node name="aruco_commande" pkg="commande_rov_aruco" type="commande.py" output="screen"/>
 	
 </launch>
