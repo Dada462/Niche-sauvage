@@ -13,7 +13,7 @@ objp[:,:2] = np.mgrid[0:9,0:9].T.reshape(-1,2)*0.02479                          
 # Arrays to store object points and image points from all the images.
 objpoints = [] # 3d point in real world space
 imgpoints = [] # 2d points in image plane.
-images = glob.glob('calibration_camera/*.png')
+images = glob.glob('calibration_cam_bluerov/*.png')
 for fname in images:
     img = cv.imread(fname)
     gray = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
@@ -35,6 +35,6 @@ ret, mtx, dist, rvecs, tvecs = cv.calibrateCamera(objpoints, imgpoints, gray.sha
 print("Camera matrix:\n", mtx)
 print("Distortion coefficients:\n", dist)
 
-np.save("calibration_camera/camera_matrix", mtx)
-np.save("calibration_camera/distortion_coeffs", dist)
+np.save("calibration_cam_bluerov/camera_matrix", mtx)
+np.save("calibration_cam_bluerov/distortion_coeffs", dist)
 

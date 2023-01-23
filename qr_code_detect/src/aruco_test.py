@@ -55,11 +55,13 @@ def callback(data):
     arucoParameters = aruco.DetectorParameters_create()
     corners, ids, rejected_img_points = aruco.detectMarkers(gray, aruco_dict, parameters=arucoParameters)
     print('ids =', ids)
-
+    
     cv_image = aruco.drawDetectedMarkers(cv_image, corners)
 
     global rvecs
     global tvecs
+    global msg
+    global msg_id
     rvecs, tvecs, _ = aruco.estimatePoseSingleMarkers(corners, size_marker, mtx, dist)
     print(tvecs,'et',rvecs)
  
@@ -67,10 +69,12 @@ def callback(data):
         #for i in range(len(tvecs)):                                                                  ##
             #length_of_axis = 0.10                                                                    ##
             #cv_image = aruco.drawFrameAxis(cv_image, mtx, dist, rvecs[i], tvecs[i], length_of_axis)  ##NE MARCHE PAS !!!
-        global msg
-
+        
         msg = bridge.cv2_to_imgmsg(cv_image, "bgr8") #rossification du message
         msg_id = ids[0][0]
+    else : 
+        msg_id = -1
+
     return 1
 
 def listener_and_talker():
@@ -117,7 +121,7 @@ if __name__ == '__main__':
     
     rvecs = [[[0,0,0]]]
     tvecs = [[[0,0,0]]]
-    ids  = 0
+    ids  = -1
     msg = Image()
     msg_pose = PoseStamped()
     msg_id = Float64()

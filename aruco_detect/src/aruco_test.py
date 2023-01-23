@@ -60,6 +60,8 @@ def callback(data):
 
     global rvecs
     global tvecs
+    global msg
+    global msg_id
     rvecs, tvecs, _ = aruco.estimatePoseSingleMarkers(corners, size_marker, mtx, dist)
     print(tvecs,'et',rvecs)
  
@@ -67,17 +69,19 @@ def callback(data):
         #for i in range(len(tvecs)):                                                                  ##
             #length_of_axis = 0.10                                                                    ##
             #cv_image = aruco.drawFrameAxis(cv_image, mtx, dist, rvecs[i], tvecs[i], length_of_axis)  ##NE MARCHE PAS !!!
-        global msg
-
+        
         msg = bridge.cv2_to_imgmsg(cv_image, "bgr8") #rossification du message
         msg_id = ids[0][0]
+    else : 
+        msg_id = -1
+
     return 1
 
 def listener_and_talker():
     
     rospy.init_node('aruco_detection', anonymous=True)
 
-    rospy.Subscriber("/webcam/image_raw", Image, callback)   #ou /webcam/image_raw  pour tester  sinon bluerov_camera pour le robot
+    rospy.Subscriber("bluerov_camera", Image, callback)   #ou /webcam/image_raw  pour tester  sinon bluerov_camera pour le robot
 
     #spin() simply keeps python from exiting until this node is stopped
     #rospy.spin()
@@ -112,11 +116,11 @@ def listener_and_talker():
         rate.sleep()
 
 if __name__ == '__main__':
-    mtx = np.load("/home/hugo/projet_niche/src/Niche-sauvage/qr_code_detect/src/calibration_camera/camera_matrix.npy")           ##indiquer les valeurs de la calibration de la camera
-    dist = np.load("/home/hugo/projet_niche/src/Niche-sauvage/qr_code_detect/src/calibration_camera/distortion_coeffs.npy")
+    mtx = np.load("/home/hugo/projet_niche/src/Niche-sauvage/qr_code_detect/src/calibration_cam_bluerov/camera_matrix.npy")           ##indiquer les valeurs de la calibration de la camera
+    dist = np.load("/home/hugo/projet_niche/src/Niche-sauvage/qr_code_detect/src/calibration_cam_bluerov/distortion_coeffs.npy")
     rvecs = [[[0,0,0]]]
     tvecs = [[[0,0,0]]]
-    ids  = 0
+    ids  = -1
     msg = Image()
     msg_pose = PoseStamped()
     msg_id = Float64()

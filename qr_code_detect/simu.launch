@@ -1,5 +1,4 @@
 <launch>
 	<node name="aruco_detection" pkg="qr_code_detect" type="aruco_test.py" output="screen"/>
 	
-	
 </launch>

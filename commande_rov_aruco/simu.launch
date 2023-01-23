@@ -1,0 +1,4 @@
+<launch>
+	<node name="aruco_commande" pkg="commande_rov_aruco" type="commande.py" output="screen"/>
+	
+</launch>
