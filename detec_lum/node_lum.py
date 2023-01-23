@@ -1,6 +1,12 @@
+#!/usr/bin/env python
+# # license removed for brevity
+import rospy
+from sensor_msgs.msg import Image
+from geometry_msgs.msg import Pose
 import cv2
 import numpy as np
 import time
+
 
 def detec_(image):
 
@@ -73,7 +79,7 @@ def consigne_verticale(cercles, dim, nb_lum):
             v_moy += c[1]
         v_moy = v_moy/len(cercles)
         if abs(v_moy-(dim[1]/2)) > 50:
-            consigne = v_moy-(dim[1]/2)
+            consigne = (dim[1]/2) - v_moy
     return consigne
 
 def consigne_horizontale(cercles, dim, nb_lum):
@@ -98,7 +104,7 @@ def consigne_horizontale(cercles, dim, nb_lum):
             h_moy += c[1]
         h_moy = h_moy/len(cercles)
         if abs(h_moy-(dim[0]/2)) > 50:
-            consigne = h_moy-(dim[0]/2)
+            consigne = (dim[0]/2) - h_moy
     return consigne
 
 def consigne_rotation(cercles, nb_lum):
@@ -122,7 +128,7 @@ def consigne_rotation(cercles, nb_lum):
         l_cercle = sorted(cercles, key=lambda item: (item[0], item[1]))
         diff = 0
         for i in range(len(l_cercle)-1):
-            diff += l_cercle[i] - l_cercle[i+1]
+            diff += l_cercle[i][1] - l_cercle[i+1][1]
         if abs(diff) > 50:
             if diff < 0:
                 consigne = -50
@@ -131,10 +137,7 @@ def consigne_rotation(cercles, nb_lum):
     return consigne
 
 cap = cv2.VideoCapture("detec_lum/img/expedition_niche_.mp4")
-#/home/potinl/Documents/PythonProjects/Niche-sauvage/detec_lum/img/expedition_niche_.mp4
 
-#cap = cv2.VideoCapture(0)
-# consigne (z vers le haut, x vers l'avant et y vers la gauche, rotation positive vers la gauche)
 i = 0
 echelle = 0.5
 
@@ -168,91 +171,25 @@ cap.release()
 cv2.destroyAllWindows()
 
 
-"""
-image1 = cv2.imread("/home/potinl/PycharmProjects/Niche-sauvage/detec_lum/img/lumiere7.png")
-new_image1 = detec_(image1)
-cercles1 = forme(image1, new_image1)
-blank = np.zeros((new_image1.shape), np.uint8)
-print(cercles1)
-try:
-    for pt in cercles1[0]:
-        #print("aaaa")
-        a, b, r = pt[0], pt[1], pt[2]
-        #print(a,b,r)
-        cv2.circle(blank, (a, b), r, (255, 0, 0), 2)
-        cv2.circle(image1, (a, b), r, (0, 0, 255), 2)
-except:
-    pass
-image2 = cv2.imread("/home/potinl/PycharmProjects/Niche-sauvage/detec_lum/img/lumiere2.png")
-new_image2 = detec_(image2)
-cercles2 = forme(image2, new_image2)
-print(cercles2)
-try:
-    for pt in cercles2[0]:
-        a, b, r = pt[0], pt[1], pt[2]
-        cv2.circle(image2, (a, b), r, (0, 0, 255), 2)
-except:
-    pass
-image3 = cv2.imread("/home/potinl/PycharmProjects/Niche-sauvage/detec_lum/img/lumiere3.png")
-new_image3 = detec_(image3)
-cercles3 = forme(image3, new_image3)
-try:
-    for pt in cercles3[0]:
-        a, b, r = pt[0], pt[1], pt[2]
-        cv2.circle(image3, (a, b), r, (0, 0, 255), 2)
-except:
-    pass
-image4 = cv2.imread("/home/potinl/PycharmProjects/Niche-sauvage/detec_lum/img/lumiere4.png")
-new_image4 = detec_(image4)
-cercles4 = forme(image4, new_image4)
-try:
-    for pt in cercles4[0]:
-        a, b, r = pt[0], pt[1], pt[2]
-        cv2.circle(image4, (a, b), r, (0, 0, 255), 2)
-except:
-    pass
-image5 = cv2.imread("/home/potinl/PycharmProjects/Niche-sauvage/detec_lum/img/lumiere5.png")
-new_image5 = detec_(image5)
-cercles5 = forme(image5, new_image5)
-try:
-    for pt in cercles5[0]:
-        a, b, r = pt[0], pt[1], pt[2]
-        cv2.circle(image5, (a, b), r, (0, 0, 255), 2)
-except:
-    pass
-image6 = cv2.imread("/home/potinl/PycharmProjects/Niche-sauvage/detec_lum/img/lumiere6.png")
-new_image6 = detec_(image6)
-cercles6 = forme(image6, new_image6)
-try:
-    for pt in cercles6[0]:
-        a, b, r = pt[0], pt[1], pt[2]
-        cv2.circle(image6, (a, b), r, (0, 0, 255), 2)
-except:
-    pass
-
-cv2.imshow("lumiere1", image1)
-cv2.imshow("lumiere2", image2)
-cv2.imshow("lumiere3", image3)
-cv2.imshow("lumiere4", image4)
-cv2.imshow("lumiere5", image5)
-cv2.imshow("lumiere6", image6)
-
-cv2.imshow("binaire_ lumiere1", new_image1)
-#cv2.imshow("binaire_ lumiere2", new_image2)
-#cv2.imshow("binaire_ lumiere3", new_image3)
-#cv2.imshow("binaire_ lumiere4", new_image4)
-#cv2.imshow("binaire_ lumiere5", new_image5)
-#cv2.imshow("binaire_ lumiere6", new_image6)
-
-cv2.waitKey(0)
-cv2.destroyAllWindows()
+def image_callback(msg):
+    global current_frame
+    current_frame = self.br.imgmsg_to_cv2(msg)
 
 
-# reste à faire: 
-# estimation position par rapport aux lumières
-# utilisation de la direction des 3 lumières ? pour savoir la position du robot sur un plan horizontal
-# droite montant de gauche vers droite, on est à gauche, droite descendant de gauche vers droite, on est à droite
-# utilisation de la 4e lumière pour bien se positionner en hauteur
-# limitation du nombre de lumière (lumière saturante)
-# 
-"""
+
+def talker():
+    rospy.init_node('detec_lum', anonymous=True)
+    pub = rospy.Publisher('consigne_vitesse', Pose, queue_size=10)
+    rospy.Subscriber("blue_rov_camera", Image, image_callback) 
+    rate = rospy.Rate(10) # 10hz
+    while not rospy.is_shutdown():
+        
+        pub.publish()
+        rate.sleep()
+
+
+if __name__ == '__main__':
+    try:
+        talker()
+    except rospy.ROSInterruptException:
+        pass
