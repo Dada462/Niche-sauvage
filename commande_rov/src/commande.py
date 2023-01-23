@@ -1,5 +1,6 @@
 import sys
 import rospy
+import math
 from std_msgs.msg import Float64
 from std_msgs.msg import String
 from sensor_msgs.msg import Image
@@ -10,36 +11,36 @@ import numpy as np
 import cv2
 import cv2.aruco as aruco
 
-bridge = CvBridge()
 
-def get_quaternion_from_euler(roll, pitch, yaw):
-
-    """
-    Convert an Euler angle to a quaternion.
-    
-    Input
-    :param roll: The roll (rotation around x-axis) angle in radians.
-    :param pitch: The pitch (rotation around y-axis) angle in radians.
-    :param yaw: The yaw (rotation around z-axis) angle in radians.
-    
-    Output
-    :return qx, qy, qz, qw: The orientation in quaternion [x,y,z,w] format
-    """
-    qx = np.sin(roll/2) * np.cos(pitch/2) * np.cos(yaw/2) - np.cos(roll/2) * np.sin(pitch/2) * np.sin(yaw/2)
-    qy = np.cos(roll/2) * np.sin(pitch/2) * np.cos(yaw/2) + np.sin(roll/2) * np.cos(pitch/2) * np.sin(yaw/2)
-    qz = np.cos(roll/2) * np.cos(pitch/2) * np.sin(yaw/2) - np.sin(roll/2) * np.sin(pitch/2) * np.cos(yaw/2)
-    qw = np.cos(roll/2) * np.cos(pitch/2) * np.cos(yaw/2) + np.sin(roll/2) * np.sin(pitch/2) * np.sin(yaw/2)
-    
-    return [qx, qy, qz, qw]
-
+def euler_from_quaternion(x, y, z, w):
+        """
+        Convert a quaternion into euler angles (roll, pitch, yaw)
+        roll is rotation around x in radians (counterclockwise)
+        pitch is rotation around y in radians (counterclockwise)
+        yaw is rotation around z in radians (counterclockwise)
+        """
+        t0 = +2.0 * (w * x + y * z)
+        t1 = +1.0 - 2.0 * (x * x + y * y)
+        roll_x = math.atan2(t0, t1)
+     
+        t2 = +2.0 * (w * y - z * x)
+        t2 = +1.0 if t2 > +1.0 else t2
+        t2 = -1.0 if t2 < -1.0 else t2
+        pitch_y = math.asin(t2)
+     
+        t3 = +2.0 * (w * z + x * y)
+        t4 = +1.0 - 2.0 * (y * y + z * z)
+        yaw_z = math.atan2(t3, t4)
+     
+        return roll_x, pitch_y, yaw_z # in radians
 
 def callback(data):
     
-    try:
-      cv_image = bridge.imgmsg_to_cv2(data, "bgr8")
-    except CvBridgeError as e:
-      print(e)
 
+    x = data.pose.position.x
+    y = data.pose.position.y
+    z = data.pose.position.z
+    roll_x, pitch_y, yaw_z = euler_from_quaternion(data.orientation.x,data.orientation.x,data.orientation.x,data.orientation.x)
     mtx = np.load("camera_calibration/camera_matrix.npy")           ##indiquer les valeurs de la calibration de la camera
     dist = np.load("camera_calibration/distortion_coeffs.npy")
     length = 0.15
@@ -66,16 +67,16 @@ def callback(data):
 
 def listener_and_talker():
     
-    rospy.init_node('aruco_detection', anonymous=True)
+    rospy.init_node('aruco_commande', anonymous=True)
 
-    rospy.Subscriber("bluerov_camera", Image, callback)
+    rospy.Subscriber("bluerov_pose_aruco", Pose, callback)
 
     #spin() simply keeps python from exiting until this node is stopped
     #rospy.spin()
 
 
-    pub = rospy.Publisher('bluerov_camera_aruco', Image, queue_size=10)
-    pub2 = rospy.Publisher('bluerov_pose_aruco', Pose)            ## TO DO : Création de son propre message pour ajouter l'id du marqueur et connaitre type de l'ids
+    pub = rospy.Publisher('bluerov_commande_suivi_aruco', Message, queue_size=10)
+    
     rate = rospy.Rate(20) 
     
     
