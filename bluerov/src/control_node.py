@@ -132,6 +132,7 @@ def callback_IMU(data):
        
 def callback_commande(data):
     global command
+    command = data
     # button = [0,0,0,0,0,0,0,0,0,0,0]  # A, B,Y,Z, LH , RH , back, start, ?, L3, R3
     # Jaxes = [0,0,0,0,0,0,0,0]   # (gauche gauche(1)/droite(-1), gauche haut(1)/bas(-1), ? , droite gauche(1)/droite(-1), droite haut(1)/bas(-1), ?, flèches gauche(1)/droite(-1), flèches haut(1)/bas(-1))
 
@@ -202,14 +203,16 @@ def set_commande(data):
 
     ############# deplacement et cap
     
-    if data.pose.position.z < 0 :
-        button[4] = abs(data.pose.position.z) # LH
-    elif data.pose.position.z > 0 :
-        button[5] = data.pose.position.z # RH
+    if data.pose.position.z > 0 :
+        button[4] = data.pose.position.z # LH # monter lentement
+        print("commande monte")
+    elif data.pose.position.z < 0 :
+        button[5] = data.pose.position.z # RH # descend lentement
+        print("commande descend")
 
     Jaxes[6] = data.pose.position.y # flèches gauche(1)/droite(-1)
 
-    Jaxes[7] = data.pose.position.y # flèches haut(1)/bas(-1)
+    Jaxes[7] = data.pose.position.x # flèches haut(1)/bas(-1)
 
     Jaxes[0] = data.pose.orientation.z # gauche gauche(1)/droite(-1)
 
@@ -217,7 +220,9 @@ def set_commande(data):
 
     button[7] = data.arming # arming
 
-    val_pwm,pwm_light = data.power, data.light
+    val_pwm,pwm_light = data.power, data.light # engine power and light
+
+    # print (button, Jaxes)
     return val_pwm,pwm_light
 
 
@@ -285,18 +290,19 @@ if __name__ == '__main__':
 #        print('profondeur = ', altitude)
                                       
         
-        if frame_id_old != frame_id:
+        # if frame_id_old != frame_id:
+        if True:
         
             frame_id_old = frame_id
-            
+
             if (button[7] == 1)&(test_arm == 0):
-            #    command.arming(True) 
+            #    command.arming(True)
                 
                 armService = rospy.ServiceProxy('/mavros/cmd/arming', mavros_msgs.srv.CommandBool)
                 armService(True)
                 print('armed...') 
                 test_arm = 1
-            elif (button[7] == 1)&(test_arm == 1):
+            elif (button[7] == 0)&(test_arm == 1):
                 test_arm = 0
             #    command.arming(False) 
                 armService = rospy.ServiceProxy('/mavros/cmd/arming', mavros_msgs.srv.CommandBool)
@@ -336,6 +342,7 @@ if __name__ == '__main__':
             if Jaxes[6] != 0:    # fleche droite/gauche
                 rot=int(-val_pwm*Jaxes[6]+1500 )
                 msg[5] = rot 
+                # print("Test X: ",Jaxes[6])
        #         if rot > 1500:
        #             print('-->')
        #         elif rot<1500:
@@ -366,6 +373,7 @@ if __name__ == '__main__':
             if Jaxes[7] != 0:  # fleche haut/bas
                 vit = int(val_pwm*Jaxes[7]+1500 )
                 msg[4] = vit 
+                # print("Test Y: ",Jaxes[7])
     #            if vit>1500:
     #                print('^')
     #                print('|') 
@@ -456,15 +464,15 @@ if __name__ == '__main__':
                 
 #             file2 = '/home/pi/lights/test.txt'
         
-#             # pour le bluerov 1
-#             pwm_light = pwm_light+100
-#             msg1[1] += 1
-#             # if (pwm_light > 1800):
-#             	# msg1[1] = 2  # communication a l'affichage
-#             if (pwm_light > 1900):
-#                 pwm_light = 1000
-#                 msg1[1] = 0
-#                 # msg1[1] = 0
+            # # pour le bluerov 1
+            # pwm_light = pwm_light+100
+            # msg1[1] += 1
+            # # if (pwm_light > 1800):
+            # 	# msg1[1] = 2  # communication a l'affichage
+            # if (pwm_light > 1900):
+            #     pwm_light = 1000
+            #     msg1[1] = 0
+            #     # msg1[1] = 0
 
 #             # on ecrit la valeur que l'on veut dans le fihcier test.txt      
 #             msg_lum = str(pwm_light) # 'test'
@@ -496,6 +504,7 @@ if __name__ == '__main__':
         
                 
         # remettre à zero les inputs des boutons
+        # print(button, Jaxes)
         button = [0,0,0,0,0,0,0,0,0,0,0]
         Jaxes = [0,0,0,0,0,0,0,0]
         t.sleep(0.1)

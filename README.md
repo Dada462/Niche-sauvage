@@ -2,6 +2,10 @@
 
 My awesome project
 
+## Dependancies
+
+Require Ubuntu 20.04 Ros noetic
+
 ## Install
 
 Install Qgroundcontrol
@@ -51,6 +55,8 @@ roslaunch bluerov run_joy_bluerov.launch
 ![](/images/manette_notice.png)
 
 - Run the bluerov with a node command replacing the joystick
+
+Control command had to be published on `commande`
 
 ``` bash
 roslaunch bluerov run_command_bluerov.launch 
