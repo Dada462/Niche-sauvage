@@ -52,9 +52,10 @@ def callback(data):
 
     gray = cv2.cvtColor(cv_image, cv2.COLOR_BGR2GRAY)
 
-    aruco_dict = aruco.Dictionary_get(aruco.DICT_4X4_50)         ##indiquer le dictionnaire aruco utilisé ici il s'agit du 4x4_50 !
-    arucoParameters = aruco.DetectorParameters_create()
-    corners, ids, rejected_img_points = aruco.detectMarkers(gray, aruco_dict, parameters=arucoParameters)
+    aruco_dict = aruco.getPredefinedDictionary(aruco.DICT_4X4_50)         ##indiquer le dictionnaire aruco utilisé ici il s'agit du 4x4_50 !
+    arucoParameters = aruco.DetectorParameters()
+    detector = aruco.ArucoDetector(aruco_dict, arucoParameters)
+    corners, ids, rejected_img_points = detector.detectMarkers(gray)
     print('ids =', ids)
 
     cv_image = aruco.drawDetectedMarkers(cv_image, corners)

@@ -55,12 +55,16 @@ def callback(data):
             print("on recule")
         if x > 0 :
             accel_x =-0.3 ##droite
+            print("a droite")
         if x < 0 :
             accel_x = 0.3##gauche
+            print("a gauche")
         if y > 0 :
             accel_y = -0.3##bas
+            print("en bas")
         if y < 0 :
             accel_y = 0.3##haut
+            print("en haut")
     else :
         accel_x = 0
         accel_y = 0
