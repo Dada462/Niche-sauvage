@@ -90,7 +90,7 @@ rosrun guerledan_usbl USBL_pub
 ## Use lights
 
 ``` bash
-roslaunch 
+rosrun detect_lum node_lum.py
 ```
 
 ## Use QR codes

@@ -7,6 +7,7 @@ import cv2
 import numpy as np
 import time
 from bluerov_msgs.msg import CommandBluerov
+from std_msgs.msg import Bool
 
 
 def detec_(image):
@@ -174,13 +175,15 @@ def consigne_rotation(cercles, nb_lum):
 # cv2.destroyAllWindows()
 
 command = CommandBluerov()
+is_lights = Bool()
 
 def image_callback(msg):
 
     global command
+    global is_lights
     echelle = 0.5
 
-    dim = [int(msg.shape[1]*echelle), int(msg.shape[0]*echelle)]
+    dim = [int(msg.shape[1]*echelle), int(msg.shape[0]*echelle)]--only-pkg-with-deps
     msg = cv2.resize(msg, dim, interpolation=cv2.INTER_AREA)
     new_image1 = detec_(msg)
     number_of_white_pix = np.sum(new_image1 == 255)
@@ -196,6 +199,10 @@ def image_callback(msg):
                 cons_hor = consigne_horizontale(cercles1[0], dim, nb_cercles)
                 cons_rot = consigne_rotation(cercles1[0], nb_cercles)
                 print("ver", cons_vert, "hor", cons_hor, "rot", cons_rot)
+                if nb_cercles > 0 :
+                    is_lights.data = True
+                else :
+                    is_lights.data = False
     
     cv2.imshow('output', msg)
     cv2.waitKey(2)
@@ -206,12 +213,14 @@ def image_callback(msg):
 
 def talker():
     rospy.init_node('detec_lum', anonymous=True)
-    pub = rospy.Publisher('consigne_lum', CommandBluerov, queue_size=10)
+    pub_command = rospy.Publisher('command_lights', CommandBluerov, queue_size=10)
+    pub_is_lights = rospy.Publisher('is_lights', Bool, queue_size=10)
     rospy.Subscriber("blue_rov_camera", Image, image_callback) 
     rate = rospy.Rate(10) # 10hz
     while not rospy.is_shutdown():
         global command
-        pub.publish(command)
+        pub_command.publish(command)
+        pub_is_lights.publish(is_lights)
 
         rate.sleep()
 
