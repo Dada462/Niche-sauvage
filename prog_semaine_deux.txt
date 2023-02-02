@@ -1,0 +1,101 @@
+SEMAINE 2 :
+
+Objectif principal :
+Réaliser un guidage (USBL + lumière + qr code aruco) complet vers l'intérieur de la cage
+
+
+Situations :
+
+
+Objectifs intermédiaires :
+Avoir une machine à état fonctionnelle
+Obtenir un retour graphique sur chaque mission
+Le blue rov arrive à se rapprocher de la cage (se possitionner devant) tout seul
+
+
+Lundi : ------------------------------------------------------------------------------------
+Matin ======================================================================================
+Objectifs :
+Déchargement du camion
+Installation du camp de base
+Montage de la cage
+Premiers tests des packages, checker que tout fonctionne 
+
+Réussi :
+
+
+Note:
+
+
+Aprem ======================================================================================
+Objectifs :
+Calibration de la caméra bluerov dans le lac de Guerledan
+Verification du controle par ROS et test avec controle simple
+
+Réussi :
+
+
+Note :
+
+
+Mardi : ------------------------------------------------------------------------------------
+Matin ======================================================================================
+Objectifs :
+
+Réussi :
+
+
+Aprem ======================================================================================
+Objectifs :
+
+
+Réussi :
+
+
+Note :
+
+
+Mercredi : ---------------------------------------------------------------------------------
+Matin ======================================================================================
+Objectifs :
+
+
+Réussi :
+
+
+Aprem ======================================================================================
+Objectifs : 
+
+
+Réussi :
+
+
+Note :
+
+
+Jeudi : ------------------------------------------------------------------------------------
+Matin ======================================================================================
+Objectifs : 
+
+
+Réussi :
+
+
+Aprem ======================================================================================
+Objectifs : 
+
+
+Réussi :
+
+
+Note :
+
+Vendredi : ---------------------------------------------------------------------------------
+Matin ======================================================================================
+Objectifs :
+ 
+
+Réussi :
+
+
+Note :
