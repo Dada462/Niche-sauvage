@@ -3,6 +3,7 @@ import sys
 import rospy
 from std_msgs.msg import Float64
 from std_msgs.msg import String
+from std_msgs.msg import Bool
 from sensor_msgs.msg import Image
 from geometry_msgs.msg import PoseStamped
 from cv_bridge import CvBridge, CvBridgeError
@@ -64,19 +65,21 @@ def callback(data):
     global tvecs
     global msg
     global msg_id
+    global msg_bool
     rvecs, tvecs, _ = aruco.estimatePoseSingleMarkers(corners, size_marker, mtx, dist)
     print(tvecs,'et',rvecs)
- 
+    msg_bool = False
+
     if(rvecs is not None and tvecs is not None):
         #for i in range(len(tvecs)):                                                                  ##
             #length_of_axis = 0.10                                                                    ##
             #cv_image = aruco.drawFrameAxis(cv_image, mtx, dist, rvecs[i], tvecs[i], length_of_axis)  ##NE MARCHE PAS !!!
-        
+        msg_bool = True
         msg = bridge.cv2_to_imgmsg(cv_image, "bgr8") #rossification du message
         msg_id = ids[0][0]
     else : 
         msg_id = -1
-
+    print("is_qrcode :",msg_bool)
     return 1
 
 def listener_and_talker():
@@ -92,7 +95,7 @@ def listener_and_talker():
     pub = rospy.Publisher('bluerov_camera_aruco', Image, queue_size=10)
     pub2 = rospy.Publisher('bluerov_pose_aruco', PoseStamped,queue_size=10)
     pub3 = rospy.Publisher('id_qr_code_aruco',Float64,queue_size=10)
-
+    pub4 = rospy.Publisher('is_qrcode',Bool,queue_size=10)
     rate = rospy.Rate(20) 
     
     
@@ -102,7 +105,7 @@ def listener_and_talker():
         global msg
         global msg_pose
         global msg_id
-
+        global msg_bool
         if(rvecs is not None and tvecs is not None):
             msg_pose.pose.position.x = tvecs[0][0][0]
             msg_pose.pose.position.y = tvecs[0][0][1]
@@ -115,6 +118,7 @@ def listener_and_talker():
         pub.publish(msg)
         pub2.publish(msg_pose)
         pub3.publish(msg_id)
+        pub4.publish(msg_bool)
         rate.sleep()
 
 if __name__ == '__main__':
@@ -127,7 +131,7 @@ if __name__ == '__main__':
     msg = Image()
     msg_pose = PoseStamped()
     msg_id = Float64()
-
+    msg_bool = Bool()
     listener_and_talker()
 
   
