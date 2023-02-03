@@ -12,6 +12,8 @@
 #include "std_msgs/Float64.h"
 #include "guerledan_usbl/USBL.h"
 
+#include <ros/package.h>
+
 using namespace narval::seatrac;
 
 void log_write(std::ofstream &log, messages::PingResp &data_response)
@@ -122,7 +124,9 @@ int main(int argc, char **argv)
     ros::NodeHandle n;
     ros::Publisher usbl_info_pub = n.advertise<guerledan_usbl::USBL>("Informations", 1000);
     seatrac.pub = usbl_info_pub;
-    seatrac.log.open("src/guerledan_usbl/logs/October_27_" + current_time() + ".dat");
+    std::string path = ros::package::getPath("guerledan_usbl");
+    seatrac.log.open(path + "/logs/October_27_" + current_time() + ".dat");
+    // seatrac.log.open("src/guerledan_usbl/logs/October_27_" + current_time() + ".dat");
     seatrac.log << "LOG: northing, easting, depth, azimith, elevation, range, Local depth" << std::endl;
 
     command::ping_send(seatrac, BEACON_ID_15, MSG_REQU);
