@@ -55,7 +55,7 @@ def callback(data):
 
     aruco_dict = aruco.getPredefinedDictionary(aruco.DICT_4X4_50)         ##indiquer le dictionnaire aruco utilisé ici il s'agit du 4x4_50 !
     arucoParameters = aruco.DetectorParameters()
-    detector = aruco.ArucoDetector(aruco_dict, arucoParameters)
+    detector = aruco.ArucoDetector(aruco_dict, arucoParameters)           ##ATTENTION : MISE A JOUR de la bibliotheque aruco : ce sont les nouvelles méthodes d'instanciation codée ici !!
     corners, ids, rejected_img_points = detector.detectMarkers(gray)
     print('ids =', ids)
 
@@ -70,15 +70,16 @@ def callback(data):
     print(tvecs,'et',rvecs)
     msg_bool = False
     if(rvecs is not None and tvecs is not None):
-        #for i in range(len(tvecs)):                                                                  ##
-            #length_of_axis = 0.10                                                                    ##
-            #cv_image = aruco.drawFrameAxis(cv_image, mtx, dist, rvecs[i], tvecs[i], length_of_axis)  ##NE MARCHE PAS !!!
+        for i in range(len(tvecs)):                                                                  
+            length_of_axis = 0.10                                                                    
+            cv_image = cv2.drawFrameAxes(cv_image, mtx, dist, rvecs[i,:,:], tvecs[i,:,:], length_of_axis)  
         msg_bool = True
-        msg = bridge.cv2_to_imgmsg(cv_image, "bgr8") #rossification du message
+        
         msg_id = ids[0][0]
     else : 
         msg_id = -1
     print("is_qrcode :",msg_bool)
+    msg = bridge.cv2_to_imgmsg(cv_image, "bgr8") #rossification du message
     return 1
 
 def listener_and_talker():

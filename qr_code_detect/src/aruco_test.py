@@ -56,7 +56,7 @@ def callback(data):
 
     aruco_dict = aruco.Dictionary_get(aruco.DICT_4X4_50)         ##indiquer le dictionnaire aruco utilisé ici il s'agit du 4x4_50 !
     arucoParameters = aruco.DetectorParameters_create()
-    corners, ids, rejected_img_points = aruco.detectMarkers(gray, aruco_dict, parameters=arucoParameters)
+    corners, ids, rejected_img_points = aruco.detectMarkers(gray, aruco_dict, parameters=arucoParameters)       ##ATTENTION : MISE A JOUR de la bibliotheque aruco : ce sont les ANCIENNES méthodes d'instanciation codée ici !!
     print('ids =', ids)
     
     cv_image = aruco.drawDetectedMarkers(cv_image, corners)
@@ -71,15 +71,16 @@ def callback(data):
     msg_bool = False
 
     if(rvecs is not None and tvecs is not None):
-        #for i in range(len(tvecs)):                                                                  ##
-            #length_of_axis = 0.10                                                                    ##
-            #cv_image = aruco.drawFrameAxis(cv_image, mtx, dist, rvecs[i], tvecs[i], length_of_axis)  ##NE MARCHE PAS !!!
+        for i in range(len(tvecs)):                                                                  
+            length_of_axis = 0.10                                                                    
+            cv_image = cv2.drawFrameAxes(cv_image, mtx, dist, rvecs[i,:,:], tvecs[i,:,:], length_of_axis)  
         msg_bool = True
-        msg = bridge.cv2_to_imgmsg(cv_image, "bgr8") #rossification du message
+        
         msg_id = ids[0][0]
     else : 
         msg_id = -1
     print("is_qrcode :",msg_bool)
+    msg = bridge.cv2_to_imgmsg(cv_image, "bgr8") #rossification du message
     return 1
 
 def listener_and_talker():
@@ -95,7 +96,7 @@ def listener_and_talker():
     pub = rospy.Publisher('bluerov_camera_aruco', Image, queue_size=10)
     pub2 = rospy.Publisher('bluerov_pose_aruco', PoseStamped,queue_size=10)
     pub3 = rospy.Publisher('id_qr_code_aruco',Float64,queue_size=10)
-    pub4 = rospy.Publisher('is_qrcode',Bool,queue_size=10)
+    pub4 = rospy.Publisher('is_qrcode',Bool,queue_size=10) #booleen de detection de qr_code
     rate = rospy.Rate(20) 
     
     
