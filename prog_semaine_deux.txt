@@ -29,9 +29,10 @@ Note:
 
 Aprem ======================================================================================
 Objectifs :
+Fin du montage de la cage
 Calibration de la caméra bluerov dans le lac de Guerledan
 Verification du controle par ROS et test avec controle simple
-
+Test retour imu et affichage
 Réussi :
 
 
@@ -41,14 +42,15 @@ Note :
 Mardi : ------------------------------------------------------------------------------------
 Matin ======================================================================================
 Objectifs :
-
+Test mission uniquement USBL : reussir à se rapprocher de la cage que avec USBL
+Test entrée en cage avec qrcode pour ajustement
 Réussi :
 
 
 Aprem ======================================================================================
 Objectifs :
-
-
+Test mission avec seulement lumière (potentielle approche avec USBL au début)
+Test entrée en cage avec qrcode pour ajustement
 Réussi :
 
 
@@ -58,14 +60,15 @@ Note :
 Mercredi : ---------------------------------------------------------------------------------
 Matin ======================================================================================
 Objectifs :
-
+Test entrée en cage avec qrcode 
 
 Réussi :
 
 
 Aprem ======================================================================================
 Objectifs : 
-
+Test entrée en cage qrcode
+Premier test complet de guidage (USBL + lumière + qrcode)
 
 Réussi :
 
