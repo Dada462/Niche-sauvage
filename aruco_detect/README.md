@@ -22,5 +22,7 @@ Topic published :
 
 "/id_qr_code_aruco" : publish the ID of the Aruco Marker
 
+"/is_qrcode" : publish a boolean if an Aruco marker is detect or not
+
 
 
