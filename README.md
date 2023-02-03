@@ -23,6 +23,13 @@ bash src/Niche-sauvage/install/install_mavros.sh
 
 ```
 
+Install QRcode driver
+
+``` bash
+bash src/Niche-sauvage/install/install_qr_code.sh 
+
+```
+
 Install USBL driver
 
 ``` bash
@@ -79,6 +86,19 @@ roslaunch bluerov play_topics.launch
 ``` bash
 rosrun guerledan_usbl USBL_pub
 ```
+
+## Use lights
+
+``` bash
+rosrun detect_lum node_lum.py
+```
+
+## Use QR codes
+
+``` bash
+roslaunch 
+```
+
 ## Simulation
 
 Launch gazebo simulation :

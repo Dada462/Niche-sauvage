@@ -20,10 +20,8 @@ find_package(catkin REQUIRED COMPONENTS
   nav_msgs
   geographic_msgs
   visualization_msgs
-	
 )
 find_package(OpenCV)
-
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
@@ -114,7 +112,17 @@ find_package(OpenCV)
 ## LIBRARIES: libraries you create in this project that dependent projects also need
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
+catkin_package(
+#  INCLUDE_DIRS include
+#  LIBRARIES commande_rov_aruco
+#  CATKIN_DEPENDS roscpp rospy std_msgs
+#  DEPENDS system_lib
+)
 
+catkin_install_python(PROGRAMS
+  src/commande.py
+  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+)
 
 ###########
 ## Build ##
@@ -128,10 +136,9 @@ include_directories(
   ${OpenCV_INCLUDE_DIRS}
 )
 
-
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
-#   src/${PROJECT_NAME}/projet_voiture.cpp
+#   src/${PROJECT_NAME}/commande_rov_aruco.cpp
 # )
 
 ## Add cmake target dependencies of the library
@@ -142,7 +149,7 @@ include_directories(
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
-# add_executable(${PROJECT_NAME}_node src/projet_voiture_node.cpp)
+# add_executable(${PROJECT_NAME}_node src/commande_rov_aruco_node.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -206,7 +213,7 @@ include_directories(
 #############
 
 ## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_projet_voiture.cpp)
+# catkin_add_gtest(${PROJECT_NAME}-test test/test_commande_rov_aruco.cpp)
 # if(TARGET ${PROJECT_NAME}-test)
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 # endif()

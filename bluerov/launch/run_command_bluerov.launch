@@ -16,6 +16,8 @@
     <!-- Run command node -->
     <node name="control_node" pkg="bluerov" type="control_node.py" output="screen"/>
 
+    <node name="state_machine" pkg="bluerov" type="state_machine.py" output="screen"/>
+
     <!-- Display video -->
     <!-- <node name="MyProgram_camera" pkg="bluerov" type="Affichage_camera_launch_3.py" output="log"/> -->
 
@@ -32,7 +34,7 @@
     <include file="$(find bluerov_ros_camera)/launch/video.launch"/>
 
     <!-- USBL publisher -->
-    <node pkg="guerledan_usbl" type="USBL_pub" name="USBL_pub_node" output="screen"/>
+    <!-- <node pkg="guerledan_usbl" type="USBL_pub" name="USBL_pub_node" output="screen"/> -->
 
     <!-- Save rosbag -->
     <!-- <include file="$(find bluerov)/launch/save_topics.launch">

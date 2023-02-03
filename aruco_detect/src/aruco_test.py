@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import sys
 import rospy
+import rospkg
 from std_msgs.msg import Float64
 from std_msgs.msg import String
 from std_msgs.msg import Bool
@@ -52,9 +53,10 @@ def callback(data):
 
     gray = cv2.cvtColor(cv_image, cv2.COLOR_BGR2GRAY)
 
-    aruco_dict = aruco.Dictionary_get(aruco.DICT_4X4_50)         ##indiquer le dictionnaire aruco utilisé ici il s'agit du 4x4_50 !
-    arucoParameters = aruco.DetectorParameters_create()
-    corners, ids, rejected_img_points = aruco.detectMarkers(gray, aruco_dict, parameters=arucoParameters)
+    aruco_dict = aruco.getPredefinedDictionary(aruco.DICT_4X4_50)         ##indiquer le dictionnaire aruco utilisé ici il s'agit du 4x4_50 !
+    arucoParameters = aruco.DetectorParameters()
+    detector = aruco.ArucoDetector(aruco_dict, arucoParameters)
+    corners, ids, rejected_img_points = detector.detectMarkers(gray)
     print('ids =', ids)
 
     cv_image = aruco.drawDetectedMarkers(cv_image, corners)
@@ -120,8 +122,12 @@ def listener_and_talker():
         rate.sleep()
 
 if __name__ == '__main__':
-    mtx = np.load("/home/hugo/projet_niche/src/Niche-sauvage/qr_code_detect/src/calibration_cam_bluerov/camera_matrix.npy")           ##indiquer les valeurs de la calibration de la camera
-    dist = np.load("/home/hugo/projet_niche/src/Niche-sauvage/qr_code_detect/src/calibration_cam_bluerov/distortion_coeffs.npy")
+    rospack = rospkg.RosPack()
+    rospack.list() 
+    pack_path = rospack.get_path('qr_code_detect')
+
+    mtx = np.load(pack_path+"/src/calibration_camera/camera_matrix.npy")          ##indiquer les valeurs de la calibration de la camera
+    dist = np.load(pack_path+"/src/calibration_camera/distortion_coeffs.npy")
     rvecs = [[[0,0,0]]]
     tvecs = [[[0,0,0]]]
     ids  = -1
