@@ -32,7 +32,7 @@
     <include file="$(find bluerov_ros_camera)/launch/video.launch"/>
 
     <!-- USBL publisher -->
-    <node pkg="guerledan_usbl" type="USBL_pub" name="USBL_pub_node" output="screen"/>
+    <!-- <node pkg="guerledan_usbl" type="USBL_pub" name="USBL_pub_node" output="screen"/> -->
 
     <!-- Save rosbag -->
     <!-- <include file="$(find bluerov)/launch/save_topics.launch">
