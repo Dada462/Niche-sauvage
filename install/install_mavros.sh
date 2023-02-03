@@ -5,6 +5,7 @@ ros-noetic-geographic-msgs \
  python3-catkin-tools \
  python3-rosinstall-generator \
  python3-osrf-pycommon \
+ ros-noetic-joy \
  sshpass
 
 cd $HOME/catkin_ws/src
