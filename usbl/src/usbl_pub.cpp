@@ -10,7 +10,7 @@
 #include "ros/ros.h"
 #include "std_msgs/String.h"
 #include "std_msgs/Float64.h"
-#include "usbl/USBL.h"
+#include "usbl/Usbl.h"
 
 using namespace narval::seatrac;
 
@@ -46,8 +46,9 @@ std::string current_time()
     return s;
 }
 
-void write_message(usbl::USBL &data, const narval::seatrac::messages::PingResp &data_response)
+void write_message(usbl::Usbl &data, const narval::seatrac::messages::PingResp &data_response)
 {
+    data.header.stamp = ros::Time::now();
     data.azimuth = float(data_response.acoFix.usbl.azimuth) / 10;
     data.elevation = float(data_response.acoFix.usbl.elevation) / 10;
     data.range = float(data_response.acoFix.range.dist) / 10;
@@ -71,7 +72,7 @@ public:
         req.pingType = pingType;
         this->send(sizeof(req), (const uint8_t *)&req);
     }
-    usbl::USBL USBL_info_message;
+    usbl::Usbl USBL_info_message;
     messages::PingResp response_data;
     std::ofstream log;
     ros::Publisher pub;
@@ -85,7 +86,7 @@ public:
         switch (msgId)
         {
         default:
-            // std::cout << "Got message BLABLA: " << msgId << std::endl
+            // std::cout << "Got message: " << msgId << std::endl
                     //   << std::flush;
             break;
         case CID_PING_ERROR:
@@ -120,7 +121,7 @@ int main(int argc, char **argv)
     MyDriver seatrac("/dev/ttyUSB0");
     ros::init(argc, argv, "USBL_pub_node");
     ros::NodeHandle n;
-    ros::Publisher usbl_info_pub = n.advertise<usbl::USBL>("USBL", 1000);
+    ros::Publisher usbl_info_pub = n.advertise<usbl::Usbl>("usbl", 1000);
     seatrac.pub = usbl_info_pub;
     seatrac.log.open("src/usbl/logs/October_27_" + current_time() + ".dat");
     seatrac.log << "LOG: northing, easting, depth, azimith, elevation, range, Local depth" << std::endl;

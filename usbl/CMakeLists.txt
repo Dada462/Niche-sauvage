@@ -57,7 +57,7 @@ endif()
 # # Generate messages in the 'msg' folder
 add_message_files(
   FILES
-  USBL.msg
+  Usbl.msg
 )
 
 # # Generate services in the 'srv' folder
