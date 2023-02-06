@@ -1,4 +1,6 @@
 
+pip install pyqtgraph
+
 cd $HOME
 # git clone https://gitlab.ensta-bretagne.fr/narvorpi/seatrac_driver.git
 git clone https://gitlab.ensta-bretagne.fr/poreere/seatrac_driver.git

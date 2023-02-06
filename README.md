@@ -87,6 +87,12 @@ roslaunch bluerov play_topics.launch
 rosrun usbl usbl_pub
 ```
 
+Display USBL command path:
+
+```bash
+rosrun mission_displayer MissionDisplayer.py
+```
+
 ## Use lights
 
 ``` bash
