@@ -17,6 +17,24 @@
     <node name="MyProgram" pkg="bluerov" type="JoyCommand_Christophe_vs4.py" output="screen"/>
     <node name="joy_node" pkg="joy" type="joy_node" output="screen"/>
 
+
+<!-- ############################################################################################################### -->
+
+    <!-- QRcode command -->
+    <!-- <include file="$(find commande_rov_aruco)/launch/simu.launch"/> -->
+
+    <!-- Lights command -->
+    <!-- <node name="detec_lum" pkg="detect_lum" type="node_lum.py" output="screen"/> -->
+
+    <!-- USBL command -->
+    <node name="USBL_pub_node" pkg="usbl" type="usbl_pub" output="screen"/>
+
+    <node name="usbl_data_viewer" pkg="mission_displayer" type="MissionDisplayer.py" output="screen"/>
+
+<!-- ############################################################################################################### -->
+
+
+
     <!-- Display video -->
     <!-- <node name="MyProgram_camera" pkg="bluerov" type="Affichage_camera_launch_3.py" output="log"/> -->
 
@@ -31,9 +49,6 @@
 
     <!-- Camera ROS -->
     <include file="$(find bluerov_ros_camera)/launch/video.launch"/>
-
-    <!-- USBL publisher -->
-    <node pkg="guerledan_usbl" type="USBL_pub" name="USBL_pub_node" output="screen"/>
 
     <!-- Save rosbag -->
     <!-- <include file="$(find bluerov)/launch/save_topics.launch">
