@@ -84,7 +84,13 @@ roslaunch bluerov play_topics.launch
 ## Use USBL
 
 ``` bash
-rosrun guerledan_usbl USBL_pub
+rosrun usbl usbl_pub
+```
+
+Display USBL command path:
+
+```bash
+rosrun mission_displayer MissionDisplayer.py
 ```
 
 ## Use lights
@@ -111,7 +117,7 @@ roslaunch simulation gazebo.launch
 - **Danut Pop**
 - **Hugo Reubrecht**
 - **Laurent Potin**
-- **Rémi Porée**
+- **Rémi Porée** [[on github.com](https://github.com/Remi-Tortue)]
 - Thomas Le Mézo
 - Christophe Viel
 - Pierre Narvor
