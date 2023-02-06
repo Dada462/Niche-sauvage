@@ -102,7 +102,7 @@ rosrun detect_lum node_lum.py
 ## Use QR codes
 
 ``` bash
-roslaunch 
+roslaunch commande_rov_aruco simu.launch
 ```
 
 ## Simulation

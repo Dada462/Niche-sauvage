@@ -183,7 +183,7 @@ def image_callback(msg):
     global is_lights
     echelle = 0.5
 
-    dim = [int(msg.shape[1]*echelle), int(msg.shape[0]*echelle)]--only-pkg-with-deps
+    dim = [int(msg.shape[1]*echelle), int(msg.shape[0]*echelle)] # --only-pkg-with-deps
     msg = cv2.resize(msg, dim, interpolation=cv2.INTER_AREA)
     new_image1 = detec_(msg)
     number_of_white_pix = np.sum(new_image1 == 255)
