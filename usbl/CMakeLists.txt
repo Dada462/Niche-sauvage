@@ -51,11 +51,12 @@ endif()
 # #     catkin_package(CATKIN_DEPENDS ...)
 # #   * uncomment the add_*_files sections below as needed
 # #     and list every .msg/.srv/.action file to be processed
-# #   * uncomment the generate_messages entry below
+# #   * uncomment the generate_messages entry belowCommandBluerov
 # #   * add every package in MSG_DEP_SET to generate_messages(DEPENDENCIES ...)
 
 # # Generate messages in the 'msg' folder
 add_message_files(
+  DIRECTORY msg
   FILES
   Usbl.msg
 )
@@ -220,3 +221,8 @@ target_link_libraries(usbl_pub PRIVATE
 
 # # Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
+
+install(
+  DIRECTORY include/${PROJECT_NAME}/
+  DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
+  FILES_MATCHING PATTERN "*.h")

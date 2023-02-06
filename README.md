@@ -84,7 +84,7 @@ roslaunch bluerov play_topics.launch
 ## Use USBL
 
 ``` bash
-rosrun guerledan_usbl USBL_pub_2
+rosrun usbl usbl_pub
 ```
 
 ## Use lights
