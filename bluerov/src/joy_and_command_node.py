@@ -98,8 +98,13 @@ def callback_joy(data):
     Jaxes_joy = data.axes
     frame_id_joy = data.header.seq
 
-    if button_joy[3] == 1:
-        use_joy = False
+    if button_joy[3] == 1: # If X
+        if use_joy:
+            use_joy = False
+            print("Control mode...")
+        else:
+            use_joy = True
+            print("Joy mode...")
     if use_joy == True:
         button = data.buttons
         Jaxes = data.axes
