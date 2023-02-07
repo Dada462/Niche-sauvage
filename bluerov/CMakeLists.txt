@@ -123,6 +123,7 @@ catkin_install_python(PROGRAMS
   src/display_data_for_navigation.py
   src/control_node.py
   src/state_machine.py
+  src/joy_and_command_node.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 

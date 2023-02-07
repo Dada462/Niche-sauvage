@@ -181,9 +181,10 @@ def image_callback(msg):
 
     global command
     global is_lights
+    global msg_lum
     echelle = 0.5
 
-    dim = [int(msg.shape[1]*echelle), int(msg.shape[0]*echelle)]--only-pkg-with-deps
+    dim = [int(msg.shape[1]*echelle), int(msg.shape[0]*echelle)] # --only-pkg-with-deps
     msg = cv2.resize(msg, dim, interpolation=cv2.INTER_AREA)
     new_image1 = detec_(msg)
     number_of_white_pix = np.sum(new_image1 == 255)
@@ -203,7 +204,7 @@ def image_callback(msg):
                     is_lights.data = True
                 else :
                     is_lights.data = False
-    
+    msg_lum = bridge.cv2_to_imgmsg(msg, "bgr8")
     cv2.imshow('output', msg)
     cv2.waitKey(2)
     command.pose.position.y = cons_hor
@@ -215,17 +216,20 @@ def talker():
     rospy.init_node('detec_lum', anonymous=True)
     pub_command = rospy.Publisher('command_lights', CommandBluerov, queue_size=10)
     pub_is_lights = rospy.Publisher('is_lights', Bool, queue_size=10)
+    pub_detection_lumiere = rospy.Publisher('visu_lum', Image, queue_size=10)
     rospy.Subscriber("blue_rov_camera", Image, image_callback) 
     rate = rospy.Rate(10) # 10hz
     while not rospy.is_shutdown():
         global command
+        global msg_lum
         pub_command.publish(command)
         pub_is_lights.publish(is_lights)
-
+        pub_detection_lumiere.publish(msg_lum)
         rate.sleep()
 
 
 if __name__ == '__main__':
+    msg_lum = Image()
     try:
         talker()
     except rospy.ROSInterruptException:

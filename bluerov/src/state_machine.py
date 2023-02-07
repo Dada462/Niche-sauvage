@@ -18,9 +18,9 @@ class ROS1Subscriber:
         self.pub = rospy.Publisher('commande', CommandBluerov, queue_size=10)   
         self.detect_qrcode = False
         self.detect_lights = False
-        self.usbl_command = CommandBluerov
-        self.lights_command = CommandBluerov
-        self.qrcode_command = CommandBluerov
+        self.usbl_command = CommandBluerov()
+        self.lights_command = CommandBluerov()
+        self.qrcode_command = CommandBluerov()
 
     def callback_bool_qrcode(self, msg):
         self.detect_qrcode = msg.data
