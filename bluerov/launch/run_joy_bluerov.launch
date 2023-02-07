@@ -21,15 +21,15 @@
 <!-- ############################################################################################################### -->
 
     <!-- QRcode command -->
-    <!-- <include file="$(find commande_rov_aruco)/launch/simu.launch"/> -->
+    <include file="$(find commande_rov_aruco)/launch/simu.launch"/>
 
     <!-- Lights command -->
     <!-- <node name="detec_lum" pkg="detect_lum" type="node_lum.py" output="screen"/> -->
 
     <!-- USBL command -->
-    <node name="USBL_pub_node" pkg="usbl" type="usbl_pub" output="screen"/>
+    <!-- <node name="USBL_pub_node" pkg="usbl" type="usbl_pub" output="screen"/>
 
-    <node name="usbl_data_viewer" pkg="mission_displayer" type="MissionDisplayer.py" output="screen"/>
+    <node name="usbl_data_viewer" pkg="mission_displayer" type="MissionDisplayer.py" output="screen"/> -->
 
 <!-- ############################################################################################################### -->
 

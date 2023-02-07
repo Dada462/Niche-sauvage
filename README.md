@@ -61,7 +61,7 @@ roslaunch bluerov run_joy_bluerov.launch
 ```
 ![](/images/manette_notice.png)
 
-- Run the bluerov with a node command replacing the joystick
+- Run the bluerov with a node command replacing the joystick (X for switching to auto control)
 
 Control command had to be published on `commande`
 

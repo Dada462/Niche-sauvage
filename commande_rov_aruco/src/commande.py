@@ -153,6 +153,11 @@ def listener_and_talker():
     
     while not rospy.is_shutdown():    
         global msg
+        global id
+        global x,y,z,roll_x, pitch_y, yaw_z
+        global accel_x, accel_y, accel_z
+        msg.arming = 1
+        msg.power = 100
         msg.pose.position.x = accel_z
         msg.pose.position.y = accel_x
         msg.pose.position.z = accel_y
