@@ -12,6 +12,11 @@
         <arg name="respawn_mavros" default="false" />
         <!-- <arg name="video_udp_port" default="5600"/> -->
     </include>
+0.
+
+    <!-- Run joytick -->
+    <node name="MyProgram" pkg="bluerov" type="JoyCommand_Christophe_vs4.py" output="screen"/>
+    <node name="joy_node" pkg="joy" type="joy_node" output="screen"/>
 
     <!-- Run command node -->
     <!-- <node name="control_node" pkg="bluerov" type="control_node.py" output="screen"/> -->

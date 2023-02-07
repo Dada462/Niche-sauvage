@@ -68,6 +68,7 @@ button_joy = [0,0,0,0,0,0,0,0,0,0,0]
 Jaxes_joy = [0,0,0,0,0,0,0,0]
 frame_id_joy = 0
 use_joy = True
+frame_id_old_joy = 0
 
             #msg[0] = depUp  # pitch (eleve l'avant du rov)
             #msg[1] = depUp  # roll (rotation sur axe x, penche sur cote)
@@ -94,21 +95,25 @@ def callback_joy(data):
     global Jaxes_joy
     global frame_id_joy
     global use_joy
+    global frame_id_old_joy
     button_joy = data.buttons
     Jaxes_joy = data.axes
     frame_id_joy = data.header.seq
 
-    if button_joy[3] == 1: # If X
-        if use_joy:
-            use_joy = False
-            print("Control mode...")
-        else:
-            use_joy = True
-            print("Joy mode...")
-    if use_joy == True:
-        button = data.buttons
-        Jaxes = data.axes
-        frame_id = data.header.seq
+    if frame_id_old_joy != frame_id_joy:
+        frame_id_old_joy = frame_id_joy
+        if button_joy[2] == 1: # If X
+            # print("test")
+            if use_joy:
+                use_joy = False
+                print("Control mode...")
+            else:
+                use_joy = True
+                print("Joy mode...")
+        if use_joy == True:
+            button = data.buttons
+            Jaxes = data.axes
+            frame_id = data.header.seq
 
 
 
