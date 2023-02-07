@@ -45,7 +45,11 @@ def callback(data):
     except CvBridgeError as e:
       print(e)
 
-
+    lookUpTable = np.empty((1,256), np.uint8)
+    gamma = 0.3                               ##corrige la brightness non linéairement
+    for i in range(256):
+        lookUpTable[0,i] = np.clip(pow(i / 255.0, gamma) * 255.0, 0, 255)
+    cv_image = cv2.LUT(cv_image, lookUpTable)
     global mtx
     global dist
     global ids
@@ -115,7 +119,7 @@ def listener_and_talker():
             msg_pose.pose.orientation.y = get_quaternion_from_euler(rvecs[0][0][0],rvecs[0][0][1],rvecs[0][0][2])[1]
             msg_pose.pose.orientation.z = get_quaternion_from_euler(rvecs[0][0][0],rvecs[0][0][1],rvecs[0][0][2])[2]
             msg_pose.pose.orientation.w = get_quaternion_from_euler(rvecs[0][0][0],rvecs[0][0][1],rvecs[0][0][2])[3]
-
+                
         pub.publish(msg)
         pub2.publish(msg_pose)
         pub3.publish(msg_id)
