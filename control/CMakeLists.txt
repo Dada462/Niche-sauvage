@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0.2)
-project(bluerov)
+project(control)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 # add_compile_options(-std=c++11)
@@ -8,14 +8,10 @@ project(bluerov)
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
-  roscpp
+  geometry_msgs
   rospy
   std_msgs
-  geographic_msgs
-  sensor_msgs
-  visualization_msgs
-  geometry_msgs
-  nav_msgs
+  usbl
 )
 
 ## System dependencies are found with CMake's conventions
@@ -75,7 +71,7 @@ find_package(catkin REQUIRED COMPONENTS
 ## Generate added messages and services with any dependencies listed here
 # generate_messages(
 #   DEPENDENCIES
-#   std_msgs
+#   bluerov_msgs#   geometry_msgs#   std_msgs
 # )
 
 ################################################
@@ -107,24 +103,12 @@ find_package(catkin REQUIRED COMPONENTS
 ## LIBRARIES: libraries you create in this project that dependent projects also need
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
+catkin_python_setup()
 catkin_package(
 #  INCLUDE_DIRS include
-#  LIBRARIES bluerov
-#  CATKIN_DEPENDS roscpp rospu std_msgs
+#  LIBRARIES control
+#  CATKIN_DEPENDS bluerov_msgs geometry_msgs rospy std_msgs usbl
 #  DEPENDS system_lib
-)
-
-catkin_install_python(PROGRAMS
-  src/JoyCommand_Christophe_vs4.py
-  src/Affichage_camera_launch_3.py
-  src/class_video.py
-  src/launch_save_bash_file.py
-  src/launch_play_bash_file.py
-  src/display_data_for_navigation.py
-  src/control_node.py
-  src/state_machine.py
-  src/joy_and_command_node.py
-  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 
 ###########
@@ -140,7 +124,7 @@ include_directories(
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
-#   src/${PROJECT_NAME}/bluerov.cpp
+#   src/${PROJECT_NAME}/control.cpp
 # )
 
 ## Add cmake target dependencies of the library
@@ -151,7 +135,7 @@ include_directories(
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
-# add_executable(${PROJECT_NAME}_node src/bluerov_node.cpp)
+# add_executable(${PROJECT_NAME}_node src/control_node.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -177,10 +161,10 @@ include_directories(
 
 ## Mark executable scripts (Python etc.) for installation
 ## in contrast to setup.py, you can choose the destination
-# catkin_install_python(PROGRAMS
-#   scripts/my_python_script
-#   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
-# )
+catkin_install_python(PROGRAMS
+  src/join_cage.py
+  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+)
 
 ## Mark executables for installation
 ## See http://docs.ros.org/melodic/api/catkin/html/howto/format1/building_executables.html
@@ -215,7 +199,7 @@ include_directories(
 #############
 
 ## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_bluerov.cpp)
+# catkin_add_gtest(${PROJECT_NAME}-test test/test_control.cpp)
 # if(TARGET ${PROJECT_NAME}-test)
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 # endif()

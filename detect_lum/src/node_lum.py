@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # # license removed for brevity
 import rospy
 from sensor_msgs.msg import Image
@@ -184,6 +184,7 @@ def image_callback(msg):
     global command
     global is_lights
     global msg_lum
+<<<<<<< HEAD
     global iter
     iter +=1
     if iter %20 == 0:
@@ -220,6 +221,39 @@ def image_callback(msg):
         command.pose.position.y = cons_hor/4
         command.pose.position.z = cons_vert/4
         command.pose.orientation.z = cons_rot/4
+=======
+    echelle = 0.5
+
+    dim = [int(msg.shape[1]*echelle), int(msg.shape[0]*echelle)] # --only-pkg-with-deps
+    br = CvBridge()
+    msg = br.imgmsg_to_cv2(msg)
+    msg = cv2.resize(msg, dim, interpolation=cv2.INTER_AREA)
+    new_image1 = detec_(msg)
+    number_of_white_pix = np.sum(new_image1 == 255)
+    if number_of_white_pix > 100:
+        t = time.time()
+        cercles1 = forme(msg, new_image1)
+        if cercles1 is not None:
+            for pt in cercles1[0]:
+                a, b, r = pt[0], pt[1], pt[2]
+                cv2.circle(msg, (a, b), r, (0, 0, 255), 2)
+                nb_cercles = len(cercles1[0])
+                cons_vert = consigne_verticale(cercles1[0], dim, nb_cercles)
+                cons_hor = consigne_horizontale(cercles1[0], dim, nb_cercles)
+                cons_rot = consigne_rotation(cercles1[0], nb_cercles)
+                print("ver", cons_vert, "hor", cons_hor, "rot", cons_rot)
+                if nb_cercles > 0 :
+                    is_lights.data = True
+                else :
+                    is_lights.data = False
+    br2 = CvBridge()
+    msg_lum = br2.cv2_to_imgmsg(msg, "bgr8")
+    cv2.imshow('output', msg)
+    cv2.waitKey(2)
+    command.pose.position.y = cons_hor
+    command.pose.position.z = cons_vert
+    command.pose.orientation.z = cons_rot
+>>>>>>> 742e812054762babcde5a892f290459c8ba3bdbd
 
 
 def talker():

@@ -21,11 +21,14 @@ Installation du camp de base
 Montage de la cage
 Premiers tests des packages, checker que tout fonctionne 
 Debut developpement logiciel pour qrcode
+Developpement logiciel pour usbl
+
 Réussi :
-
-
-Note:
-
+Déchargement du camion
+Installation du camp de base
+Montage de la cage
+Debut developpement logiciel pour qrcode
+Developpement logiciel pour usbl
 
 Aprem ======================================================================================
 Objectifs :
@@ -33,11 +36,17 @@ Fin du montage de la cage
 Calibration de la caméra bluerov dans le lac de Guerledan
 Verification du controle par ROS et test avec controle simple
 Developpement logiciel pour qrcode
+Developpement logiciel pour usbl
 
 Réussi :
-
+Fin du montage de la cage
+Calibration de la caméra bluerov dans le lac de Guerledan
+Developpement logiciel pour qrcode
+Developpement logiciel pour usbl
 
 Note :
+Les pontons ne sont pas installés comme espéré. Cela nous a fait perdre du temps le matin, et complique les expérimentations pour le reste de la semaine.
+Apres montage de la cage elle a été painte, elle sera mise à l'au demain.
 
 
 Mardi : ------------------------------------------------------------------------------------
@@ -45,23 +54,31 @@ Matin ==========================================================================
 Objectifs :
 Test mission avec seulement lumière (potentielle approche avec USBL au début)
 Test entrée en cage avec qrcode pour ajustement
+
 Réussi :
+cage mise à l'eau.
+rosbag pour développer les qrcodes (mauvaise visibilité sous l'eau) et les lumieres
 
 
 Aprem ======================================================================================
 Objectifs :
 Test mission uniquement USBL : reussir à se rapprocher de la cage que avec USBL
 Test entrée en cage avec qrcode pour ajustement
-Réussi :
 
+Réussi :
+Test mission uniquement USBL : reussir à se rapprocher de la cage que avec USBL
+passage du controle manette au controle algo avec la manette
 
 Note :
+Le control avec usbl à marché !
+En rajoutant des filtres sur l'image on arrive à améliorer la detection des qrcodes
 
 
 Mercredi : ---------------------------------------------------------------------------------
 Matin ======================================================================================
 Objectifs :
-Test entrée en cage avec qrcode 
+Test entrée en cage avec qrcode
+test control lumieres
 
 Réussi :
 
@@ -69,6 +86,7 @@ Réussi :
 Aprem ======================================================================================
 Objectifs : 
 Test entrée en cage qrcode
+test control lumieres
 Premier test complet de guidage (USBL + lumière + qrcode)
 
 Réussi :

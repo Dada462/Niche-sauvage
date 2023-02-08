@@ -41,6 +41,10 @@ def callback(data): ## callback qui recupere la pose du robot dans le repere du 
     global id
     global x,y,z,roll_x, pitch_y, yaw_z
     global accel_x, accel_y, accel_z
+    id_mem = -1
+    if id != -1 :
+        id_mem = id
+        print(id_mem)
     x = data.pose.position.x
     y = data.pose.position.y
     z = data.pose.position.z
@@ -57,76 +61,76 @@ def callback(data): ## callback qui recupere la pose du robot dans le repere du 
                      7 : exterieur gauche
                      8 : exterieur droit
                      9 : non utilisé
-
+                    
     """
     ## Méthode bang bang
 
     if id == 0 :   ## se placer devant
         if z>0.3:
-            accel_z = 0.3 ##avance
-            print("on avance")
+            accel_z = 0.2 ##avance
+            #print("on avance")
         if z<0.1:
-            accel_z = -0.3 ##recule 
-            print("on recule")
+            accel_z = -0.2 ##recule 
+            #print("on recule")
         if x > 0.3 :
-            accel_x = -0.3 ##droite
-            print("a droite")
+            accel_x = -0.2 ##droite
+            #print("va a droite")
         if x < -0.3 :
-            accel_x = 0.3 ##gauche
-            print("a gauche")
+            accel_x = 0.2 ##gauche
+            #print("va a gauche")
         if y > 0.3 :
-            accel_y = -0.3 ##bas
-            print("en bas")
+            accel_y = -0.2 ##bas
+            #print("en bas")
         if y < -0.3 :
-            accel_y = 0.3 ##haut
-            print("en haut")
+            accel_y = 0.2 ##haut
+            #print("en haut")
 
     elif id == 3 : ## se placer à droite
         if z>0.8:
-            accel_z = 0.3 ##avance
-            print("on avance")
+            accel_z = 0.2 ##avance
+            #print("on avance")
         if z<0.1:
-            accel_z = -0.3 ##recule 
-            print("on recule")
+            accel_z = -0.2 ##recule 
+            #print("on recule")
         if x > -0.5 :
-            accel_x =-0.3 ##droite
-            print("a droite")
+            accel_x =-0.2 ##droite
+            #print("va a droite")
         #if x < -0.3 :
-        #    accel_x = 0.3 ##gauche
+        #    accel_x = 0.2 ##gauche
         #    print("a gauche")
         if y > 0.3 :
-            accel_y = -0.3 ##bas
-            print("en bas")
+            accel_y = -0.2 ##bas
+            #print("en bas")
         if y < -0.3 :
-            accel_y = 0.3 ##haut
-            print("en haut")
+            accel_y = 0.2 ##haut
+            #print("en haut")
 
     elif id == 4 : ## se placer à gauche
         if z>0.8:
-            accel_z = 0.3 ##avance
-            print("on avance")
+            accel_z = 0.2 ##avance
+            #print("on avance")
         if z<0.1:
-            accel_z = -0.3 ##recule 
-            print("on recule")
+            accel_z = -0.2 ##recule 
+            #print("on recule")
         #if x > -0.8 :
-        #    accel_x =-0.3 ##droite
+        #    accel_x =-0.2 ##droite
         #    print("a droite")
         if x < 0.5 :
-            accel_x = 0.3 ##gauche
-            print("a gauche")
+            accel_x = 0.2 ##gauche
+            #print("va a gauche")
         if y > 0.3 :
-            accel_y = -0.3 ##bas
-            print("en bas")
+            accel_y = -0.2 ##bas
+            #print("en bas")
         if y < -0.3 :
-            accel_y = 0.3 ##haut
-            print("en haut")
+            accel_y = 0.2 ##haut
+            #print("en haut")
 
 
     else :
         accel_x = 0
         accel_y = 0
         accel_z = 0
-        print("on stoppe")
+        #print("on stoppe")
  
 
 def callback2(data): ## callback qui récupère l'id du marqueur
@@ -138,7 +142,7 @@ def listener_and_talker():
     rospy.init_node('aruco_commande', anonymous=True)
 
 
-    pub = rospy.Publisher('consigne_qr_aruco',CommandBluerov, queue_size=10)
+    pub = rospy.Publisher('command_qrcode',CommandBluerov, queue_size=10)
 
     rospy.Subscriber('bluerov_pose_aruco', PoseStamped, callback)
     rospy.Subscriber('id_qr_code_aruco', Float64, callback2)
@@ -153,6 +157,12 @@ def listener_and_talker():
     
     while not rospy.is_shutdown():    
         global msg
+        global id
+        global x,y,z,roll_x, pitch_y, yaw_z
+        global accel_x, accel_y, accel_z
+        ##deplacement en cap msg.pose.orientation.z
+        msg.arming = 1
+        msg.power = 100
         msg.pose.position.x = accel_z
         msg.pose.position.y = accel_x
         msg.pose.position.z = accel_y
