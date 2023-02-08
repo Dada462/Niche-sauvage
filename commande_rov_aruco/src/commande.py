@@ -184,7 +184,7 @@ def listener_and_talker():
     rospy.init_node('aruco_commande', anonymous=True)
 
 
-    pub = rospy.Publisher('command_qrcode',CommandBluerov, queue_size=10)
+    pub = rospy.Publisher('commande',CommandBluerov, queue_size=10)
 
     rospy.Subscriber('bluerov_pose_aruco', PoseStamped, callback)
     rospy.Subscriber('id_qr_code_aruco', Float64, callback2)
