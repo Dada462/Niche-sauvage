@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # # license removed for brevity
 import rospy
 from sensor_msgs.msg import Image
@@ -8,6 +8,7 @@ import numpy as np
 import time
 from bluerov_msgs.msg import CommandBluerov
 from std_msgs.msg import Bool
+from cv_bridge import CvBridge
 
 
 def detec_(image):
@@ -185,6 +186,8 @@ def image_callback(msg):
     echelle = 0.5
 
     dim = [int(msg.shape[1]*echelle), int(msg.shape[0]*echelle)] # --only-pkg-with-deps
+    br = CvBridge()
+    msg = br.imgmsg_to_cv2(msg)
     msg = cv2.resize(msg, dim, interpolation=cv2.INTER_AREA)
     new_image1 = detec_(msg)
     number_of_white_pix = np.sum(new_image1 == 255)
@@ -204,7 +207,8 @@ def image_callback(msg):
                     is_lights.data = True
                 else :
                     is_lights.data = False
-    msg_lum = bridge.cv2_to_imgmsg(msg, "bgr8")
+    br2 = CvBridge()
+    msg_lum = br2.cv2_to_imgmsg(msg, "bgr8")
     cv2.imshow('output', msg)
     cv2.waitKey(2)
     command.pose.position.y = cons_hor
