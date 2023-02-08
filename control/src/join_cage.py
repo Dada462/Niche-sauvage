@@ -106,7 +106,7 @@ def ros_desired_position(data):
 def main():
     global ROV_Controller
     ROV_Controller = Controller()
-    rospy.init_node('command_tester', anonymous=True)
+    rospy.init_node('command_giver', anonymous=True)
     pub = rospy.Publisher('/commande', CommandBluerov, queue_size=10)
     rospy.Subscriber("/usbl", Usbl, ros_usbl)
     rospy.Subscriber("/mavros/global_position/compass_hdg",
