@@ -1,6 +1,6 @@
 # **Niche project** bluerov docking underwater
 
-My awesome project
+A ros package for docking a bluerov in him underwater doghouse, using usbl, lights detection and aruco qrcodes.
 
 ## Dependancies
 
