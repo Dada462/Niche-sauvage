@@ -91,12 +91,21 @@ def callback(data):
     global centerx
     global centery
     global compteur
+    global mem_id
+    global cnt_id
     rvecs, tvecs, _ = aruco.estimatePoseSingleMarkers(corners, size_marker, mtx, dist)
     print(tvecs,'et',rvecs)
     
 
     if(rvecs is not None and tvecs is not None):
+        
+        for i in range(len(tvecs)):                                                                  
+            length_of_axis = 0.10                                                                    
+            cv_image = cv2.drawFrameAxes(cv_image, mtx, dist, rvecs[i,:,:], tvecs[i,:,:], length_of_axis)  
+
         compteur = 0
+        msg_bool = True
+
         print(len(ids))
         
         msg_id = ids[0][0]
@@ -105,30 +114,45 @@ def callback(data):
             if msg_id>ids[i][0]:
                 msg_id = ids[i][0]
                 marqueur = i
-   
+
+        if mem_id>msg_id:
+            mem_id = msg_id
+
         print("marqueur :",marqueur)
 
         print("corners =",corners)
+
         corners = corners[marqueur]
         centery = (corners[0][0][0]+corners[0][1][0]+corners[0][2][0]+corners[0][3][0])/4
         centerx = (corners[0][0][1]+corners[0][1][1]+corners[0][2][1]+corners[0][3][1])/4
-        msg_centre.pose.position.x = centerx
-        msg_centre.pose.position.y = centery
-        
-        for i in range(len(tvecs)):                                                                  
-            length_of_axis = 0.10                                                                    
-            cv_image = cv2.drawFrameAxes(cv_image, mtx, dist, rvecs[i,:,:], tvecs[i,:,:], length_of_axis)  
 
-        msg_bool = True
-        msg_pose.pose.position.x = tvecs[marqueur][0][0]
-        msg_pose.pose.position.y = tvecs[marqueur][0][1]
-        msg_pose.pose.position.z = tvecs[marqueur][0][2]
-        msg_pose.pose.orientation.x = get_quaternion_from_euler(rvecs[marqueur][0][0],rvecs[marqueur][0][1],rvecs[marqueur][0][2])[0]   #checker le format de rvecs et tvecs
-        msg_pose.pose.orientation.y = get_quaternion_from_euler(rvecs[marqueur][0][0],rvecs[marqueur][0][1],rvecs[marqueur][0][2])[1]
-        msg_pose.pose.orientation.z = get_quaternion_from_euler(rvecs[marqueur][0][0],rvecs[marqueur][0][1],rvecs[marqueur][0][2])[2]
-        msg_pose.pose.orientation.w = get_quaternion_from_euler(rvecs[marqueur][0][0],rvecs[marqueur][0][1],rvecs[marqueur][0][2])[3]
+        if mem_id == msg_id and cnt_id<50: 
+            msg_centre.pose.position.x = centerx
+            msg_centre.pose.position.y = centery
+            cnt_id = 0
+        else:
+            cnt_id = cnt_id + 1
+
         
-    
+
+        if mem_id == msg_id and cnt_id<50:
+            cnt_id = 0 
+            print('cool')
+            msg_pose.pose.position.x = tvecs[marqueur][0][0]
+            msg_pose.pose.position.y = tvecs[marqueur][0][1]
+            msg_pose.pose.position.z = tvecs[marqueur][0][2]
+            msg_pose.pose.orientation.x = get_quaternion_from_euler(rvecs[marqueur][0][0],rvecs[marqueur][0][1],rvecs[marqueur][0][2])[0]   #checker le format de rvecs et tvecs
+            msg_pose.pose.orientation.y = get_quaternion_from_euler(rvecs[marqueur][0][0],rvecs[marqueur][0][1],rvecs[marqueur][0][2])[1]
+            msg_pose.pose.orientation.z = get_quaternion_from_euler(rvecs[marqueur][0][0],rvecs[marqueur][0][1],rvecs[marqueur][0][2])[2]
+            msg_pose.pose.orientation.w = get_quaternion_from_euler(rvecs[marqueur][0][0],rvecs[marqueur][0][1],rvecs[marqueur][0][2])[3]
+        
+        else :
+            cnt_id = cnt_id + 1
+
+        if cnt_id>50:
+            mem_id = msg_id
+            cnt_id = 0
+
     else : 
         
         compteur = compteur + 1
@@ -200,8 +224,10 @@ if __name__ == '__main__':
     rvecs = [[[0,0,0]]]
     tvecs = [[[0,0,0]]]
     ids  = -1
+    mem_id = 10
     marqueur = 0
     compteur = 0
+    cnt_id = 0
     msg = Image()
     msg_pose = PoseStamped()
     msg_id = Float64()
