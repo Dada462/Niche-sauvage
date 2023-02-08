@@ -73,6 +73,8 @@ Save topics :
 
 ``` bash
 rosbag record --split --duration 5m  --chunksize=1024 --output-prefix=$HOME/catkin_ws/ --all
+rosbag record --split --duration 5m  --chunksize=1024 --output-prefix="/media/donuts/9424F7F924F7DBE4/Projet niche/guerledan_2/qrcode_j2" --all
+
 ```
 
 Display rosbag topics :
