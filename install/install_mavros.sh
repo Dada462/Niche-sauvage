@@ -8,7 +8,7 @@ ros-noetic-geographic-msgs \
  ros-noetic-joy \
  sshpass
 
-cd $HOME/projet_niche/src
+cd $HOME/Documents/PythonProjects/guerledan_3a/src
 git clone https://github.com/mavlink/mavros.git
 cd mavros
 git checkout 0af02a552b7ea981a64aca2bd307ce56020ed4c2
