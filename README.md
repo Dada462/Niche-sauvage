@@ -89,6 +89,8 @@ roslaunch bluerov play_topics.launch
 rosrun usbl usbl_pub
 ```
 
+[Published usbl control command](control/README.md)
+
 Display USBL command path:
 
 ```bash

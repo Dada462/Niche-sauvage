@@ -1,6 +1,6 @@
 # **Niche project** bluerov underwater docking
 
-A ros package for docking a bluerov in his underwater doghouse, using an usbl, light detection and aruco qrcodes.
+A ros package for docking a bluerov in his underwater doghouse, using an usbl.
 
 ## Dependancies
 
@@ -10,7 +10,7 @@ Require Ubuntu 20.04 Ros noetic
 
 You should run:
 ```
-run_command_bluerov.launch
+roslaunch bluerov run_command_bluerov.launch
 ```
 This will run the 'control' package along with the other packages.
 
