@@ -98,7 +98,7 @@ def ros_compass(data):
 
 ################################## ROS ##################################
 rospy.init_node('usbl_data_viewer', anonymous=True)
-rospy.Subscriber("/Usbl_test", Usbl, ros_callback)
+rospy.Subscriber("/usbl", Usbl, ros_callback)
 rospy.Subscriber("/mavros/global_position/compass_hdg", Float64, ros_compass)
 ros_thread = threading.Thread(target=rospy.spin)
 ros_thread.start()

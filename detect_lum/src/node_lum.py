@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # # license removed for brevity
 import rospy
 from sensor_msgs.msg import Image
@@ -8,30 +8,32 @@ import numpy as np
 import time
 from bluerov_msgs.msg import CommandBluerov
 from std_msgs.msg import Bool
+from cv_bridge import CvBridge
 
 
 def detec_(image):
 
     try:
         img1 = image
-        kernel = np.ones((5,5),np.uint8)
-        ret, bw = cv2.threshold(img1, 127, 255, cv2.THRESH_BINARY)
+        kernel = np.ones((2,2),np.uint8)
+        kernel2 = np.ones((3,3),np.uint8)
+        #ret, bw = cv2.threshold(img1, 127, 255, cv2.THRESH_BINARY)
         hsv = cv2.cvtColor(img1, cv2.COLOR_BGR2HSV)
         # on effectue un masque avec les valeurs ci-dessous recuperee sur internet
         # pour ne garder que les lignes jaunes
-        lower = np.array([30,0, 230], dtype=np.uint8)
+        lower = np.array([0,0, 220], dtype=np.uint8)
         upper = np.array([255, 20, 255], dtype=np.uint8)
         seg0 = cv2.inRange(hsv, lower, upper)
         closing = cv2.morphologyEx(seg0, cv2.MORPH_CLOSE, kernel)
-        opening = cv2.morphologyEx(closing, cv2.MORPH_OPEN, kernel)
-        #dilation = cv2.dilate(opening,kernel,iterations = 1)
+        #opening = cv2.morphologyEx(closing, cv2.MORPH_OPEN, kernel)
+        dilation = cv2.dilate(closing,kernel2,iterations = 1)
         # on affiche l'image
         #cv2.imshow('test', seg0)
         #cv2.waitKey(3)
 
         sum = 0  # la somme des positions en x des pixels blancs
         cnt = 0  # le nombre de pixels blancs
-        return opening
+        return dilation
     except:
         pass
 
@@ -50,7 +52,7 @@ def forme(image_non_traitee, bin):
                 gray[l,c] = 255
 
     # Apply Hough transform on the blurred image.
-    detected_circles = cv2.HoughCircles(gray,cv2.HOUGH_GRADIENT, 1.5, 35, param1 = 250,param2 = 0.9, minRadius = 3, maxRadius = 12)
+    detected_circles = cv2.HoughCircles(gray,cv2.HOUGH_GRADIENT, 1.2, 20, param1 = 250,param2 = 0.5, minRadius = 1, maxRadius = 10)
     #detected_circles = cv2.HoughCircles(gray,cv2.HOUGH_GRADIENT,1,25,
     #                        param1=300,param2=0.8,minRadius=3,maxRadius=15)
     #detected_circles = cv2.HoughCircles(gray,cv2.HOUGH_GRADIENT,1,30,
@@ -125,9 +127,9 @@ def consigne_rotation(cercles, nb_lum):
                 cercles_hauts.append(c) # Ajoute le cercle à la liste des cercles les plus hauts
         cercles_hauts = sorted(cercles_hauts, key=lambda item: (item[0], item[1])) # Trie les cercles les plus hauts en fonction de leur coordonnée x
         if cercles_hauts[0][1]-cercles_hauts[1][1] > 20 and cercles_hauts[1][1]-cercles_hauts[2][1] > 20:
-            consigne = 100 # virage à gauche
+            consigne = -100 # virage à gauche
         elif cercles_hauts[0][1]- cercles_hauts[1][1] <-20 and cercles_hauts[1][1]-cercles_hauts[2][1] < -20:
-            consigne = -100 #virage à droite
+            consigne = 100 #virage à droite
     if 1 < nb_lum < 4:
         l_cercle = sorted(cercles, key=lambda item: (item[0], item[1]))
         diff = 0
@@ -135,9 +137,9 @@ def consigne_rotation(cercles, nb_lum):
             diff += l_cercle[i][1] - l_cercle[i+1][1]
         if abs(diff) > 50:
             if diff < 0:
-                consigne = -50
-            if diff > 0:
                 consigne = 50
+            if diff > 0:
+                consigne = -50
     return consigne
 
 # cap = cv2.VideoCapture("detec_lum/img/expedition_niche_.mp4")
@@ -182,9 +184,49 @@ def image_callback(msg):
     global command
     global is_lights
     global msg_lum
+<<<<<<< HEAD
+    global iter
+    iter +=1
+    if iter %20 == 0:
+        cons_vert = 0
+        cons_hor = 0
+        cons_rot = 0
+        echelle = 0.8
+        br = CvBridge()
+        msg1 = br.imgmsg_to_cv2(msg)
+        dim = [int(msg1.shape[1]*echelle), int(msg1.shape[0]*echelle)] # --only-pkg-with-deps
+        msg1 = cv2.resize(msg1, dim, interpolation=cv2.INTER_AREA)
+        new_image1 = detec_(msg1)
+        cv2.imshow('aaaa', new_image1)
+        cv2.waitKey(1)
+        number_of_white_pix = np.sum(new_image1 == 255)
+        if number_of_white_pix > 100:
+            t = time.time()
+            cercles1 = forme(msg1, new_image1)
+            if cercles1 is not None:
+                for pt in cercles1[0]:
+                    a, b, r = pt[0], pt[1], pt[2]
+                    cv2.circle(msg1, (a, b), r, (0, 0, 255), 2)
+                    nb_cercles = len(cercles1[0])
+                    cons_vert = consigne_verticale(cercles1[0], dim, nb_cercles)
+                    cons_hor = consigne_horizontale(cercles1[0], dim, nb_cercles)
+                    cons_rot = consigne_rotation(cercles1[0], nb_cercles)
+                    print("ver", cons_vert, "hor", cons_hor, "rot", cons_rot)
+                    if nb_cercles > 0 :
+                        is_lights.data = True
+                    else :
+                        is_lights.data = False
+        br2 = CvBridge()
+        msg_lum = br2.cv2_to_imgmsg(msg1, "bgr8")
+        command.pose.position.y = cons_hor/4
+        command.pose.position.z = cons_vert/4
+        command.pose.orientation.z = cons_rot/4
+=======
     echelle = 0.5
 
     dim = [int(msg.shape[1]*echelle), int(msg.shape[0]*echelle)] # --only-pkg-with-deps
+    br = CvBridge()
+    msg = br.imgmsg_to_cv2(msg)
     msg = cv2.resize(msg, dim, interpolation=cv2.INTER_AREA)
     new_image1 = detec_(msg)
     number_of_white_pix = np.sum(new_image1 == 255)
@@ -204,12 +246,14 @@ def image_callback(msg):
                     is_lights.data = True
                 else :
                     is_lights.data = False
-    msg_lum = bridge.cv2_to_imgmsg(msg, "bgr8")
+    br2 = CvBridge()
+    msg_lum = br2.cv2_to_imgmsg(msg, "bgr8")
     cv2.imshow('output', msg)
     cv2.waitKey(2)
     command.pose.position.y = cons_hor
     command.pose.position.z = cons_vert
     command.pose.orientation.z = cons_rot
+>>>>>>> 742e812054762babcde5a892f290459c8ba3bdbd
 
 
 def talker():
@@ -217,7 +261,7 @@ def talker():
     pub_command = rospy.Publisher('command_lights', CommandBluerov, queue_size=10)
     pub_is_lights = rospy.Publisher('is_lights', Bool, queue_size=10)
     pub_detection_lumiere = rospy.Publisher('visu_lum', Image, queue_size=10)
-    rospy.Subscriber("blue_rov_camera", Image, image_callback) 
+    rospy.Subscriber("bluerov_camera", Image, image_callback) 
     rate = rospy.Rate(10) # 10hz
     while not rospy.is_shutdown():
         global command
@@ -230,6 +274,7 @@ def talker():
 
 if __name__ == '__main__':
     msg_lum = Image()
+    iter = 0
     try:
         talker()
     except rospy.ROSInterruptException:

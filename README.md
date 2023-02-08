@@ -1,6 +1,6 @@
 # **Niche project** bluerov docking underwater
 
-My awesome project
+A ros ripository for docking a bluerov in him underwater doghouse, using usbl, lights detection and aruco qrcodes.
 
 ## Dependancies
 
@@ -73,6 +73,8 @@ Save topics :
 
 ``` bash
 rosbag record --split --duration 5m  --chunksize=1024 --output-prefix=$HOME/catkin_ws/ --all
+rosbag record --split --duration 5m  --chunksize=1024 --output-prefix="/media/donuts/9424F7F924F7DBE4/Projet niche/guerledan_2/qrcode_j2" --all
+
 ```
 
 Display rosbag topics :
@@ -86,6 +88,8 @@ roslaunch bluerov play_topics.launch
 ``` bash
 rosrun usbl usbl_pub
 ```
+
+[Published usbl control command](control/README.md)
 
 Display USBL command path:
 
