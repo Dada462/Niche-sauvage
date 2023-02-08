@@ -13,9 +13,26 @@ objp[:,:2] = np.mgrid[0:9,0:9].T.reshape(-1,2)*0.02479                          
 # Arrays to store object points and image points from all the images.
 objpoints = [] # 3d point in real world space
 imgpoints = [] # 2d points in image plane.
-images = glob.glob('calibration_cam_bluerov/*.png')
+images = glob.glob('calibration_cam_bluerov/images/*.png')
 for fname in images:
     img = cv.imread(fname)
+    # CLAHE (Contrast Limited Adaptive Histogram Equalization)
+    clahe = cv.createCLAHE(clipLimit=3., tileGridSize=(8,8))
+    
+    lab = cv.cvtColor(img, cv.COLOR_BGR2LAB)  # convert from BGR to LAB color space
+    l, a, b = cv.split(lab)  # split on 3 different channels
+    
+    l2 = clahe.apply(l)  # apply CLAHE to the L-channel
+    
+    lab = cv.merge((l2,a,b))  # merge channels
+    img = cv.cvtColor(lab, cv.COLOR_LAB2BGR)  # convert from LAB to BGR
+
+    # Gamma correction
+    lookUpTable = np.empty((1,256), np.uint8)
+    gamma = 0.7                               ##corrige la brightness non linéairement
+    for i in range(256):
+        lookUpTable[0,i] = np.clip(pow(i / 255.0, gamma) * 255.0, 0, 255)
+    img = cv.LUT(img, lookUpTable)
     gray = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
     # Find the chess board corners
     ret, corners = cv.findChessboardCorners(gray, (9,9), None)       #attention dimension echiqier -1
@@ -35,6 +52,6 @@ ret, mtx, dist, rvecs, tvecs = cv.calibrateCamera(objpoints, imgpoints, gray.sha
 print("Camera matrix:\n", mtx)
 print("Distortion coefficients:\n", dist)
 
-np.save("calibration_cam_bluerov/camera_matrix", mtx)
-np.save("calibration_cam_bluerov/distortion_coeffs", dist)
+np.save("calibration_cam_bluerov/matrices/camera_matrix", mtx)
+np.save("calibration_cam_bluerov/matrices/distortion_coeffs", dist)
 
