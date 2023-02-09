@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import sys
 import rospy
+import rospkg
 from std_msgs.msg import Float64
 from std_msgs.msg import String
 from std_msgs.msg import Bool
