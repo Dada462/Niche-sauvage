@@ -6,12 +6,14 @@ from usbl.msg import Usbl
 import numpy as np
 from numpy import tanh, pi, cos, sin
 import rospy
+import time
 
 
 class Controller():
     def __init__(self):
         self.usbl_data = Usbl()
         self.heading = 0.
+        self.depths=[[0.,0.]]
         self.state = np.array([0., 0., 0., 0.]) # x,y,heading relative to the cage,s
         self.path_to_follow = mat_reading(lambda x, y: (x, x))
 
@@ -79,22 +81,25 @@ class Controller():
         return u
 
     def depth_test(self):
-        if self.desired_position.w == 1:
-            X = self.usbl_data.position.z
-            x_desired = self.desired_position.z
-            k = .7  # Saturation gain
-            u = tanh(k*(x_desired-X))
-            self.create_control_message(
-                Point(0.,0., u), Quaternion(0., 0., 0., 0.))
-        else:
-            self.create_control_message(
-                Point(0., 0., 0.), Quaternion(0., 0., 0., 0.))
+        # if self.desired_position.w == 1:
+        X = self.depths[-1][0]
+        V=(self.depths[-1][0]-self.depths[-2][0])/(self.depths[-1][1]-self.depths[-2][1])
+        x_desired = self.desired_position.z
+        k = 1  # Saturation gain
+        dk=0.7
+        u = tanh(k*(x_desired-X)-dk*V)
+        return u
+        print(u,'V',V,'xdes',x_desired,'z',X)
+            # self.create_control_message(
+                # Point(0.,0., u), Quaternion(0., 0., 0., 0.))
+        # else:
+            # self.create_control_message(
+                # Point(0., 0., 0.), Quaternion(0., 0., 0., 0.))
     
     def join_the_cage(self):
         if self.desired_position.w == 1:
             X = np.array([self.usbl_data.position.x,
-                          self.usbl_data.position.y,
-                          self.usbl_data.position.z])
+                          self.usbl_data.position.y])
             cage_heading = self.NED_to_cage(self.heading)
 
             ################ To be implemented later ################
@@ -110,9 +115,9 @@ class Controller():
 
             ################ Control ################
             x_desired = np.array(
-                [self.desired_position.x, self.desired_position.y, self.desired_position.z])
+                [self.desired_position.x, self.desired_position.y])
             k = .7  # Saturation gain
-            u = R(cage_heading, 'Rz').T@(x_desired-X)
+            u = R(cage_heading).T@(x_desired-X)
             u = tanh(k*u)
 
             desired_heading = -np.arctan2(-X[1], -X[0])*180/pi
@@ -120,7 +125,7 @@ class Controller():
             heading_control = -2 * tanh(k*sawtooth((desired_heading-self.heading+90)/180*np.pi))
             ################ Control ################
             self.create_control_message(
-                Point(u[0], u[1], 0.), Quaternion(0., 0., heading_control, 0.))
+                Point(u[0], u[1], self.depth_test()), Quaternion(0., 0., heading_control, 0.))
         else:
             self.create_control_message(
                 Point(0., 0., 0.), Quaternion(0., 0., 0., 0.))
@@ -148,6 +153,12 @@ def ros_usbl(data):
     except:
         pass
 
+def ros_depth(data):
+    global ROV_Controller
+    try:
+        ROV_Controller.depths.append([data.data,time.time()])
+    except:
+        pass
 
 def ros_compass(data):
     global ROV_Controller
@@ -155,7 +166,6 @@ def ros_compass(data):
         ROV_Controller.heading = data.data
     except:
         pass
-
 
 def ros_desired_position(data):
     global ROV_Controller
@@ -171,14 +181,15 @@ def main():
     rospy.init_node('command_giver', anonymous=True)
     pub = rospy.Publisher('/commande', CommandBluerov, queue_size=10)
     rospy.Subscriber("/usbl", Usbl, ros_usbl)
+    rospy.Subscriber("/mavros/global_position/rel_alt", Float64, ros_depth)
     rospy.Subscriber("/mavros/global_position/compass_hdg",
                      Float64, ros_compass)
     rospy.Subscriber("/desired_position", Quaternion, ros_desired_position)
     rate = rospy.Rate(10)
     while not rospy.is_shutdown():
         ROV_Controller.join_the_cage()
-        ROV_Controller.depth_test()
-        # ROV_Controller.heading_test(270)
+        # ROV_Controller.depth_test()
+        # ROV_Controller.heading_test(180)
         # ROV_Controller.join_a_point_test()
         command = ROV_Controller.command
         pub.publish(command)
