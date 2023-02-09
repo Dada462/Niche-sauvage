@@ -1,5 +1,3 @@
 <launch>
 	<node name="aruco_detection" pkg="aruco_detect" type="aruco_test.py" output="screen"/>
-	
-	
 </launch>

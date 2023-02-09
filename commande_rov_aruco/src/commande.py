@@ -14,6 +14,7 @@ import numpy as np
 import cv2
 import cv2.aruco as aruco
 from bluerov_msgs.msg import CommandBluerov
+import time
 
 def euler_from_quaternion(x, y, z, w):
         """
@@ -44,6 +45,7 @@ def callback(data): ## callback qui recupere la pose du robot dans le repere du 
 
 
 
+    desire_pos = 0.5
 
     x = data.pose.position.x
     y = data.pose.position.y
@@ -64,87 +66,11 @@ def callback(data): ## callback qui recupere la pose du robot dans le repere du 
                      9 : non utilisé
                     
     """
-    ## Méthode bang bang
-    if z == 0.0:
-        return 0 
-    if id == 0 :   ## se placer devant
-        if z>0.5:
-            accel_z = 0.2 ##avance
-            #print("on avance")
-        if z<0.1:
-            accel_z = -0.2 ##recule 
-            #print("on recule")
-        #if x > 0.3 :
-        #    accel_x = -0.2 ##droite
-        #    #print("va a droite")
-        #if x < -0.3 :
-        #    accel_x = 0.2 ##gauche
-        #    #print("va a gauche")
-        #if y > 0.3 :
-        #    accel_y = -0.2 ##bas
-        #    #print("en bas")
-        #if y < -0.3 :
-        #    accel_y = 0.2 ##haut
-        #    #print("en haut")
-
-
-
-    elif id == 1 : ## se placer à droite
-            if z>0.5:
-                accel_z = 0.2 ##avance
-                #print("on avance")
-            if z<0.1:
-                accel_z = -0.2 ##recule 
-                #print("on recule")
-
-    elif id == 2 : ## se placer à droite
-            if z>0.5:
-                accel_z = 0.2 ##avance
-                #print("on avance")
-            if z<0.1:
-                accel_z = -0.2 ##recule 
-                #print("on recule")
-
-    elif id == 3 : ## se placer à droite
-        if z>0.5:
-            accel_z = 0.2 ##avance
-            #print("on avance")
-        if z<0.1:
-            accel_z = -0.2 ##recule 
-            #print("on recule")
-        #if x > -0.5 :
-        #    accel_x =-0.2 ##droite
-        #    #print("va a droite")
-        #if x < -0.3 :
-        #    accel_x = 0.2 ##gauche
-        #    print("a gauche")
-        #if y > 0.3 :
-        #    accel_y = -0.2 ##bas
-        #    #print("en bas")
-        #if y < -0.3 :
-        #    accel_y = 0.2 ##haut
-        #    #print("en haut")
-
-    elif id == 4 : ## se placer à gauche
-        if z>0.5:
-            accel_z = 0.2 ##avance
-            #print("on avance")
-        if z<0.1:
-            accel_z = -0.2 ##recule 
-            #print("on recule")
-        #if x > -0.8 :
-        #    accel_x =-0.2 ##droite
-        #    print("a droite")
-        #if x < 0.5 :
-        #    accel_x = 0.2 ##gauche
-        #    #print("va a gauche")
-        #if y > 0.3 :
-        #    accel_y = -0.2 ##bas
-        #    #print("en bas")
-        #if y < -0.3 :
-        #    accel_y = 0.2 ##haut
-        #    #print("en haut")
-
+    
+    if id != -1 :   ## se placer devant
+        kx=1
+        lx=-np.tanh(kx*((desire_pos-z)))
+        accel_z = lx
 
     else :
         accel_x = 0
@@ -161,37 +87,62 @@ def callback2(data): ## callback qui récupère l'id du marqueur
 
 
 def callback3(data):                 ##callback pour ajuster le rov dans l'espace plan aruco
+    global depths
     centrex = data.pose.position.x
     centrey = data.pose.position.y
+    pos=np.array([centrex,centrey])
+    desire_pos=np.array([160,400])
+    
+    #################### Robot frame #################### 
+    try:
+        Vz=(depths[-1][0]-depths[-2][0])/(depths[-1][1]-depths[-2][1])
+    except:
+        Vz=0
+    ky=1
+    ly=-np.tanh(ky*((desire_pos[1]-centrey)/100))
+    kz=0.5
+    dkz=.2
+    lz=np.tanh(kz*((desire_pos[0]-centrex)/100) -dkz*Vz)
+
+    #################### Robot frame #################### 
+
+
     global accel_x, accel_y, accel_z,rot_z
-    if centrex == 0.0 :
-        accel_y = 0.0
-        rot_z = 0.0
-        return 0
+    accel_y=lz
+    accel_x=ly
+    #rot_z = - ly
+    # if centrex == 0.0 :
+    #     accel_y = 0.0
+    #     rot_z = 0.0
+    #     return 0
 
-    if centrex>140:
-        accel_y = -0.2
+    # if centrex>140:
+    #     accel_y = -0.02
 
-    if centrex<120:
-        accel_y = 0.2
+    # if centrex<120:
+    #     accel_y = 0.02
 
-    if centrey >420:
-        rot_z = -0.2
+    # if centrey >420:
+    #     rot_z = -0.3
 
-    if centrey <380:
-        rot_z = 0.2
+    # if centrey <380:
+    #     rot_z = 0.3
 
+def callback_depth(msg):
+    global depths
+    depths.append([msg.data,time.time()])
 
 def listener_and_talker():
-    
+    global depths
     rospy.init_node('aruco_commande', anonymous=True)
 
 
     pub = rospy.Publisher('commande',CommandBluerov, queue_size=10)
-
+    depths=[]
     rospy.Subscriber('bluerov_pose_aruco', PoseStamped, callback)
     rospy.Subscriber('id_qr_code_aruco', Float64, callback2)
     rospy.Subscriber('centre_aruco_img', PoseStamped, callback3)
+    rospy.Subscriber('/mavros/global_position/rel_alt', Float64, callback_depth)
     
 
     #spin() simply keeps python from exiting until this node is stopped
@@ -216,6 +167,7 @@ def listener_and_talker():
 
         print("avance =",msg.pose.position.x)
         print("haut/bas =",msg.pose.position.z)
+        print("gauche/droite =",msg.pose.position.y)
         print("rot =",msg.pose.orientation.z)
 
         

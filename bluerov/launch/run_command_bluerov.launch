@@ -14,11 +14,12 @@
     </include>
 
     <!-- Run joytick -->
+    <!-- <node name="MyProgram" pkg="bluerov" type="JoyCommand_Christophe_vs4.py" output="screen"/> -->
     <node name="joy_node" pkg="joy" type="joy_node" output="screen"/>
 
     <!-- Run command node -->
-    <node name="control_node" pkg="bluerov" type="control_node.py" output="screen"/>
-    <!-- <node name="joy_and_command_node" pkg="bluerov" type="joy_and_command_node.py" output="screen"/> -->
+    <!-- <node name="control_node" pkg="bluerov" type="control_node.py" output="screen"/> -->
+    <node name="joy_and_command_node" pkg="bluerov" type="joy_and_command_node.py" output="screen"/>
 
     <!-- <node name="state_machine" pkg="bluerov" type="state_machine.py" output="screen"/> -->
 
@@ -32,11 +33,11 @@
     <!-- <node name="detec_lum" pkg="detect_lum" type="node_lum.py" output="screen"/> -->
 
     <!-- USBL command-->
-    <node name="USBL_pub_node" pkg="usbl" type="usbl_pub" output="screen"/>
+    <!-- <node name="USBL_pub_node" pkg="usbl" type="usbl_pub" output="screen"/>
 
     <node name="usbl_data_viewer" pkg="mission_displayer" type="MissionDisplayer.py" output="screen"/>
     
-    <node name="command_giver" pkg="control" type="join_cage.py" output="screen"/>
+    <node name="command_giver" pkg="control" type="join_cage.py" output="screen"/> -->
 
 <!-- ############################################################################################################### -->
 

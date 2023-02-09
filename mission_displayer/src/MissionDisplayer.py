@@ -39,7 +39,6 @@ class MainWindow(QtWidgets.QMainWindow):
         self.p=self.graphWidget.addPlot()
         
         #Setting the plot
-        self.p.setYRange(-1,1)
         self.p.setLabel('left', 'y position (m)', **{'color':'r', 'font-size':'20px'})
         self.p.setLabel('bottom', 'x position (m)', **{'color':'r', 'font-size':'20px'})
         self.p.addLegend()
@@ -68,19 +67,21 @@ class MainWindow(QtWidgets.QMainWindow):
         self.timer.setInterval(20)
         self.timer.timeout.connect(self.update_plot_data)
         self.timer.start()
-        self.show()
 
+        self.p.setXRange(-10,5)
+        self.p.setYRange(-1,1)
+        self.show()
     
     def update_plot_data(self):
-        if self.usbl_data!=None and self.heading!=None:
-            self.vehicle.setPos(self.usbl_data.position.x,self.usbl_data.position.y)
+        if self.usbl_data!=0:
+            self.vehicle.setPos(self.usbl_data.position.y,-self.usbl_data.position.x)
             self.vehicle.setStyle(angle=self.heading)
             self.i+=1
             # self.graph_item.setData(x=self.x, y=self.y*np.sin(0.01*self.i),color='#288af1')  # Update the data.
             # self.graph_item.setData(x=[0,0.5,1], y=[0,.5,1],brush='#288af1')  # Update the data.
-        else:
-            self.vehicle.setPos(0,0)
-            self.vehicle.setStyle(angle=0)
+        # else:
+            # self.vehicle.setPos(0,0)
+            # self.vehicle.setStyle(angle=0)
 
 def ros_callback(data):
     global main
