@@ -236,5 +236,3 @@ if __name__ == '__main__':
     msg_centre = PoseStamped()
 
     listener_and_talker()
-
-  

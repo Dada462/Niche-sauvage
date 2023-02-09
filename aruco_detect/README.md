@@ -3,6 +3,7 @@
 Give the pose and ID of one Aruco Qr Code 
 
 ## Install
+You need to install opencv-python 4.6.0.66 and opencv-contrib-python 4.6.0.66 (cf install file)
 
 In src/aruco_test.py line 80, you have to change the topic of the suscriber message image.
 
