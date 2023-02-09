@@ -69,10 +69,10 @@ def callback(data): ## callback qui recupere la pose du robot dans le repere du 
         return 0 
     if id == 0 :   ## se placer devant
         if z>0.5:
-            accel_z = 0.2 ##avance
+            accel_z = 0.0 ##avance
             #print("on avance")
         if z<0.1:
-            accel_z = -0.2 ##recule 
+            accel_z = -0.0 ##recule 
             #print("on recule")
         #if x > 0.3 :
         #    accel_x = -0.2 ##droite
@@ -91,26 +91,26 @@ def callback(data): ## callback qui recupere la pose du robot dans le repere du 
 
     elif id == 1 : ## se placer à droite
             if z>0.5:
-                accel_z = 0.2 ##avance
+                accel_z = 0.20 ##avance
                 #print("on avance")
             if z<0.1:
-                accel_z = -0.2 ##recule 
+                accel_z = -0.0 ##recule 
                 #print("on recule")
 
     elif id == 2 : ## se placer à droite
             if z>0.5:
-                accel_z = 0.2 ##avance
+                accel_z = 0.0 ##avance
                 #print("on avance")
             if z<0.1:
-                accel_z = -0.2 ##recule 
+                accel_z = -0.0 ##recule 
                 #print("on recule")
 
     elif id == 3 : ## se placer à droite
         if z>0.5:
-            accel_z = 0.2 ##avance
+            accel_z = 0.0 ##avance
             #print("on avance")
         if z<0.1:
-            accel_z = -0.2 ##recule 
+            accel_z = -0.0 ##recule 
             #print("on recule")
         #if x > -0.5 :
         #    accel_x =-0.2 ##droite
@@ -127,10 +127,10 @@ def callback(data): ## callback qui recupere la pose du robot dans le repere du 
 
     elif id == 4 : ## se placer à gauche
         if z>0.5:
-            accel_z = 0.2 ##avance
+            accel_z = 0.0 ##avance
             #print("on avance")
         if z<0.1:
-            accel_z = -0.2 ##recule 
+            accel_z = -0.0 ##recule 
             #print("on recule")
         #if x > -0.8 :
         #    accel_x =-0.2 ##droite
@@ -165,18 +165,19 @@ def callback3(data):                 ##callback pour ajuster le rov dans l'espac
     centrey = data.pose.position.y
     global accel_x, accel_y, accel_z,rot_z
     if centrex == 0.0 :
-        return 0
-    if centrex>140:
-        accel_y = -0.2
+        accel_y = 0.0
+        rot_z = 0.0
+    elif centrex>140:
+        accel_y = -0.00
 
-    if centrex<120:
-        accel_y = 0.2
+    elif centrex<120:
+        accel_y = 0.00
 
-    if centrey >420:
-        rot_z = -0.2
+    elif centrey >420:
+        rot_z = -0.0
 
-    if centrey <380:
-        rot_z = 0.2
+    elif centrey <380:
+        rot_z = 0.0
 
 
 def listener_and_talker():

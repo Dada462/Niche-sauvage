@@ -300,260 +300,518 @@ if __name__ == '__main__':
 #        video = Video(5600)
     
     while not rospy.is_shutdown():
-        
-        # if use_joy :
-        #     val_pwm = 100
 
-#    #### Afficher la camera
-#            # Wait for the next frame
-#        if Affichage_video == 1:
-#            if not video.frame_available():
-#                    continue
-#
-#            frame = video.frame()
-#            cv2.imshow('frame3', frame)
-#            if cv2.waitKey(1) & 0xFF == ord('q'):
-#                break
-
+        while (not rospy.is_shutdown()) & (use_joy):
 
         
-        # stabilisation cap : enregistrement du cap        
-        if Test1 == 1:
-           # t.sleep(0.25) # t.sleep(0.5)
-            listener()
-            cap_d = cap
-            stable_cap_on = True  
-            Test1 = 0
-        else:
-            listener()
+
+    #    #### Afficher la camera
+    #            # Wait for the next frame
+    #        if Affichage_video == 1:
+    #            if not video.frame_available():
+    #                    continue
+    #
+    #            frame = video.frame()
+    #            cv2.imshow('frame3', frame)
+    #            if cv2.waitKey(1) & 0xFF == ord('q'):
+    #                break
+
+
             
+            # stabilisation cap : enregistrement du cap        
+            if Test1 == 1:
+            # t.sleep(0.25) # t.sleep(0.5)
+                listener()
+                cap_d = cap
+                stable_cap_on = True  
+                Test1 = 0
+            else:
+                listener()
+                
+                        
+            #print(abs(pression-pressionair)*10)
+            #print(pression)
         
-        if not use_joy :
+        
+    #        print('profondeur = ', altitude)
+                                        
+            
+            if frame_id_old != frame_id:
+            
+                frame_id_old = frame_id
+                
+                if (button[7] == 1)&(test_arm == 0):
+                #    command.arming(True) 
+                    
+                    armService = rospy.ServiceProxy('/mavros/cmd/arming', mavros_msgs.srv.CommandBool)
+                    armService(True)
+                    print('armed...') 
+                    test_arm = 1
+                elif (button[7] == 1)&(test_arm == 1):
+                    test_arm = 0
+                #    command.arming(False) 
+                    armService = rospy.ServiceProxy('/mavros/cmd/arming', mavros_msgs.srv.CommandBool)
+                    armService(False)
+                    print('disarmed.')           
+                            
+
+                            
+                #################################
+                #button = [0,0,0,0,0,0,0,0,0,0,0]   A, B,X,Y, LB , RB , back, start, ?, L3, R3
+                #Jaxes = [0,0,0,0,0,0,0,0]   # (gauche gauche(1)/droite(-1), gauche haut(1)/bas(-1), ? , droite gauche(1)/droite(-1), droite haut(1)/bas(-1), ?, flèches gauche(1)/droite(-1), flèches haut(1)/bas(-1))
+
+
+
+
+
+                # inclinaison de la camera
+                if Jaxes[2]<0:  
+                    msg[7] = 1700 
+            #     print('bouton LT')
+                            
+                elif Jaxes[5]<0:
+                    msg[7] = 1300
+            #     print('bouton RT')  
+                else:
+                    msg[7] = 1500
+                                    
+                
+                # accelerer/revenir au minimum
+                if button[3]!= 0:  # bouton Y : accelerer   
+                    val_pwm = val_pwm + 100
+                    print('pwm = ', val_pwm)
+
+                if button[0]!= 0:  # bouton A : revenir au minimum   
+                    val_pwm = 100
+                    print('pwm = ', val_pwm)
+                
+                    
+                # tourne gauche/droite
+                if Jaxes[6] != 0:    # fleche droite/gauche
+                    rot=int(-val_pwm*Jaxes[6]+1500 )
+                    msg[5] = rot 
+        #         if rot > 1500:
+        #             print('-->')
+        #         elif rot<1500:
+        #             print('<--')
+        #         print(rot)
+                else:
+                    msg[5] = 1500 
+                    
+                # rotation gauche/droite
+                if Jaxes[0] != 0:    # joystick droite/gauche
+                    rot=int(-100*Jaxes[0]+1500 )
+                    msg[3] = rot 
+                #    if rot > 1500:
+                #        print('rot -->')
+                #    elif rot<1500:
+                #        print('rot <--')
+                #    print(rot)
+                    stable_cap_on = False
+                #  cap_d = cap
+                    
+                else:
+                    msg[3] = 1500 
+                    if stable_cap_on == False:
+                        Test1 = 1
+                    
+                            
+            # marche avant/arrière     
+                if Jaxes[7] != 0:  # fleche haut/bas
+                    vit = int(val_pwm*Jaxes[7]+1500 )
+                    msg[4] = vit 
+        #            if vit>1500:
+        #                print('^')
+        #                print('|') 
+        #            elif vit<1500:
+        #                print('|')
+        #                print('v')  
+        #            print('vit = ',vit)
+                else:
+                    msg[4] = 1500
+                        
+                
+                # monter/ descendre
+                depUp = 1500
+                if button[4] != 0:  # monter lentement
+                    depUp = int(val_pwm+1500 )
+
+                if button[5] != 0: # descendre lentement
+                    depUp = int(-val_pwm+1500 )        
+
+                    
+                if Jaxes[4] != 0:  # monter/descendre rapidement
+                    depUp = int(200*Jaxes[4]+1500 ) 
+
+                
+                msg[2] = depUp # elevation
+
+                    
+                if (Jaxes[4] != 0)|(button[4] != 0)|(button[5] != 0):
+                    stable_on = False  #Désactivation de la régulation en profondeur
+                # t.sleep(1)
+                else:
+                    if stable_on == False:
+                        altitude_obj = altitude
+                        stable_on = True   #Activation de la régulation en profondeur
+                    # t.sleep(1)
+            
+                
+
+
+                        
+            # stabilisation
+            if stable_on:
+        #     print('stabilisation profondeur a ', altitude_obj)
+                if numpy.sign(altitude-altitude_obj) < 0:
+                    depUp = int(200*(2/3.14159*numpy.arctan(0.2*(altitude-altitude_obj)+0.05*((altitude-altitudeprec)/(time.time()-timeprec))))+1500+numpy.sign(altitude-altitude_obj)*50)
+                else:
+                    depUp = int(200*(2/3.14159*numpy.arctan(2*(altitude-altitude_obj)))+1500+numpy.sign(altitude-altitude_obj)*50)
+        #     print('Puissance : {}  altitude : {}  altitude désirée : {}'.format( depUp, altitude, altitude_obj))
+                msg[2] = depUp 
+                
+            altitudeprec=altitude
+            timeprec=time.time()
+                    
+            # stabilisation du cap
+            if stable_cap_on:
+    #           print('stabilisation cap a ', int(cap_d))
+    
+                cap_d0 = cap_d
+                if abs(cap_d - cap)>280   :  
+                    if cap_d > 180:
+                        cap_d = cap_d - 360
+                    if cap > 180:
+                        cap = cap - 360
+                
+                msg[3] = -int(numpy.arctan((cap - cap_d)/180*3.14)*150) + 1500
+                cap_d = cap_d0
+            
+
+            Test77 = 0
+            
+            if Test77 == 1:
+                print('stabilisation roll and pitch')
+                ###### stabilisation en roulis/roll
+                #print('Roll = ',Phi*180/3.14) 
+                Phi0 = numpy.sign(Phi)*min([3.14/4, max([0,abs(Phi)-5*3.14/180])])          
+                msg[1] = -int(1.1*numpy.arctan(Phi0)*val_pwm) + 1500
+
+        
+                ###### stabilisation en pitch
+                #print('Pitch = ', Theta*180/3.14)
+                Theta0 = numpy.sign(Theta)*min([3.14/4, max([0,abs(Theta)-5*3.14/180]) ])           
+                msg[0] = int(numpy.arctan(Theta0)*150) + 1500 
+
+
+
+
+            if (button[1]!=0):
+                    
+                file2 = '/home/pi/lights/test.txt'
+            
+                # pour le bluerov 1
+                pwm_light = pwm_light+100
+                msg1[1] += 1
+                # if (pwm_light > 1800):
+                    # msg1[1] = 2  # communication a l'affichage
+                if (pwm_light > 1900):
+                    pwm_light = 1000
+                    msg1[1] = 0
+                    # msg1[1] = 0
+
+                # on ecrit la valeur que l'on veut dans le fihcier test.txt      
+                msg_lum = str(pwm_light) # 'test'
+                file2 = '/home/pi/lights/pwm_light.txt'
+                file3 = '/home/pi/pwm_light.txt'
+    #            cmd = 'sshpass -p '+password+' ssh '+ adresse_ip +' "echo '+ msg_lum +' > '+file2+'"'
+    #            os.system(cmd)
+                cmd = 'sshpass -p '+password+' ssh '+ adresse_ip +' "echo '+ msg_lum +' > '+file3+'"'
+                os.system(cmd)    
+
+            
+            # enregistrement
+            if (button[6]!=0)&(msg1[0] == 0):
+                msg1[0] = 1
+                print('enregistrement: début')
+            elif (button[6]!=0)&(msg1[0] == 1):
+                msg1[0] = 0
+                print('enregistrement: fin')
+            publisher_enregistrement(msg1)
+                        
+
+                
+                
+            msg[8] = pwm_light
+            
+
+
+            
+            ROV_movement(msg)
+            
+                    
+            # remettre à zero les inputs des boutons
+            button = [0,0,0,0,0,0,0,0,0,0,0]
+            Jaxes = [0,0,0,0,0,0,0,0]
+            t.sleep(0.1)
+            
+            
+        while (not rospy.is_shutdown()) & (not use_joy):
+
             val_pwm,pwm_light = set_commande(command)
+
+    #    #### Afficher la camera
+    #            # Wait for the next frame
+    #        if Affichage_video == 1:
+    #            if not video.frame_available():
+    #                    continue
+    #
+    #            frame = video.frame()
+    #            cv2.imshow('frame3', frame)
+    #            if cv2.waitKey(1) & 0xFF == ord('q'):
+    #                break
+
+
+            
+            # stabilisation cap : enregistrement du cap        
+            if Test1 == 1:
+            # t.sleep(0.25) # t.sleep(0.5)
+                listener()
+                cap_d = cap
+                stable_cap_on = True  
+                Test1 = 0
+            else:
+                listener()
+                
+                        
+            #print(abs(pression-pressionair)*10)
+            #print(pression)
         
+        
+    #        print('profondeur = ', altitude)
+                                        
+            
+            # if frame_id_old != frame_id:
+            if True:
+            
+                frame_id_old = frame_id
+
+                if (button[7] == 1)&(test_arm == 0):
+                #    command.arming(True)
                     
-        #print(abs(pression-pressionair)*10)
-        #print(pression)
-      
-      
-#        print('profondeur = ', altitude)
-                                      
-        """
-        if not use_joy:
-        
-            # frame_id_old = frame_id
+                    armService = rospy.ServiceProxy('/mavros/cmd/arming', mavros_msgs.srv.CommandBool)
+                    armService(True)
+                    print('armed...') 
+                    test_arm = 1
+                elif (button[7] == 0)&(test_arm == 1):
+                    test_arm = 0
+                #    command.arming(False) 
+                    armService = rospy.ServiceProxy('/mavros/cmd/arming', mavros_msgs.srv.CommandBool)
+                    armService(False)
+                    print('disarmed.')           
+                            
 
-            if (button[7] == 1)&(test_arm == 0):
-            #    command.arming(True)
+                            
+        #################################
+        #button = [0,0,0,0,0,0,0,0,0,0,0]   A, B,X,Y, LB , RB , back, start, ?, L3, R3
+        #Jaxes = [0,0,0,0,0,0,0,0]   # (gauche gauche(1)/droite(-1), gauche haut(1)/bas(-1), ? , droite gauche(1)/droite(-1), droite haut(1)/bas(-1), ?, flèches gauche(1)/droite(-1), flèches haut(1)/bas(-1))
+
+
+                # inclinaison de la camera
+                if Jaxes[2]<0:  
+                    msg[7] = 1700 
+            #     print('bouton LT')
+                            
+                elif Jaxes[5]<0:
+                    msg[7] = 1300
+            #     print('bouton RT')  
+                else:
+                    msg[7] = 1500
+                                    
                 
-                armService = rospy.ServiceProxy('/mavros/cmd/arming', mavros_msgs.srv.CommandBool)
-                armService(True)
-                print('armed...')
-                test_arm = 1
-            elif (button[7] == 1)&(test_arm == 1):
-                test_arm = 0
-            #    command.arming(False) 
-                armService = rospy.ServiceProxy('/mavros/cmd/arming', mavros_msgs.srv.CommandBool)
-                armService(False)
-                print('disarmed.') 
+                # accelerer/revenir au minimum
+                # if button[3]!= 0:  # bouton Y : accelerer   
+                #    val_pwm = val_pwm + 100
+                #    print('pwm = ', val_pwm)
 
-        else:
-        """
-        
-        if frame_id_old != frame_id:
-        
-            frame_id_old = frame_id
-            
-            if (button[7] == 1)&(test_arm == 0):
-            #    command.arming(True) 
+                # if button[0]!= 0:  # bouton A : revenir au minimum   
+                #    val_pwm = 100
+                #    print('pwm = ', val_pwm)
                 
-                armService = rospy.ServiceProxy('/mavros/cmd/arming', mavros_msgs.srv.CommandBool)
-                armService(True)
-                print('armed...') 
-                test_arm = 1
-            elif (button[7] == 1)&(test_arm == 1):
-                test_arm = 0
-            #    command.arming(False) 
-                armService = rospy.ServiceProxy('/mavros/cmd/arming', mavros_msgs.srv.CommandBool)
-                armService(False)
-                print('disarmed.')  
-
-                          
-
-                          
-    #################################
-    #button = [0,0,0,0,0,0,0,0,0,0,0]   A, B,X,Y, LB , RB , back, start, ?, L3, R3
-    #Jaxes = [0,0,0,0,0,0,0,0]   # (gauche gauche(1)/droite(-1), gauche haut(1)/bas(-1), ? , droite gauche(1)/droite(-1), droite haut(1)/bas(-1), ?, flèches gauche(1)/droite(-1), flèches haut(1)/bas(-1))
-
-            # print(button)
-
-            # inclinaison de la camera
-            if Jaxes[2]<0:  
-                msg[7] = 1700 
-           #     print('bouton LT')
-                           
-            elif Jaxes[5]<0:
-                msg[7] = 1300
-           #     print('bouton RT')  
-            else:
-                msg[7] = 1500
-               
-                   
-            # tourne gauche/droite
-            if Jaxes[6] != 0:    # fleche droite/gauche
-                rot=int(-val_pwm*Jaxes[6]+1500 )
-                msg[5] = rot
-       #         if rot > 1500:
-       #             print('-->')
-       #         elif rot<1500:
-       #             print('<--')
-       #         print(rot)
-            else:
-                msg[5] = 1500 
-                
-            # rotation gauche/droite
-            if Jaxes[0] != 0:    # joystick droite/gauche
-                rot=int(-100*Jaxes[0]+1500 )
-                msg[3] = rot 
-            #    if rot > 1500:
-            #        print('rot -->')
-            #    elif rot<1500:
-            #        print('rot <--')
-            #    print(rot)
-                stable_cap_on = False
-              #  cap_d = cap
-                
-            else:
-                msg[3] = 1500 
-                if stable_cap_on == False:
-                    Test1 = 1
-                
-                          
-           # marche avant/arrière     
-            if Jaxes[7] != 0:  # fleche haut/bas
-                vit = int(val_pwm*Jaxes[7]+1500 )
-                msg[4] = vit 
-    #            if vit>1500:
-    #                print('^')
-    #                print('|') 
-    #            elif vit<1500:
-    #                print('|')
-    #                print('v')  
-    #            print('vit = ',vit)
-            else:
-                msg[4] = 1500
-                       
-              
-            # monter/ descendre
-            depUp = 1500
-            if button[4] != 0:  # monter lentement
-                depUp = int(val_pwm+1500 )
-
-            if button[5] != 0: # descendre lentement
-                depUp = int(-val_pwm+1500 )        
-
-                
-            if Jaxes[4] != 0:  # monter/descendre rapidement
-                depUp = int(200*Jaxes[4]+1500 ) 
-
-            
-            msg[2] = depUp # elevation
-
-                
-            if (Jaxes[4] != 0)|(button[4] != 0)|(button[5] != 0):
-                stable_on = False  #Désactivation de la régulation en profondeur
-               # t.sleep(1)
-            else:
-                if stable_on == False:
-                    altitude_obj = altitude
-                    stable_on = True   #Activation de la régulation en profondeur
-                   # t.sleep(1)
-        
-            
-
-
-                       
-        # stabilisation
-        if stable_on:
-       #     print('stabilisation profondeur a ', altitude_obj)
-            if numpy.sign(altitude-altitude_obj) < 0:
-                 depUp = int(200*(2/3.14159*numpy.arctan(0.2*(altitude-altitude_obj)+0.05*((altitude-altitudeprec)/(time.time()-timeprec))))+1500+numpy.sign(altitude-altitude_obj)*50)
-            else:
-                 depUp = int(200*(2/3.14159*numpy.arctan(2*(altitude-altitude_obj)))+1500+numpy.sign(altitude-altitude_obj)*50)
-       #     print('Puissance : {}  altitude : {}  altitude désirée : {}'.format( depUp, altitude, altitude_obj))
-            msg[2] = depUp 
-            
-        altitudeprec=altitude
-        timeprec=time.time()
-                
-        # stabilisation du cap
-        if stable_cap_on:
- #           print('stabilisation cap a ', int(cap_d))
- 
-            cap_d0 = cap_d
-            if abs(cap_d - cap)>280   :  
-                if cap_d > 180:
-                    cap_d = cap_d - 360
-                if cap > 180:
-                    cap = cap - 360
-            
-            msg[3] = -int(numpy.arctan((cap - cap_d)/180*3.14)*150) + 1500
-            cap_d = cap_d0
-        
-
-
-
-
-#         if (button[1]!=0):
-                
-#             file2 = '/home/pi/lights/test.txt'
-        
-            # # pour le bluerov 1
-            # pwm_light = pwm_light+100
-            # msg1[1] += 1
-            # # if (pwm_light > 1800):
-            # 	# msg1[1] = 2  # communication a l'affichage
-            # if (pwm_light > 1900):
-            #     pwm_light = 1000
-            #     msg1[1] = 0
-            #     # msg1[1] = 0
-
-#             # on ecrit la valeur que l'on veut dans le fihcier test.txt      
-#             msg_lum = str(pwm_light) # 'test'
-#             file2 = '/home/pi/lights/pwm_light.txt'
-#             file3 = '/home/pi/pwm_light.txt'
-# #            cmd = 'sshpass -p '+password+' ssh '+ adresse_ip +' "echo '+ msg_lum +' > '+file2+'"'
-# #            os.system(cmd)
-#             cmd = 'sshpass -p '+password+' ssh '+ adresse_ip +' "echo '+ msg_lum +' > '+file3+'"'
-#             os.system(cmd)    
-
-        
-        # enregistrement
-        if (button[6]!=0)&(msg1[0] == 0):
-            msg1[0] = 1
-            print('enregistrement: début')
-        elif (button[6]!=0)&(msg1[0] == 1):
-            msg1[0] = 0
-            print('enregistrement: fin')
-        publisher_enregistrement(msg1)
                     
-
-            
-            
-        msg[8] = pwm_light
-
-
-        
-        ROV_movement(msg)
-        
+                # tourne gauche/droite
+                if Jaxes[6] != 0:    # fleche droite/gauche
+                    rot=int(-val_pwm*Jaxes[6]+1500 )
+                    msg[5] = rot 
+                    # print("Test X: ",Jaxes[6])
+        #         if rot > 1500:
+        #             print('-->')
+        #         elif rot<1500:
+        #             print('<--')
+        #         print(rot)
+                else:
+                    msg[5] = 1500 
+                    
+                # rotation gauche/droite
+                if Jaxes[0] != 0:    # joystick droite/gauche
+                    rot=int(-100*Jaxes[0]+1500 )
+                    msg[3] = rot 
+                #    if rot > 1500:
+                #        print('rot -->')
+                #    elif rot<1500:
+                #        print('rot <--')
+                #    print(rot)
+                    stable_cap_on = False
+                #  cap_d = cap
+                    
+                else:
+                    msg[3] = 1500 
+                    if stable_cap_on == False:
+                        Test1 = 1
+                    
+                            
+            # marche avant/arrière     
+                if Jaxes[7] != 0:  # fleche haut/bas
+                    vit = int(val_pwm*Jaxes[7]+1500 )
+                    msg[4] = vit 
+                    # print("Test Y: ",Jaxes[7])
+        #            if vit>1500:
+        #                print('^')
+        #                print('|') 
+        #            elif vit<1500:
+        #                print('|')
+        #                print('v')  
+        #            print('vit = ',vit)
+                else:
+                    msg[4] = 1500
+                        
                 
-        # remettre à zero les inputs des boutons
-        # print(button, Jaxes)
-        button = [0,0,0,0,0,0,0,0,0,0,0]
-        Jaxes = [0,0,0,0,0,0,0,0]
-        t.sleep(0.1)
+                # monter/ descendre
+                depUp = 1500
+                if button[4] != 0:  # monter lentement
+                    depUp = int(val_pwm+1500 )
+
+                if button[5] != 0: # descendre lentement
+                    depUp = int(-val_pwm+1500 )        
+
+                    
+                if Jaxes[4] != 0:  # monter/descendre rapidement
+                    depUp = int(200*Jaxes[4]+1500 ) 
+
+                
+                msg[2] = depUp # elevation
+
+                    
+                if (Jaxes[4] != 0)|(button[4] != 0)|(button[5] != 0):
+                    stable_on = False  #Désactivation de la régulation en profondeur
+                # t.sleep(1)
+                else:
+                    if stable_on == False:
+                        altitude_obj = altitude
+                        stable_on = True   #Activation de la régulation en profondeur
+                    # t.sleep(1)
+            
+                
+
+
+                        
+            # stabilisation
+            if stable_on:
+        #     print('stabilisation profondeur a ', altitude_obj)
+                if numpy.sign(altitude-altitude_obj) < 0:
+                    depUp = int(200*(2/3.14159*numpy.arctan(0.2*(altitude-altitude_obj)+0.05*((altitude-altitudeprec)/(time.time()-timeprec))))+1500+numpy.sign(altitude-altitude_obj)*50)
+                else:
+                    depUp = int(200*(2/3.14159*numpy.arctan(2*(altitude-altitude_obj)))+1500+numpy.sign(altitude-altitude_obj)*50)
+        #     print('Puissance : {}  altitude : {}  altitude désirée : {}'.format( depUp, altitude, altitude_obj))
+                msg[2] = depUp 
+                
+            altitudeprec=altitude
+            timeprec=time.time()
+                    
+            # stabilisation du cap
+            if stable_cap_on:
+    #           print('stabilisation cap a ', int(cap_d))
+    
+                cap_d0 = cap_d
+                if abs(cap_d - cap)>280   :  
+                    if cap_d > 180:
+                        cap_d = cap_d - 360
+                    if cap > 180:
+                        cap = cap - 360
+                
+                msg[3] = -int(numpy.arctan((cap - cap_d)/180*3.14)*150) + 1500
+                cap_d = cap_d0
+            
+
+            Test77 = 0
+            
+            if Test77 == 1:
+                print('stabilisation roll and pitch')
+                ###### stabilisation en roulis/roll
+                #print('Roll = ',Phi*180/3.14) 
+                Phi0 = numpy.sign(Phi)*min([3.14/4, max([0,abs(Phi)-5*3.14/180])])          
+                msg[1] = -int(1.1*numpy.arctan(Phi0)*val_pwm) + 1500
+
         
-        
+                ###### stabilisation en pitch
+                #print('Pitch = ', Theta*180/3.14)
+                Theta0 = numpy.sign(Theta)*min([3.14/4, max([0,abs(Theta)-5*3.14/180]) ])           
+                msg[0] = int(numpy.arctan(Theta0)*150) + 1500 
+
+
+
+
+    #         if (button[1]!=0):
+                    
+    #             file2 = '/home/pi/lights/test.txt'
+            
+                # # pour le bluerov 1
+                # pwm_light = pwm_light+100
+                # msg1[1] += 1
+                # # if (pwm_light > 1800):
+                # 	# msg1[1] = 2  # communication a l'affichage
+                # if (pwm_light > 1900):
+                #     pwm_light = 1000
+                #     msg1[1] = 0
+                #     # msg1[1] = 0
+
+    #             # on ecrit la valeur que l'on veut dans le fihcier test.txt      
+    #             msg_lum = str(pwm_light) # 'test'
+    #             file2 = '/home/pi/lights/pwm_light.txt'
+    #             file3 = '/home/pi/pwm_light.txt'
+    # #            cmd = 'sshpass -p '+password+' ssh '+ adresse_ip +' "echo '+ msg_lum +' > '+file2+'"'
+    # #            os.system(cmd)
+    #             cmd = 'sshpass -p '+password+' ssh '+ adresse_ip +' "echo '+ msg_lum +' > '+file3+'"'
+    #             os.system(cmd)    
+
+            
+            # enregistrement
+            if (button[6]!=0)&(msg1[0] == 0):
+                msg1[0] = 1
+                print('enregistrement: début')
+            elif (button[6]!=0)&(msg1[0] == 1):
+                msg1[0] = 0
+                print('enregistrement: fin')
+            publisher_enregistrement(msg1)
+                        
+
+                
+                
+            msg[8] = pwm_light
+
+
+            
+            ROV_movement(msg)
+            
+                    
+            # remettre à zero les inputs des boutons
+            # print(button, Jaxes)
+            button = [0,0,0,0,0,0,0,0,0,0,0]
+            Jaxes = [0,0,0,0,0,0,0,0]
+            t.sleep(0.1)
+            
+            
+
 
 
 
