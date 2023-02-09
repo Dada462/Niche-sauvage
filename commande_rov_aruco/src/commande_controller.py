@@ -37,6 +37,82 @@ def euler_from_quaternion(x, y, z, w):
      
         return roll_x, pitch_y, yaw_z # in radians
 
+class Controller():
+    def __init__(self):
+        
+        self.heading = 0.
+        
+
+        ################ Initial Control set to 0 so that the robot does not move ################
+        self.command = CommandBluerov()
+        self.command.pose.position = Point(0., 0., 0.)
+        self.command.pose.orientation = Quaternion(0., 0., 0., 0.)
+        self.command.light = 0
+        self.command.power = 0
+        self.command.arming = 0
+        self.desired_position = Quaternion(0., 0., 0., 0)
+        ################ Initial Control set to 0 so that the robot does not move ################
+
+    def heading_test(self, desired_heading):
+        k = .5
+        u = -2*tanh(k*sawtooth((desired_heading-self.heading)/180*np.pi))
+        print('Heading=', self.heading, 'command', u)
+        if self.desired_position.w == 1:
+            self.create_control_message(
+                Point(0., 0., 0.), Quaternion(0., 0., u, 0.))
+        else:
+            self.create_control_message(
+                Point(0., 0., 0.), Quaternion(0., 0., 0., 0.))
+
+    def NED_to_cage(self, heading):
+        cage_heading = 90  # deg
+        return -sawtooth((heading-cage_heading)/180*pi)
+
+    def join_a_point_test(self):
+        # print(self.NED_to_cage(self.heading)/pi*180)
+        if self.desired_position.w == 1:
+            s = 0.
+            X = np.array([self.usbl_data.position.x,
+                         self.usbl_data.position.y])
+            heading = self.NED_to_cage(self.heading)
+            ################ To be implemented later ################
+            # F = path_info_update(self.path_to_follow, s)
+            # theta_c = F.psi
+            # s1, y1 = R(theta_c).T@(X-F.X)
+            # theta = sawtooth(theta-theta_c)
+            # psi = sawtooth(theta)
+            # ks = 1
+            # nu=1
+            # ds = np.cos(psi)*nu + ks*s1
+            ################ To be implemented later ################
+
+            ################ Control ################
+            x_desired = np.array(
+                [self.desired_position.x, self.desired_position.y])
+            k = .7  # Saturation gain
+            u = R(heading).T@(x_desired-X)
+            u = tanh(k*u)
+            ################ Control ################
+            self.create_control_message(
+                Point(u[0], u[1], 0.), Quaternion(0., 0., 0., 0.))
+        else:
+            self.create_control_message(
+                Point(0., 0., 0.), Quaternion(0., 0., 0., 0.))
+
+    def create_control_message(self, P, Q, arming=1, power=100, light=0):
+        self.command = CommandBluerov()
+        self.command.pose.position = P
+        self.command.pose.orientation = Q
+        self.command.light = light
+        self.command.power = power
+        self.command.arming = arming
+
+
+
+
+
+
+
 def callback(data): ## callback qui recupere la pose du robot dans le repere du marqueur et renvoie la commande associée
     global id
     global x,y,z,roll_x, pitch_y, yaw_z
@@ -154,21 +230,18 @@ def callback(data): ## callback qui recupere la pose du robot dans le repere du 
 
  
 
-def callback2(data): ## callback qui récupère l'id du marqueur
+def get_id(data): ## callback qui récupère l'id du marqueur
     global id
     id = data.data
 
 
 
-def callback3(data):                 ##callback pour ajuster le rov dans l'espace plan aruco
+def centrage_rov(data):                 ##callback pour ajuster le rov dans l'espace plan aruco
     centrex = data.pose.position.x
     centrey = data.pose.position.y
     global accel_x, accel_y, accel_z,rot_z
     if centrex == 0.0 :
-        accel_y = 0.0
-        rot_z = 0.0
         return 0
-
     if centrex>140:
         accel_y = -0.2
 
@@ -187,11 +260,11 @@ def listener_and_talker():
     rospy.init_node('aruco_commande', anonymous=True)
 
 
-    pub = rospy.Publisher('commande',CommandBluerov, queue_size=10)
+    pub = rospy.Publisher('/commande',CommandBluerov, queue_size=10)
 
     rospy.Subscriber('bluerov_pose_aruco', PoseStamped, callback)
-    rospy.Subscriber('id_qr_code_aruco', Float64, callback2)
-    rospy.Subscriber('centre_aruco_img', PoseStamped, callback3)
+    rospy.Subscriber('id_qr_code_aruco', Float64, get_id)
+    rospy.Subscriber('centre_aruco_img', PoseStamped, centrage_rov)
     
 
     #spin() simply keeps python from exiting until this node is stopped
@@ -201,28 +274,24 @@ def listener_and_talker():
     
     
     while not rospy.is_shutdown():    
+        global msg
         global id
         global x,y,z,roll_x, pitch_y, yaw_z
         global accel_x, accel_y, accel_z, rot_z
-        msg = CommandBluerov()
+
         ##deplacement en cap msg.pose.orientation.z
         msg.arming = 1
         msg.power = 100
-        msg.light = 0
         msg.pose.position.x = accel_z
         msg.pose.position.y = accel_x
         msg.pose.position.z = accel_y
         msg.pose.orientation.z = rot_z
 
-        print("avance =",msg.pose.position.x)
-        print("haut/bas =",msg.pose.position.z)
-        print("rot =",msg.pose.orientation.z)
-
-        
+        print("avance =",accel_z)
+        print("haut/bas =",accel_y)
+        print("rot =",rot_z)
 
         pub.publish(msg)
-
-
         
         rate.sleep()
 
@@ -238,9 +307,8 @@ if __name__ == '__main__':
     accel_y = 0
     accel_z = 0
     rot_z = 0
-  
-
-   
+    print("CV22222222",cv2.__version__)
+    msg = CommandBluerov()
    
     listener_and_talker()
 
