@@ -15,6 +15,8 @@ import cv2
 import cv2.aruco as aruco
 from bluerov_msgs.msg import CommandBluerov
 import time
+import filt
+
 
 def euler_from_quaternion(x, y, z, w):
         """
@@ -42,7 +44,10 @@ def callback(data): ## callback qui recupere la pose du robot dans le repere du 
     global id
     global x,y,z,roll_x, pitch_y, yaw_z
     global accel_x, accel_y, accel_z
+    global filtre_x, filtre_y, filtre_z
+    global x_start,y_start,z_start
 
+    
 
 
     desire_pos = 0.5
@@ -53,6 +58,33 @@ def callback(data): ## callback qui recupere la pose du robot dans le repere du 
 
     roll_x, pitch_y, yaw_z = euler_from_quaternion(data.pose.orientation.x, data.pose.orientation.y, data.pose.orientation.z, data.pose.orientation.w)
     
+
+
+    if len(x_start)>=5:
+        x_start.append(x)
+        x = filtre_x(x_start,x)
+    if len(y_start)>=5:
+        y_start.append(y)
+        y = filtre_y(y_start,y)
+    if len(z_start)>=5:
+        z_start.append(z)
+        z = filtre_z(z_start,z)
+
+
+
+
+    if len(x_start)<5:
+        x_start.append(x)
+
+    if len(y_start)<5:
+        y_start.append(y)
+
+    if len(z_start)<5:
+        z_start.append(z)
+
+
+
+
     """
        disposition : 0 : interieur fond de la cage
                      1 : interieur gauche
@@ -78,7 +110,7 @@ def callback(data): ## callback qui recupere la pose du robot dans le repere du 
         accel_z = 0
         #print("on stoppe")
 
- 
+    
 
 def callback2(data): ## callback qui récupère l'id du marqueur
     global id
@@ -87,12 +119,16 @@ def callback2(data): ## callback qui récupère l'id du marqueur
 
 
 def callback3(data):                 ##callback pour ajuster le rov dans l'espace plan aruco
+    global filtre
     global depths
+    global id
     centrex = data.pose.position.x
     centrey = data.pose.position.y
-    pos=np.array([centrex,centrey])
-    desire_pos=np.array([160,400])
-    
+    pos = np.array([centrex,centrey])
+    if id == 4 :
+        desire_pos = np.array([160,550])
+    if id == 3 :
+        desire_pos = np.array([160,250])
     #################### Robot frame #################### 
     try:
         Vz=(depths[-1][0]-depths[-2][0])/(depths[-1][1]-depths[-2][1])
@@ -100,17 +136,17 @@ def callback3(data):                 ##callback pour ajuster le rov dans l'espac
         Vz=0
     ky=1
     ly=-np.tanh(ky*((desire_pos[1]-centrey)/100))
-    kz=0.5
-    dkz=.2
+    kz=0.05
+    dkz=0.02
     lz=np.tanh(kz*((desire_pos[0]-centrex)/100) -dkz*Vz)
 
     #################### Robot frame #################### 
 
 
-    global accel_x, accel_y, accel_z,rot_z
-    accel_y=lz
-    accel_x=ly
-    #rot_z = - ly
+    global accel_x, accel_y, accel_z, rot_z
+    accel_y = lz
+    #accel_x=ly
+    rot_z = -ly
     # if centrex == 0.0 :
     #     accel_y = 0.0
     #     rot_z = 0.0
@@ -179,6 +215,13 @@ def listener_and_talker():
         rate.sleep()
 
 if __name__ == '__main__':
+    
+    filtre_x=MedianeFilter()
+    filtre_y=MedianeFilter()
+    filtre_z=MedianeFilter()
+    x_start=[]
+    y_start=[]
+    z_start=[]
     x = 0
     y = 0
     z = 0
