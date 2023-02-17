@@ -4,7 +4,7 @@ import queue
 import sys
 import rospy
 import math
-from std_msgs.msg import Float64
+from std_msgs.msg import Float64,Float64MultiArray
 from std_msgs.msg import String
 from sensor_msgs.msg import Image
 from geometry_msgs.msg import PoseStamped
@@ -15,6 +15,8 @@ import cv2
 import cv2.aruco as aruco
 from bluerov_msgs.msg import CommandBluerov
 import time
+from tools import QR_to_cage
+
 
 def euler_from_quaternion(x, y, z, w):
         """
@@ -87,11 +89,11 @@ def callback2(data): ## callback qui récupère l'id du marqueur
 
 
 def callback3(data):                 ##callback pour ajuster le rov dans l'espace plan aruco
-    global depths
+    global depths,gains
     centrex = data.pose.position.x
     centrey = data.pose.position.y
     pos=np.array([centrex,centrey])
-    desire_pos=np.array([160,400])
+    desired_pos=np.array([160,400])
     
     #################### Robot frame #################### 
     try:
@@ -99,17 +101,21 @@ def callback3(data):                 ##callback pour ajuster le rov dans l'espac
     except:
         Vz=0
     ky=1
-    ly=-np.tanh(ky*((desire_pos[1]-centrey)/100))
+    # ly=-np.tanh(ky*((desired_pos[1]-centrey)/100))*0
+    ly=0.
     kz=0.5
     dkz=.2
-    lz=np.tanh(kz*((desire_pos[0]-centrex)/100) -dkz*Vz)
+    lz=1
+    desired_pos[0]=-2
+    lz=np.tanh(kz*((desired_pos[0]-depths[-1]))-dkz*Vz)
+    print('LZZZZ',lz)
 
     #################### Robot frame #################### 
 
 
     global accel_x, accel_y, accel_z,rot_z
     accel_y=lz
-    accel_x=ly
+    rot_z=-ly
     #rot_z = - ly
     # if centrex == 0.0 :
     #     accel_y = 0.0
@@ -132,17 +138,24 @@ def callback_depth(msg):
     global depths
     depths.append([msg.data,time.time()])
 
+def gains_callback(msg):
+    global gains
+    gains=[*(msg.data)]
+    # print(gains)
+
 def listener_and_talker():
-    global depths
+    global depths,gains
     rospy.init_node('aruco_commande', anonymous=True)
 
 
     pub = rospy.Publisher('commande',CommandBluerov, queue_size=10)
     depths=[]
+    gains=[0.,0.,0.]
     rospy.Subscriber('bluerov_pose_aruco', PoseStamped, callback)
     rospy.Subscriber('id_qr_code_aruco', Float64, callback2)
     rospy.Subscriber('centre_aruco_img', PoseStamped, callback3)
     rospy.Subscriber('/mavros/global_position/rel_alt', Float64, callback_depth)
+    rospy.Subscriber('gains', Float64MultiArray, gains_callback)
     
 
     #spin() simply keeps python from exiting until this node is stopped
@@ -165,10 +178,10 @@ def listener_and_talker():
         msg.pose.position.z = accel_y
         msg.pose.orientation.z = rot_z
 
-        print("avance =",msg.pose.position.x)
-        print("haut/bas =",msg.pose.position.z)
-        print("gauche/droite =",msg.pose.position.y)
-        print("rot =",msg.pose.orientation.z)
+        # print("avance =",msg.pose.position.x)
+        # print("haut/bas =",msg.pose.position.z)
+        # print("gauche/droite =",msg.pose.position.y)
+        # print("rot =",msg.pose.orientation.z)
 
         
 

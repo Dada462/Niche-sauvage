@@ -44,7 +44,8 @@ def callback(data):
     try:
       cv_image = bridge.imgmsg_to_cv2(data, "bgr8") #conversion du message ROS en cv image
     except CvBridgeError as e:
-      print(e)
+        pass
+        # print(e)
 
     # CLAHE (Contrast Limited Adaptive Histogram Equalization)
     clahe = cv2.createCLAHE(clipLimit=3., tileGridSize=(8,8))
@@ -76,7 +77,7 @@ def callback(data):
     aruco_dict = aruco.Dictionary_get(aruco.DICT_4X4_50)         ##indiquer le dictionnaire aruco utilisé ici il s'agit du 4x4_50 !
     arucoParameters = aruco.DetectorParameters_create()
     corners, ids, rejected_img_points = aruco.detectMarkers(gray, aruco_dict, parameters=arucoParameters)       ##ATTENTION : MISE A JOUR de la bibliotheque aruco : ce sont les ANCIENNES méthodes d'instanciation codée ici !!
-    print('ids =', ids)
+    # print('ids =', ids)
 
     
     cv_image = aruco.drawDetectedMarkers(cv_image, corners)
@@ -95,7 +96,7 @@ def callback(data):
     global mem_id
     global cnt_id
     rvecs, tvecs, _ = aruco.estimatePoseSingleMarkers(corners, size_marker, mtx, dist)
-    print(tvecs,'et',rvecs)
+    # print(tvecs,'et',rvecs)
     
 
     if(rvecs is not None and tvecs is not None):
@@ -107,7 +108,7 @@ def callback(data):
         compteur = 0
         msg_bool = True
 
-        print(len(ids))
+        # print(len(ids))
         
         msg_id = ids[0][0]
         marqueur = 0
@@ -119,9 +120,9 @@ def callback(data):
         if mem_id>msg_id:
             mem_id = msg_id
 
-        print("marqueur :",marqueur)
+        # print("marqueur :",marqueur)
 
-        print("corners =",corners)
+        # print("corners =",corners)
 
         corners = corners[marqueur]
         centery = (corners[0][0][0]+corners[0][1][0]+corners[0][2][0]+corners[0][3][0])/4
@@ -138,7 +139,7 @@ def callback(data):
 
         if mem_id == msg_id and cnt_id<50:
             cnt_id = 0 
-            print('cool')
+            # print('cool')
             msg_pose.pose.position.x = tvecs[marqueur][0][0]
             msg_pose.pose.position.y = tvecs[marqueur][0][1]
             msg_pose.pose.position.z = tvecs[marqueur][0][2]
@@ -157,10 +158,10 @@ def callback(data):
     else : 
         
         compteur = compteur + 1
-    print("is_qrcode :",msg_bool)
-    print("msg_id =",msg_id)
-    print("centers = ",msg_centre.pose.position.y," ", msg_centre.pose.position.x)
-    print("profondeur aruco :",msg_pose.pose.position.z)
+    # print("is_qrcode :",msg_bool)
+    # print("msg_id =",msg_id)
+    # print("centers = ",msg_centre.pose.position.y," ", msg_centre.pose.position.x)
+    # print("profondeur aruco :",msg_pose.pose.position.z)
     msg = bridge.cv2_to_imgmsg(cv_image, "bgr8") #rossification du message
 
     if compteur>200:

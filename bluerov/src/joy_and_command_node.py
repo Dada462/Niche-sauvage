@@ -300,6 +300,7 @@ if __name__ == '__main__':
 #        video = Video(5600)
     
     while not rospy.is_shutdown():
+        val_pwm = 100
 
         while (not rospy.is_shutdown()) & (use_joy):
 
