@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
 # Mon code python3
 
-
-
 import os
 
 import rospy
@@ -301,7 +299,6 @@ if __name__ == '__main__':
     
     while not rospy.is_shutdown():
         val_pwm = 100
-
         while (not rospy.is_shutdown()) & (use_joy):
 
         
