@@ -17,6 +17,8 @@ from bluerov_msgs.msg import CommandBluerov
 import time
 from aruco_tools.filt import *
 from aruco_tools.tools import QR_to_cage
+import time
+import matplotlib.pyplot as plt
 
 
 def euler_from_quaternion(x, y, z, w):
@@ -76,8 +78,8 @@ def callback(data): ## callback qui recupere la pose du robot dans le repere du 
                     -1 en y
                     -0.5 en z
     """
-    
-    if id <= 4 and id >=0:   ## se placer devant
+    # if id <= 4 and id >=0:   ## se placer devant
+    if id == 3:   ## se placer devant
         kx=1
         lx=-np.tanh(kx*((desire_pos-z)))
         accel_z = lx
@@ -114,7 +116,10 @@ def callback(data): ## callback qui recupere la pose du robot dans le repere du 
         print("posx=",pos[0])
         print("posy=",pos[1])
         print("posz=",pos[2])
-
+        plt.scatter(time.time(),pos[0],s=5,c='red',)
+        # plt.scatter(time.time(),pos[1],s=5,c='green',)
+        # plt.scatter(time.time(),pos[2],s=5,c='blue',)
+        plt.pause(1e-9)
     else :
         accel_x = 0
         accel_y = 0

@@ -112,13 +112,13 @@ def callback(data):
         
         msg_id = ids[0][0]
         marqueur = 0
-        for i in range(len(ids)):
-            if msg_id>ids[i][0]:
-                msg_id = ids[i][0]
-                marqueur = i
+        # for i in range(len(ids)):
+            # if msg_id>ids[i][0]:
+                # msg_id = ids[i][0]
+                # marqueur = i
 
-        if mem_id>msg_id:
-            mem_id = msg_id
+        # if mem_id>msg_id:
+            # mem_id = msg_id
 
         # print("marqueur :",marqueur)
 

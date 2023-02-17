@@ -7,6 +7,8 @@ import numpy as np
 from numpy import tanh, pi, cos, sin
 import rospy
 import time
+import matplotlib.pyplot as plt
+import keyboard
 
 
 class Controller():
@@ -25,6 +27,7 @@ class Controller():
         self.command.power = 0
         self.command.arming = 0
         self.desired_position = Quaternion(0., 0., 0., 0)
+        self.integral=0
         ################ Initial Control set to 0 so that the robot does not move ################
 
     def heading_test(self, desired_heading):
@@ -81,20 +84,38 @@ class Controller():
         return u
 
     def depth_test(self):
-        # if self.desired_position.w == 1:
-        X = self.depths[-1][0]
-        V=(self.depths[-1][0]-self.depths[-2][0])/(self.depths[-1][1]-self.depths[-2][1])
-        x_desired = self.desired_position.z
-        k = 1  # Saturation gain
-        dk=0.7
-        u = tanh(k*(x_desired-X)-dk*V)
-        return u
-        print(u,'V',V,'xdes',x_desired,'z',X)
-            # self.create_control_message(
-                # Point(0.,0., u), Quaternion(0., 0., 0., 0.))
-        # else:
-            # self.create_control_message(
-                # Point(0., 0., 0.), Quaternion(0., 0., 0., 0.))
+        if self.desired_position.w == 1:
+            X = self.depths[-1][0]
+            try :
+                V=(self.depths[-1][0]-self.depths[-2][0])/(self.depths[-1][1]-self.depths[-2][1])
+            except:
+                V=0
+            x_desired = self.desired_position.z
+            k = 0.5 # Saturation gain
+            dk=2.5
+            ds=0.005
+            try :
+                if abs(self.depths[-1][1]-self.depths[-2][1])<0.2:
+                    self.integral+=(x_desired-X)*(self.depths[-1][1]-self.depths[-2][1])
+                else:
+                    self.integral+=(x_desired-X)*.2
+            except:
+                self.integral=0
+            # u = 2*tanh(k*(x_desired-X)-dk*V+ds*np.tanh(self.integral))
+            u = 0.01*tanh(3*k**2*(x_desired-X)-3*k*V+k**3*np.tanh(self.integral))
+            # return u
+            # print(np.round(u,2),'V',np.round(V,2),'xdes',x_desired,'z',X)
+            print('V',np.round(V,2),' m',' Error:',x_desired-X,' m','Integral ',self.integral)
+            t=time.time()
+            plt.ylim(-3,-1)
+            plt.scatter(t,x_desired,c='red',s=5)
+            plt.scatter(t,X,c='blue',s=5)
+            plt.pause(1e-9)
+            self.create_control_message(
+                    Point(0.,0., u), Quaternion(0., 0., 0., 0.))
+        else:
+            self.create_control_message(
+                Point(0., 0., 0.), Quaternion(0., 0., 0., 0.))
     
     def join_the_cage(self):
         if self.desired_position.w == 1:
@@ -187,8 +208,8 @@ def main():
     rospy.Subscriber("/desired_position", Quaternion, ros_desired_position)
     rate = rospy.Rate(10)
     while not rospy.is_shutdown():
-        ROV_Controller.join_the_cage()
-        # ROV_Controller.depth_test()
+        # ROV_Controller.join_the_cage()
+        ROV_Controller.depth_test()
         # ROV_Controller.heading_test(180)
         # ROV_Controller.join_a_point_test()
         command = ROV_Controller.command

@@ -694,7 +694,7 @@ if __name__ == '__main__':
 
                     
                 if Jaxes[4] != 0:  # monter/descendre rapidement
-                    depUp = int(200*Jaxes[4]+1500 ) 
+                    depUp = int(200*Jaxes[4]+1500 )
 
                 
                 msg[2] = depUp # elevation
