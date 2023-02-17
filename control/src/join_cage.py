@@ -91,35 +91,20 @@ class Controller():
             except:
                 V=0
             x_desired = self.desired_position.z
-            k = 0.5 # Saturation gain
-            dk=2.5
-            ds=0.005
             try :
-                if abs(self.depths[-1][1]-self.depths[-2][1])<0.2:
+                if abs(self.depths[-1][1]-self.depths[-2][1])<.2:
                     self.integral+=(x_desired-X)*(self.depths[-1][1]-self.depths[-2][1])
                 else:
                     self.integral+=(x_desired-X)*.2
             except:
                 self.integral=0
-            # u = 2*tanh(k*(x_desired-X)-dk*V+ds*np.tanh(self.integral))
-            def dead_zone(z,deadz):
-                if abs(z)<deadz:
-                    return np.sign(z)*deadz
-                else:
-                    return z
-            btan=tanh(3*k**2*(x_desired-X)-3*k*V+k**3*np.tanh(self.integral))
-            if btan>=0:
-                u=2*btan
-            else:
-                u=btan
-            u=dead_zone(u,.7)
-            # return u
-            # print(np.round(u,2),'V',np.round(V,2),'xdes',x_desired,'z',X)
-            print('V',np.round(V,2),' m',' Error:',x_desired-X,' m','Integral ',self.integral)
+            self.integral=np.clip(self.integral,-1,1)
+            u=2*tanh(2*(x_desired-X)-1*V+0.25*np.tanh(self.integral))
+            print('u',u'V',np.round(V,2),' m',' Error:',x_desired-X,' m','Integral ',self.integral)
             t=time.time()
-            plt.ylim(-3,-1)
             plt.scatter(t,x_desired,c='red',s=5)
             plt.scatter(t,X,c='blue',s=5)
+            plt.scatter(t,u,c='green',s=5)
             plt.pause(1e-9)
             self.create_control_message(
                     Point(0.,0., u), Quaternion(0., 0., 0., 0.))
@@ -217,7 +202,7 @@ def main():
     rospy.Subscriber("/mavros/global_position/compass_hdg",
                      Float64, ros_compass)
     rospy.Subscriber("/desired_position", Quaternion, ros_desired_position)
-    rate = rospy.Rate(10)
+    rate = rospy.Rate(20)
     while not rospy.is_shutdown():
         # ROV_Controller.join_the_cage()
         ROV_Controller.depth_test()
