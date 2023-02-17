@@ -36,6 +36,6 @@ def QR_to_cage(QR_id,X_QR):
 
 if __name__=='__main__':
     QR_id=2
-    X_QR=[0,0,0]
+    X_QR=[0,0,1]
     pos=QR_to_cage(QR_id,X_QR)
     print('Position converted from QR code '+str(QR_id),':',pos)

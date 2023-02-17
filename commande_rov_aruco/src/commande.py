@@ -15,8 +15,8 @@ import cv2
 import cv2.aruco as aruco
 from bluerov_msgs.msg import CommandBluerov
 import time
-import filt
-import tools
+from aruco_tools.filt import *
+from aruco_tools.tools import QR_to_cage
 
 
 def euler_from_quaternion(x, y, z, w):
@@ -38,7 +38,7 @@ def euler_from_quaternion(x, y, z, w):
         t3 = +2.0 * (w * z + x * y)
         t4 = +1.0 - 2.0 * (y * y + z * z)
         yaw_z = math.atan2(t3, t4)
-     
+        
         return roll_x, pitch_y, yaw_z # in radians
 
 def callback(data): ## callback qui recupere la pose du robot dans le repere du marqueur et renvoie la commande associée
@@ -61,33 +61,6 @@ def callback(data): ## callback qui recupere la pose du robot dans le repere du 
     
 
 
-    if len(x_start)>=5:
-        x_start.append(x)
-        x = filtre_x(x_start,x)
-    if len(y_start)>=5:
-        y_start.append(y)
-        y = filtre_y(y_start,y)
-    if len(z_start)>=5:
-        z_start.append(z)
-        z = filtre_z(z_start,z)
-
-
-
-
-    if len(x_start)<5:
-        x_start.append(x)
-
-    if len(y_start)<5:
-        y_start.append(y)
-
-    if len(z_start)<5:
-        z_start.append(z)
-
-
-    print("x=",x)
-    print("y=",y)
-    print("z=",z)
-
     """
        disposition : 0 : interieur fond de la cage
                      1 : interieur gauche
@@ -104,10 +77,43 @@ def callback(data): ## callback qui recupere la pose du robot dans le repere du 
                     -0.5 en z
     """
     
-    if id != -1 :   ## se placer devant
+    if id <= 4 and id >=0:   ## se placer devant
         kx=1
         lx=-np.tanh(kx*((desire_pos-z)))
         accel_z = lx
+
+        if len(x_start)>=5:
+            x_start.append(x)
+            x = filtre_x.filtrage(x_start,x)
+        if len(y_start)>=5:
+            y_start.append(y)
+            y = filtre_y.filtrage(y_start,y)
+        if len(z_start)>=5:
+            z_start.append(z)
+            z = filtre_z.filtrage(z_start,z)
+    
+    
+    
+    
+        if len(x_start)<5:
+            x_start.append(x)
+    
+        if len(y_start)<5:
+            y_start.append(y)
+    
+        if len(z_start)<5:
+            z_start.append(z)
+
+        print("id=",id)
+        print("x=",x)
+        print("y=",y)
+        print("z=",z)
+
+        pos = QR_to_cage(id,[x,y,z])
+
+        print("posx=",pos[0])
+        print("posy=",pos[1])
+        print("posz=",pos[2])
 
     else :
         accel_x = 0
@@ -130,10 +136,13 @@ def callback3(data):                 ##callback pour ajuster le rov dans l'espac
     centrex = data.pose.position.x
     centrey = data.pose.position.y
     pos = np.array([centrex,centrey])
+    desire_pos = np.array([160,400])
     if id == 4 :
         desire_pos = np.array([160,550])
     if id == 3 :
         desire_pos = np.array([160,250])
+    
+        
     #################### Robot frame #################### 
     try:
         Vz=(depths[-1][0]-depths[-2][0])/(depths[-1][1]-depths[-2][1])
