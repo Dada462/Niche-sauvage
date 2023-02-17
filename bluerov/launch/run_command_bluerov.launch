@@ -27,7 +27,7 @@
 <!-- ############################################################################################################### -->
 
     <!-- QRcode command -->
-    <!-- <include file="$(find commande_rov_aruco)/launch/simu.launch"/> -->
+    <include file="$(find commande_rov_aruco)/launch/simu.launch"/>
 
     <!-- Lights command -->
     <!-- <node name="detec_lum" pkg="detect_lum" type="node_lum.py" output="screen"/> -->

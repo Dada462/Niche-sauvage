@@ -102,7 +102,17 @@ class Controller():
             except:
                 self.integral=0
             # u = 2*tanh(k*(x_desired-X)-dk*V+ds*np.tanh(self.integral))
-            u = 0.01*tanh(3*k**2*(x_desired-X)-3*k*V+k**3*np.tanh(self.integral))
+            def dead_zone(z,deadz):
+                if abs(z)<deadz:
+                    return np.sign(z)*deadz
+                else:
+                    return z
+            btan=tanh(3*k**2*(x_desired-X)-3*k*V+k**3*np.tanh(self.integral))
+            if btan>=0:
+                u=2*btan
+            else:
+                u=btan
+            u=dead_zone(u,.7)
             # return u
             # print(np.round(u,2),'V',np.round(V,2),'xdes',x_desired,'z',X)
             print('V',np.round(V,2),' m',' Error:',x_desired-X,' m','Integral ',self.integral)

@@ -685,12 +685,15 @@ if __name__ == '__main__':
                         
                 
                 # monter/ descendre
+                print(button[4],button[5])
                 depUp = 1500
                 if button[4] != 0:  # monter lentement
-                    depUp = int(val_pwm+1500 )
+                    depUp = int(val_pwm*button[4]+1500 )
+                    # depUp = int(val_pwm+1500 )
 
                 if button[5] != 0: # descendre lentement
-                    depUp = int(-val_pwm+1500 )        
+                    depUp = int(val_pwm*button[5]+1500 )
+                    # depUp = int(-val_pwm+1500 )   
 
                     
                 if Jaxes[4] != 0:  # monter/descendre rapidement
