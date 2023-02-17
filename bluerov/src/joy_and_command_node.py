@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
 # Mon code python3
 
-
-
 import os
 
 import rospy
