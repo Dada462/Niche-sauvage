@@ -2,7 +2,6 @@ import scipy.io
 import numpy as np
 import matplotlib.pyplot as plt
 from numpy import cos, sin, pi, arctan2
-import keyboard
 
 
 def rungeKutta2(x, u, h, f):
@@ -180,6 +179,9 @@ def R(theta, which='2D'):
     elif which == 'z':
         r=np.array([[cos(theta),- sin(theta), 0],
                  [sin(theta), cos(theta), 0],
+<<<<<<< HEAD
+                 [0, 0, 1]])
+=======
                  [0, 0, 1]])
         return r
 
@@ -274,3 +276,4 @@ def color(C, Vmin, Vmax, V):
         i = (V-Vmin)/(Vmax-Vmin)
         i = int(i*(len(C)-1))
         return C[i]
+>>>>>>> 054fe82d6abffda9ce381a6768c043dc9475fbab

@@ -179,6 +179,7 @@ class Controller():
 
 def ros_usbl(data):
     global ROV_Controller
+    print('here')
     try:
         ROV_Controller.usbl_data = data
     except:

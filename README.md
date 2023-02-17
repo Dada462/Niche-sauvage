@@ -54,6 +54,8 @@ sp = SliderPublisher(content,50)
 - Run the bluerob with camera and joystick
 Sensors data are saved on a rosbag
 
+Warning : Before any first roslaunch launch Qgroundcontrol for set bluerov parameters
+
 Warning : Desarmed and tune off the lights before kill
 
 ``` bash

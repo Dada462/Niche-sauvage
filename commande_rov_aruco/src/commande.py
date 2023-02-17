@@ -53,7 +53,7 @@ def callback(data): ## callback qui recupere la pose du robot dans le repere du 
     
 
 
-    desire_pos = 0.5
+    desire_pos = 0.2
 
     x = data.pose.position.x
     y = data.pose.position.y
@@ -78,8 +78,8 @@ def callback(data): ## callback qui recupere la pose du robot dans le repere du 
                     -1 en y
                     -0.5 en z
     """
-    # if id <= 4 and id >=0:   ## se placer devant
-    if id == 3:   ## se placer devant
+
+    if id <= 4 and id >=0:   ## se placer devant
         kx=1
         lx=-np.tanh(kx*((desire_pos-z)))
         accel_z = lx
@@ -153,7 +153,7 @@ def callback3(data):                 ##callback pour ajuster le rov dans l'espac
         Vz=(depths[-1][0]-depths[-2][0])/(depths[-1][1]-depths[-2][1])
     except:
         Vz=0
-    ky=1
+    ky=0.009
     ly=-np.tanh(ky*((desire_pos[1]-centrey)/100))
     kz=0.05
     dkz=0.02
