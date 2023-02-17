@@ -167,17 +167,21 @@ def path_info_update(path_info_last, s):
 
 def R(theta, which='2D'):
     if which == '2D':
-        return np.array([[cos(theta), -sin(theta)], [sin(theta), cos(theta)]])
+        r=np.array([[cos(theta), -sin(theta)], [sin(theta), cos(theta)]])
+        return r
     elif which == 'x':
-        np.array([[1, 0, 0], [0, cos(theta), -sin(theta)],
+        r=np.array([[1, 0, 0], [0, cos(theta), -sin(theta)],
                  [0, sin(theta), cos(theta)]])
+        return r
     elif which == 'y':
-        np.array([[cos(theta), 0, -sin(theta)],
+        r=np.array([[cos(theta), 0, -sin(theta)],
                   [0, 1, 0], [sin(theta), 0, cos(theta)]])
+        return r
     elif which == 'z':
-        np.array([[cos(theta) - sin(theta), 0],
+        r=np.array([[cos(theta),- sin(theta), 0],
                  [sin(theta), cos(theta), 0],
                  [0, 0, 1]])
+        return r
 
 
 def draw_crab(P, theta, ax, L, r, wheel_size=0.5):

@@ -4,7 +4,7 @@ import queue
 import sys
 import rospy
 import math
-from std_msgs.msg import Float64
+from std_msgs.msg import Float64,Float64MultiArray
 from std_msgs.msg import String
 from sensor_msgs.msg import Image
 from geometry_msgs.msg import PoseStamped
@@ -172,17 +172,24 @@ def callback_depth(msg):
     global depths
     depths.append([msg.data,time.time()])
 
+def gains_callback(msg):
+    global gains
+    gains=[*(msg.data)]
+    # print(gains)
+
 def listener_and_talker():
-    global depths
+    global depths,gains
     rospy.init_node('aruco_commande', anonymous=True)
 
 
     pub = rospy.Publisher('commande',CommandBluerov, queue_size=10)
     depths=[]
+    gains=[0.,0.,0.]
     rospy.Subscriber('bluerov_pose_aruco', PoseStamped, callback)
     rospy.Subscriber('id_qr_code_aruco', Float64, callback2)
     rospy.Subscriber('centre_aruco_img', PoseStamped, callback3)
     rospy.Subscriber('/mavros/global_position/rel_alt', Float64, callback_depth)
+    rospy.Subscriber('gains', Float64MultiArray, gains_callback)
     
 
     #spin() simply keeps python from exiting until this node is stopped
