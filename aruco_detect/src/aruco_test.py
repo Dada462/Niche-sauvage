@@ -127,7 +127,7 @@ def callback(data):
         centery = (corners[0][0][0]+corners[0][1][0]+corners[0][2][0]+corners[0][3][0])/4
         centerx = (corners[0][0][1]+corners[0][1][1]+corners[0][2][1]+corners[0][3][1])/4
 
-        if mem_id == msg_id and cnt_id<50: 
+        if mem_id == msg_id and cnt_id<20: 
             msg_centre.pose.position.x = centerx
             msg_centre.pose.position.y = centery
             cnt_id = 0
@@ -136,7 +136,7 @@ def callback(data):
 
         
 
-        if mem_id == msg_id and cnt_id<50:
+        if mem_id == msg_id and cnt_id<20:
             cnt_id = 0 
             print('cool')
             msg_pose.pose.position.x = tvecs[marqueur][0][0]
@@ -150,7 +150,7 @@ def callback(data):
         else :
             cnt_id = cnt_id + 1
 
-        if cnt_id>50:
+        if cnt_id>20:
             mem_id = msg_id
             cnt_id = 0
 

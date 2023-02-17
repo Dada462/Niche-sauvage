@@ -45,7 +45,7 @@ def callback(data): ## callback qui recupere la pose du robot dans le repere du 
 
 
 
-    desire_pos = 0.5
+    desire_pos = 0.2
 
     x = data.pose.position.x
     y = data.pose.position.y
@@ -68,7 +68,7 @@ def callback(data): ## callback qui recupere la pose du robot dans le repere du 
     """
     
     if id != -1 :   ## se placer devant
-        kx=1
+        kx=0.7
         lx=-np.tanh(kx*((desire_pos-z)))
         accel_z = lx
 
@@ -91,26 +91,30 @@ def callback3(data):                 ##callback pour ajuster le rov dans l'espac
     centrex = data.pose.position.x
     centrey = data.pose.position.y
     pos=np.array([centrex,centrey])
-    desire_pos=np.array([160,400])
+    desire_pos=np.array([250,450])
     
     #################### Robot frame #################### 
     try:
         Vz=(depths[-1][0]-depths[-2][0])/(depths[-1][1]-depths[-2][1])
     except:
         Vz=0
-    ky=1
+    ky=0.009
     ly=-np.tanh(ky*((desire_pos[1]-centrey)/100))
-    kz=0.5
-    dkz=.2
-    lz=np.tanh(kz*((desire_pos[0]-centrex)/100) -dkz*Vz)
-
+    
+    kz=6
+    dkz=0.5
+    lz=np.tanh((kz*((desire_pos[0]-centrex)/100) -dkz*Vz)*0.6)*0.7
+    if lz<0:
+        lz = lz/2
     #################### Robot frame #################### 
 
 
     global accel_x, accel_y, accel_z,rot_z
     accel_y=lz
-    accel_x=ly
-    #rot_z = - ly
+    #accel_x=ly
+    rot_z = - ly
+    if rot_z<0:
+        rot_z*3
     # if centrex == 0.0 :
     #     accel_y = 0.0
     #     rot_z = 0.0

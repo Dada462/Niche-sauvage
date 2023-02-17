@@ -2,7 +2,6 @@ import scipy.io
 import numpy as np
 import matplotlib.pyplot as plt
 from numpy import cos, sin, pi, arctan2
-import keyboard
 
 
 def rungeKutta2(x, u, h, f):
@@ -178,95 +177,3 @@ def R(theta, which='2D'):
         np.array([[cos(theta) - sin(theta), 0],
                  [sin(theta), cos(theta), 0],
                  [0, 0, 1]])
-
-
-def draw_crab(P, theta, ax, L, r, wheel_size=0.5):
-    theta_deg = 180*theta/pi-90
-    body = plt.Circle(P, L, edgecolor='#1F6EE1', facecolor='none')
-    wheel1 = plt.Rectangle(P+R(theta-pi/2)@(L*np.array([0, 1])-np.array(
-        [r/2, 0])), r, wheel_size, angle=theta_deg, linewidth=1, edgecolor='g', facecolor='none')
-    wheel2 = plt.Rectangle(P+R(theta-pi/2+2*pi/3)@(L*np.array([0, 1])-np.array(
-        [r/2, 0])), r, wheel_size, linewidth=1, angle=theta_deg+120, edgecolor='r', facecolor='none')
-    wheel3 = plt.Rectangle(P+R(theta-pi/2-2*pi/3)@(L*np.array([0, 1])-np.array(
-        [r/2, 0])), r, wheel_size, linewidth=1, angle=theta_deg-120, edgecolor='r', facecolor='none')
-
-    ax.add_patch(body)
-    ax.add_patch(wheel1)
-    ax.add_patch(wheel2)
-    ax.add_patch(wheel3)
-
-
-def show_info(ax, path_to_follow, P, Vt, theta, u, robot_parameters, sim_parameters, path, window_parameters, forces=True, speed=True):
-    _, alpha2, alpha3, L, r = robot_parameters
-    w_size, w_shift = window_parameters
-    s, t = sim_parameters
-    ax.plot(*path_to_follow.X.T, c='#3486F4')
-
-    # Drawing of the forces
-
-    if forces:
-        ax.quiver(*(P+R(theta)@R(0)@np.array([L, 0])), *R(
-            theta-pi/2)@np.array([u[0], 0]), color='red', scale=5000)
-        ax.quiver(*(P+R(theta)@R(alpha2)@np.array([L, 0])), *R(
-            theta-pi/2+alpha2)@np.array([u[1], 0]), color='red', scale=5000)
-        ax.quiver(*(P+R(theta)@R(alpha3)@np.array([L, 0])), *R(
-            theta-pi/2+alpha3)@np.array([u[2], 0]), color='red', scale=5000)
-    # Drawing the speed
-    if speed:
-        ax.quiver(*P, *R(theta)@Vt, color='red', scale=10)
-    # Drawing point Q
-    ax.scatter(*path_info_update(path_to_follow, s).X, c='#34F44C')
-    ax.plot(*np.array(path).T, '--', c='red')
-    info = 'u1 : '+str(round(u[0], 2))+'\n'+'u2 : ' + \
-        str(round(u[1], 2)) + '\n'+'u3 : '+str(round(u[2], 2))
-    # ax.text(w_size/2, w_size+0.5, info, style='italic',
-    #         bbox={'facecolor': 'red', 'alpha': 0.5, 'pad': 5})
-    # ax.text(0, w_size+1, 'time :' + str(round(t, 2)) + ' s',
-    #         style='italic', bbox={'facecolor': 'red', 'alpha': 0.5, 'pad': 10})
-    # if t>t0:
-    #     ax.text(w_size, w_size+0.5,'MOTOR DEAD', style='italic',bbox={'facecolor': 'red', 'alpha': 0.5, 'pad': 5})
-
-
-def key_press():
-    global end_of_path
-    alpha = 1
-    key = np.array([0, 0, 0])
-    if keyboard.is_pressed("up"):
-        key[0] = alpha
-    elif keyboard.is_pressed("down"):
-        key[0] = -alpha
-    else:
-        key[0] = 0
-    if keyboard.is_pressed("a"):
-        key[1] = alpha
-    elif keyboard.is_pressed("e"):
-        key[1] = -alpha
-    else:
-        key[1] = 0
-
-    if keyboard.is_pressed("left"):
-        key[2] = alpha
-    elif keyboard.is_pressed("right"):
-        key[2] = -alpha
-    else:
-        key[2] = 0
-    if keyboard.is_pressed("space"):
-        end_of_path = 1
-    return key
-
-
-def colors():
-    color_file = open('Readables/AstroColors.txt', 'r').read()
-    x = color_file.split('\n')
-    return x
-
-
-def color(C, Vmin, Vmax, V):
-    if V >= Vmax:
-        return C[-1]
-    elif V <= Vmin:
-        return C[0]
-    else:
-        i = (V-Vmin)/(Vmax-Vmin)
-        i = int(i*(len(C)-1))
-        return C[i]
