@@ -96,7 +96,9 @@ def callback(data): ## callback qui recupere la pose du robot dans le repere du 
                      7 : exterieur gauche
                      8 : exterieur droit
                      9 : non utilisé
-                    
+                    -2 en x
+                    -1 en y
+                    -0.5 en z
     """
     
     if id != -1 :   ## se placer devant
