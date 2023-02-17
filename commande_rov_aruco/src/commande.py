@@ -84,7 +84,9 @@ def callback(data): ## callback qui recupere la pose du robot dans le repere du 
         z_start.append(z)
 
 
-
+    print("x=",x)
+    print("y=",y)
+    print("z=",z)
 
     """
        disposition : 0 : interieur fond de la cage
@@ -97,7 +99,9 @@ def callback(data): ## callback qui recupere la pose du robot dans le repere du 
                      7 : exterieur gauche
                      8 : exterieur droit
                      9 : non utilisé
-                    
+                    -2 en x
+                    -1 en y
+                    -0.5 en z
     """
     
     if id != -1 :   ## se placer devant
@@ -209,10 +213,10 @@ def listener_and_talker():
         msg.pose.position.z = accel_y
         msg.pose.orientation.z = rot_z
 
-        # print("avance =",msg.pose.position.x)
-        # print("haut/bas =",msg.pose.position.z)
-        # print("gauche/droite =",msg.pose.position.y)
-        # print("rot =",msg.pose.orientation.z)
+        #print("avance =",msg.pose.position.x)
+        #print("haut/bas =",msg.pose.position.z)
+        #print("gauche/droite =",msg.pose.position.y)
+        #print("rot =",msg.pose.orientation.z)
 
         
 
