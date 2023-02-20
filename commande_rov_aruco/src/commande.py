@@ -77,7 +77,7 @@ def callback(data): ## callback qui recupere la pose du robot dans le repere du 
                     -0.5 en z
     """
     
-    if id <= 4 and id >=0:   ## se placer devant
+    if id != -1 :   ## se placer devant
         kx=1
         lx=-np.tanh(kx*((desire_pos-z)))
         accel_z = lx
@@ -109,11 +109,11 @@ def callback(data): ## callback qui recupere la pose du robot dans le repere du 
         print("y=",y)
         print("z=",z)
 
-        pos = QR_to_cage(id,[x,y,z])
+        #pos = QR_to_cage(id,[x,y,z])
 
-        print("posx=",pos[0])
-        print("posy=",pos[1])
-        print("posz=",pos[2])
+        #print("posx=",pos[0])
+        #print("posy=",pos[1])
+        #print("posz=",pos[2])
 
     else :
         accel_x = 0
@@ -136,13 +136,21 @@ def callback3(data):                 ##callback pour ajuster le rov dans l'espac
     centrex = data.pose.position.x
     centrey = data.pose.position.y
     pos = np.array([centrex,centrey])
-    desire_pos = np.array([160,400])
+    desire_pos = np.array([250,400])
     if id == 4 :
-        desire_pos = np.array([160,550])
+        desire_pos = np.array([250,550])
     if id == 3 :
-        desire_pos = np.array([160,250])
+        desire_pos = np.array([250,250])
     
+    if id == 1 :
+        desire_pos = np.array([250,250])
         
+
+    if id == 2 :
+        desire_pos = np.array([250,550])
+
+    if id == 0 :
+        desire_pos = np.array([250,400])
     #################### Robot frame #################### 
     try:
         Vz=(depths[-1][0]-depths[-2][0])/(depths[-1][1]-depths[-2][1])
