@@ -112,13 +112,13 @@ def callback(data):
         
         msg_id = ids[0][0]
         marqueur = 0
-        for i in range(len(ids)):
-            if msg_id>ids[i][0]:
-                msg_id = ids[i][0]
-                marqueur = i
+        # for i in range(len(ids)):
+            # if msg_id>ids[i][0]:
+                # msg_id = ids[i][0]
+                # marqueur = i
 
-        if mem_id>msg_id:
-            mem_id = msg_id
+        # if mem_id>msg_id:
+            # mem_id = msg_id
 
         # print("marqueur :",marqueur)
 
@@ -128,7 +128,7 @@ def callback(data):
         centery = (corners[0][0][0]+corners[0][1][0]+corners[0][2][0]+corners[0][3][0])/4
         centerx = (corners[0][0][1]+corners[0][1][1]+corners[0][2][1]+corners[0][3][1])/4
 
-        if mem_id == msg_id and cnt_id<50: 
+        if mem_id == msg_id and cnt_id<20: 
             msg_centre.pose.position.x = centerx
             msg_centre.pose.position.y = centery
             cnt_id = 0
@@ -137,7 +137,7 @@ def callback(data):
 
         
 
-        if mem_id == msg_id and cnt_id<50:
+        if mem_id == msg_id and cnt_id<20:
             cnt_id = 0 
             # print('cool')
             msg_pose.pose.position.x = tvecs[marqueur][0][0]
@@ -151,7 +151,7 @@ def callback(data):
         else :
             cnt_id = cnt_id + 1
 
-        if cnt_id>50:
+        if cnt_id>20:
             mem_id = msg_id
             cnt_id = 0
 

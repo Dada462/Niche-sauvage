@@ -7,6 +7,8 @@ import numpy as np
 from numpy import tanh, pi, cos, sin
 import rospy
 import time
+import matplotlib.pyplot as plt
+import keyboard
 
 
 class Controller():
@@ -25,6 +27,7 @@ class Controller():
         self.command.power = 0
         self.command.arming = 0
         self.desired_position = Quaternion(0., 0., 0., 0)
+        self.integral=0
         ################ Initial Control set to 0 so that the robot does not move ################
 
     def heading_test(self, desired_heading):
@@ -81,37 +84,34 @@ class Controller():
         return u
 
     def depth_test(self):
-        # if self.desired_position.w == 1:
-        X = self.depths[-1][0]
-        V=(self.depths[-1][0]-self.depths[-2][0])/(self.depths[-1][1]-self.depths[-2][1])
-        x_desired = self.desired_position.z
-        k = 1  # Saturation gain
-        dk=0.7
-        u = tanh(k*(x_desired-X)-dk*V)
-        return u
-        print(u,'V',V,'xdes',x_desired,'z',X)
-            # self.create_control_message(
-                # Point(0.,0., u), Quaternion(0., 0., 0., 0.))
-        # else:
-            # self.create_control_message(
-                # Point(0., 0., 0.), Quaternion(0., 0., 0., 0.))
+        if self.desired_position.w == 1:
+            X = self.depths[-1][0]
+            x_desired = self.desired_position.z
+            try :
+                V=(self.depths[-1][0]-self.depths[-2][0])/(self.depths[-1][1]-self.depths[-2][1])
+                self.integral+=(x_desired-X)*np.clip((self.depths[-1][1]-self.depths[-2][1]),-.2,.2)
+            except:
+                self.integral=0
+                V=0
+            self.integral=np.clip(self.integral,-1,1)
+            u=2*tanh(2*(x_desired-X)-1*V+0.25*np.tanh(self.integral))
+            print('u',u'V',np.round(V,2),' m',' Error:',x_desired-X,' m','Integral ',self.integral)
+            t=time.time()
+            plt.scatter(t,x_desired,c='red',s=5)
+            plt.scatter(t,X,c='blue',s=5)
+            plt.scatter(t,u,c='green',s=5)
+            plt.pause(1e-9)
+            self.create_control_message(
+                    Point(0.,0., u), Quaternion(0., 0., 0., 0.))
+        else:
+            self.create_control_message(
+                Point(0., 0., 0.), Quaternion(0., 0., 0., 0.))
     
     def join_the_cage(self):
         if self.desired_position.w == 1:
             X = np.array([self.usbl_data.position.x,
                           self.usbl_data.position.y])
             cage_heading = self.NED_to_cage(self.heading)
-
-            ################ To be implemented later ################
-            # F = path_info_update(self.path_to_follow, s)
-            # theta_c = F.psi
-            # s1, y1 = R(theta_c).T@(X-F.X)
-            # theta = sawtooth(theta-theta_c)
-            # psi = sawtooth(theta)
-            # ks = 1
-            # nu=1
-            # ds = np.cos(psi)*nu + ks*s1
-            ################ To be implemented later ################
 
             ################ Control ################
             x_desired = np.array(
@@ -148,6 +148,7 @@ class Controller():
 
 def ros_usbl(data):
     global ROV_Controller
+    print('here')
     try:
         ROV_Controller.usbl_data = data
     except:
@@ -185,12 +186,12 @@ def main():
     rospy.Subscriber("/mavros/global_position/compass_hdg",
                      Float64, ros_compass)
     rospy.Subscriber("/desired_position", Quaternion, ros_desired_position)
-    rate = rospy.Rate(10)
+    rate = rospy.Rate(20)
     while not rospy.is_shutdown():
-        ROV_Controller.join_the_cage()
-        # ROV_Controller.depth_test()
         # ROV_Controller.heading_test(180)
         # ROV_Controller.join_a_point_test()
+        ROV_Controller.depth_test()
+        # ROV_Controller.join_the_cage()
         command = ROV_Controller.command
         pub.publish(command)
         rate.sleep()

@@ -17,6 +17,8 @@ from bluerov_msgs.msg import CommandBluerov
 import time
 from aruco_tools.filt import *
 from aruco_tools.tools import QR_to_cage
+import time
+import matplotlib.pyplot as plt
 
 
 def euler_from_quaternion(x, y, z, w):
@@ -51,7 +53,7 @@ def callback(data): ## callback qui recupere la pose du robot dans le repere du 
     
 
 
-    desire_pos = 0.5
+    desire_pos = 0.2
 
     x = data.pose.position.x
     y = data.pose.position.y
@@ -76,8 +78,8 @@ def callback(data): ## callback qui recupere la pose du robot dans le repere du 
                     -1 en y
                     -0.5 en z
     """
-    
-    if id != -1 :   ## se placer devant
+
+    if id <= 4 and id >=0:   ## se placer devant
         kx=1
         lx=-np.tanh(kx*((desire_pos-z)))
         accel_z = lx
@@ -104,17 +106,20 @@ def callback(data): ## callback qui recupere la pose du robot dans le repere du 
         if len(z_start)<5:
             z_start.append(z)
 
-        print("id=",id)
-        print("x=",x)
-        print("y=",y)
-        print("z=",z)
+        # print("id=",id)
+        # print("x=",x)
+        # print("y=",y)
+        # print("z=",z)
 
         #pos = QR_to_cage(id,[x,y,z])
 
         #print("posx=",pos[0])
         #print("posy=",pos[1])
         #print("posz=",pos[2])
-
+        #plt.scatter(time.time(),pos[0],s=5,c='red',)
+        # plt.scatter(time.time(),pos[1],s=5,c='green',)
+        # plt.scatter(time.time(),pos[2],s=5,c='blue',)
+        # plt.pause(1e-9)
     else :
         accel_x = 0
         accel_y = 0
@@ -136,31 +141,43 @@ def callback3(data):                 ##callback pour ajuster le rov dans l'espac
     centrex = data.pose.position.x
     centrey = data.pose.position.y
     pos = np.array([centrex,centrey])
-    desire_pos = np.array([250,400])
+    desire_pos = np.array([300,400])
     if id == 4 :
-        desire_pos = np.array([250,550])
+        desire_pos = np.array([300,550])
     if id == 3 :
-        desire_pos = np.array([250,250])
-    
+        desire_pos = np.array([300,250])
+
     if id == 1 :
-        desire_pos = np.array([250,250])
-        
+        desire_pos = np.array([300,250])
 
     if id == 2 :
-        desire_pos = np.array([250,550])
+        desire_pos = np.array([300,550])
 
-    if id == 0 :
-        desire_pos = np.array([250,400])
+    
+    
+    ky=1
+    ly=-0.2*np.tanh(ky*((desire_pos[1]-centrey)/100))
+    
     #################### Robot frame #################### 
+    global integral
     try:
         Vz=(depths[-1][0]-depths[-2][0])/(depths[-1][1]-depths[-2][1])
     except:
         Vz=0
-    ky=1
-    ly=-np.tanh(ky*((desire_pos[1]-centrey)/100))
-    kz=0.05
-    dkz=0.02
-    lz=np.tanh(kz*((desire_pos[0]-centrex)/100) -dkz*Vz)
+    # ly=-0.2*np.tanh(ky*((desire_pos[1]-centrey)/100))
+    global integral
+    try :
+        if abs(depths[-1][1]-depths[-2][1])<.2:
+            integral+=(desire_pos[0]-centrex)/800*(depths[-1][1]-depths[-2][1])
+        else:
+            integral+=(desire_pos[0]-centrex)/800*.2
+    except:
+        integral=0
+    integral=np.clip(integral,-1,1)
+    print((desire_pos[0]-centrex)/800)
+    lz=2*np.tanh(2*(desire_pos[0]-centrex)/800-1*Vz+0.25*np.tanh(integral))
+    
+    # lz=np.tanh(kz*((desire_pos[0]-centrex)/100) -dkz*Vz)
 
     #################### Robot frame #################### 
 
@@ -168,7 +185,7 @@ def callback3(data):                 ##callback pour ajuster le rov dans l'espac
     global accel_x, accel_y, accel_z, rot_z
     accel_y = lz
     #accel_x=ly
-    rot_z = -ly
+    rot_z = +-ly
     # if centrex == 0.0 :
     #     accel_y = 0.0
     #     rot_z = 0.0
@@ -220,6 +237,8 @@ def listener_and_talker():
         global id
         global x,y,z,roll_x, pitch_y, yaw_z
         global accel_x, accel_y, accel_z, rot_z
+        global integral
+        integral=0.
         msg = CommandBluerov()
         ##deplacement en cap msg.pose.orientation.z
         msg.arming = 1

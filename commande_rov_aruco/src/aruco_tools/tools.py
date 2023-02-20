@@ -5,9 +5,9 @@ def QR_to_cage(QR_id,X_QR):
     Takes the QR code id and the Position of the robot in the QR code's frame
     Example: QR_id=1; X_QR=np.array([1,69,4.5]) or [1,69,4.5] etc.
     """
-    P034=[[0,-1,0],[-1,0,-.5],[-1,-2,-.5]]
-    P1=[-.5,0,-.5]
-    P2=[-.5,-1.5,-.5]
+    P034=[[0,-.5,-.25],[-1,.5/3,-.25],[-1,-1-.5/3,-.25]]
+    P1=[-.5,0,-.25]
+    P2=[-.5,-1,-.25]
     if QR_id in [0,3,4]:
         mapping={0:0,3:1,4:2}
         i=mapping[QR_id]
