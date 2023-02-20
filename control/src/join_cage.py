@@ -86,18 +86,13 @@ class Controller():
     def depth_test(self):
         if self.desired_position.w == 1:
             X = self.depths[-1][0]
-            try :
-                V=(self.depths[-1][0]-self.depths[-2][0])/(self.depths[-1][1]-self.depths[-2][1])
-            except:
-                V=0
             x_desired = self.desired_position.z
             try :
-                if abs(self.depths[-1][1]-self.depths[-2][1])<.2:
-                    self.integral+=(x_desired-X)*(self.depths[-1][1]-self.depths[-2][1])
-                else:
-                    self.integral+=(x_desired-X)*.2
+                V=(self.depths[-1][0]-self.depths[-2][0])/(self.depths[-1][1]-self.depths[-2][1])
+                self.integral+=(x_desired-X)*np.clip((self.depths[-1][1]-self.depths[-2][1]),-.2,.2)
             except:
                 self.integral=0
+                V=0
             self.integral=np.clip(self.integral,-1,1)
             u=2*tanh(2*(x_desired-X)-1*V+0.25*np.tanh(self.integral))
             print('u',u'V',np.round(V,2),' m',' Error:',x_desired-X,' m','Integral ',self.integral)
@@ -117,17 +112,6 @@ class Controller():
             X = np.array([self.usbl_data.position.x,
                           self.usbl_data.position.y])
             cage_heading = self.NED_to_cage(self.heading)
-
-            ################ To be implemented later ################
-            # F = path_info_update(self.path_to_follow, s)
-            # theta_c = F.psi
-            # s1, y1 = R(theta_c).T@(X-F.X)
-            # theta = sawtooth(theta-theta_c)
-            # psi = sawtooth(theta)
-            # ks = 1
-            # nu=1
-            # ds = np.cos(psi)*nu + ks*s1
-            ################ To be implemented later ################
 
             ################ Control ################
             x_desired = np.array(
@@ -204,10 +188,10 @@ def main():
     rospy.Subscriber("/desired_position", Quaternion, ros_desired_position)
     rate = rospy.Rate(20)
     while not rospy.is_shutdown():
-        # ROV_Controller.join_the_cage()
-        ROV_Controller.depth_test()
         # ROV_Controller.heading_test(180)
         # ROV_Controller.join_a_point_test()
+        ROV_Controller.depth_test()
+        # ROV_Controller.join_the_cage()
         command = ROV_Controller.command
         pub.publish(command)
         rate.sleep()
